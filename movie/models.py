@@ -7,8 +7,8 @@ MOVIE_GENRE = (
     (2, 'Adventure'),
     (3, 'Animation'),
     (4, 'Comedy'),
-    (5, 'Crime'),
-    (6, 'Thriller'),
+    (5, 'Costume drama'),
+    (6, 'Crime'),
     (7, 'Documentary'),
     (8, 'Drama'),
     (9, 'Fantasy'),
@@ -17,8 +17,9 @@ MOVIE_GENRE = (
     (12, 'Mystery'),
     (13, 'Romance'),
     (14, 'Science fiction'),
-    (15, 'War'),
-    (16, 'Western')
+    (15, 'Thriller'),
+    (16, 'War'),
+    (17, 'Western')
  )
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -26,7 +27,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 RATING = [(i,i) for i in range(6)]
 
 # Create your models here.
-class Post(models.Model):
+class Movie(models.Model):
     """
     Description needed
     """
@@ -46,6 +47,10 @@ class Post(models.Model):
     # image
     # excerpt maybe not needed
     # average_rating = models.IntegerField?
+    class Meta:
+        ordering = ["-release_date"]
+    def __str__(self):
+        return self.title
 
 class Review(models.Model):
     """
@@ -53,14 +58,14 @@ class Review(models.Model):
     """
     title = models.CharField(max_length=200)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="movie_reviews"
+        User, on_delete=models.CASCADE, related_name="reviewer"
     )
     review = models.TextField(max_length=2000)
     approved = models.BooleanField(default=False)
     rating = models.IntegerField(choices=RATING)
     created_on = models.DateTimeField(auto_now_add=True)
     movie_post = models.ForeignKey(
-        Post, on_delete=models.CASCADE, related_name="reviewed_post"
+        Movie, on_delete=models.CASCADE, related_name="reviews"
     )
     # total_likes = IntegerField?
 
