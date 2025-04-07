@@ -3,26 +3,27 @@ from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
 MOVIE_GENRE = (
-    ('1', 'Action'),
-    ('2', 'Adventure'),
-    ('3', 'Animation'),
-    ('4', 'Comedy'),
-    ('5', 'Crime'),
-    ('6', 'Thriller'),
-    ('7', 'Documentary'),
-    ('8', 'Drama'),
-    ('9', 'Fantasy'),
-    ('10', 'Horror'),
-    ('11', 'Musical'),
-    ('12', 'Mystery'),
-    ('13', 'Romance'),
-    ('14', 'Science fiction'),
-    ('15', 'War'),
-    ('16', 'Western')
+    (1, 'Action'),
+    (2, 'Adventure'),
+    (3, 'Animation'),
+    (4, 'Comedy'),
+    (5, 'Crime'),
+    (6, 'Thriller'),
+    (7, 'Documentary'),
+    (8, 'Drama'),
+    (9, 'Fantasy'),
+    (10, 'Horror'),
+    (11, 'Musical'),
+    (12, 'Mystery'),
+    (13, 'Romance'),
+    (14, 'Science fiction'),
+    (15, 'War'),
+    (16, 'Western')
  )
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+RATING = [(i,i) for i in range(6)]
 
 # Create your models here.
 class Post(models.Model):
@@ -45,6 +46,23 @@ class Post(models.Model):
     # image
     # excerpt maybe not needed
     # average_rating = models.IntegerField?
+
+class Review(models.Model):
+    """
+    Description
+    """
+    title = models.CharField(max_length=200)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="movie_reviews"
+    )
+    review = models.TextField(max_length=2000)
+    approved = models.BooleanField(default=False)
+    rating = models.IntegerField(choices=RATING)
+    created_on = models.DateTimeField(auto_now_add=True)
+    movie_post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="reviewed_post"
+    )
+    # total_likes = IntegerField?
 
 
 
