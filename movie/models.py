@@ -27,6 +27,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 RATING = [(i,i) for i in range(6)]
 
 # Create your models here.
+
 class Movie(models.Model):
     """
     Description needed
@@ -40,8 +41,12 @@ class Movie(models.Model):
     country = CountryField()  # Installed according to https://pypi.org/project/django-countries/
     release_date = models.DateField()  # Datepicker shows when debug is True
     status = models.IntegerField(choices=STATUS, default=0)
-    # actors = new actors model
-    # directed_by = director model?
+    actors = models.ManyToManyField(
+        'Actor', related_name="actors"
+    )  # model name in quote because it's under it
+    directed_by = models.ManyToManyField(
+        'Director', related_name="directors"
+    )
     plot = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     # image
@@ -69,5 +74,20 @@ class Review(models.Model):
     )
     # total_likes = IntegerField?
 
+class Actor(models.Model):
+    """
+    Descr
+    """
+    name = models.CharField()
+    movie = models.ManyToManyField(
+        Movie, related_name="movies"
+    )
 
-
+class Director(models.Model):
+    """
+    Descr
+    """
+    name = models.CharField()
+    movie = models.ManyToManyField(
+        Movie, related_name="movies"
+    )
