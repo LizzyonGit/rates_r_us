@@ -35,10 +35,9 @@ class Movie(models.Model):
     plot = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     # image
-    # excerpt maybe not needed
     # average_rating = models.IntegerField?
     class Meta:
-        ordering = ["-release_date"]
+        ordering = ["-created_on"]
     def __str__(self):
         return self.title
 
