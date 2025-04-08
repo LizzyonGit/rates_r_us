@@ -37,11 +37,11 @@ class Movie(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="movie_posts"
     )
-    genre = models.CharField(choices=MOVIE_GENRE)
+    genre = models.CharField(choices=MOVIE_GENRE)  # many to many?
     country = CountryField()  # Installed according to https://pypi.org/project/django-countries/
     release_date = models.DateField()  # Datepicker shows when debug is True
     status = models.IntegerField(choices=STATUS, default=0)
-    actors = models.ManyToManyField(
+    cast = models.ManyToManyField(
         'Actor', related_name="actors"
     )  # model name in quote because it's under it
     directed_by = models.ManyToManyField(
@@ -69,25 +69,42 @@ class Review(models.Model):
     approved = models.BooleanField(default=False)
     rating = models.IntegerField(choices=RATING)
     created_on = models.DateTimeField(auto_now_add=True)
-    movie_post = models.ForeignKey(
+    movie = models.ForeignKey(
         Movie, on_delete=models.CASCADE, related_name="reviews"
     )
     # total_likes = IntegerField?
+    class Meta:
+        ordering = ["-created_on"]
+    def __str__(self):
+        return self.title
+
 
 class Actor(models.Model):
     """
     Descr
     """
     name = models.CharField()
-    movie = models.ManyToManyField(
-        Movie, related_name="movies"
-    )
+    
+    class Meta:
+        ordering = ["name"]
+    def __str__(self):
+        return self.name
+    # movie = models.ManyToManyField(
+    #     Movie, related_name="movies"
+    # )
+
 
 class Director(models.Model):
     """
     Descr
     """
     name = models.CharField()
-    movie = models.ManyToManyField(
-        Movie, related_name="movies"
-    )
+    # movie = models.ManyToManyField(
+    #     Movie, related_name="movies"
+    # )
+
+    class Meta:
+        ordering = ["name"]
+    def __str__(self):
+        return self.name
+
