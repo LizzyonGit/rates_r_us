@@ -2,28 +2,29 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
-MOVIE_GENRE = (
-    (1, 'Action'),
-    (2, 'Adventure'),
-    (3, 'Animation'),
-    (4, 'Comedy'),
-    (5, 'Costume drama'),
-    (6, 'Crime'),
-    (7, 'Documentary'),
-    (8, 'Drama'),
-    (9, 'Fantasy'),
-    (10, 'Horror'),
-    (11, 'Musical'),
-    (12, 'Mystery'),
-    (13, 'Romance'),
-    (14, 'Science fiction'),
-    (15, 'Thriller'),
-    (16, 'War'),
-    (17, 'Western')
- )
+# MOVIE_GENRE = (
+#     (1, 'Action'),
+#     (2, 'Adventure'),
+#     (3, 'Animation'),
+#     (4, 'Comedy'),
+#     (5, 'Costume drama'),
+#     (6, 'Crime'),
+#     (7, 'Documentary'),
+#     (8, 'Drama'),
+#     (9, 'Fantasy'),
+#     (10, 'Horror'),
+#     (11, 'Musical'),
+#     (12, 'Mystery'),
+#     (13, 'Romance'),
+#     (14, 'Science fiction'),
+#     (15, 'Thriller'),
+#     (16, 'War'),
+#     (17, 'Western')
+#  )
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+# Rating from 0 to 5
 RATING = [(i,i) for i in range(6)]
 
 # Create your models here.
@@ -37,7 +38,9 @@ class Movie(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="movie_posts"
     )
-    genre = models.CharField(choices=MOVIE_GENRE)  # many to many?
+    genre = models.ManyToManyField(
+        'Genre', related_name="genre"
+    )
     country = CountryField()  # Installed according to https://pypi.org/project/django-countries/
     release_date = models.DateField()  # Datepicker shows when debug is True
     status = models.IntegerField(choices=STATUS, default=0)
@@ -89,9 +92,7 @@ class Actor(models.Model):
         ordering = ["name"]
     def __str__(self):
         return self.name
-    # movie = models.ManyToManyField(
-    #     Movie, related_name="movies"
-    # )
+    
 
 
 class Director(models.Model):
@@ -99,12 +100,21 @@ class Director(models.Model):
     Descr
     """
     name = models.CharField()
-    # movie = models.ManyToManyField(
-    #     Movie, related_name="movies"
-    # )
-
+    
     class Meta:
         ordering = ["name"]
     def __str__(self):
         return self.name
 
+
+class Genre(models.Model):
+    """
+    Descr
+    """
+    type = models.CharField()
+    
+    class Meta:
+        ordering = ["type"]
+    def __str__(self):
+        return self.type
+    
