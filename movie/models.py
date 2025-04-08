@@ -2,25 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
-# MOVIE_GENRE = (
-#     (1, 'Action'),
-#     (2, 'Adventure'),
-#     (3, 'Animation'),
-#     (4, 'Comedy'),
-#     (5, 'Costume drama'),
-#     (6, 'Crime'),
-#     (7, 'Documentary'),
-#     (8, 'Drama'),
-#     (9, 'Fantasy'),
-#     (10, 'Horror'),
-#     (11, 'Musical'),
-#     (12, 'Mystery'),
-#     (13, 'Romance'),
-#     (14, 'Science fiction'),
-#     (15, 'Thriller'),
-#     (16, 'War'),
-#     (17, 'Western')
-#  )
+
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
