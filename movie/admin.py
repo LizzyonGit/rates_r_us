@@ -5,12 +5,15 @@ from .models import Movie, Review, Actor, Director, Genre
 # From https://stackoverflow.com/questions/73570167/django-filter-horizontal-how-to-connect-more-fields-together
 
 
-
 class HorizontalFilter(admin.ModelAdmin):
     """
     Adds an extra filter to the cast, directed_by and genre field
     """
     filter_horizontal = ['cast', 'directed_by', 'genre']
+
+
+# should add release date to list display 
+
 
 # Register your models here.
 admin.site.register(Movie, HorizontalFilter)
