@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Movie
 
 # Create your views here.
-def index(request):
-    return HttpResponse('Hello again')
+class MovieList(generic.ListView):
+    model = Movie
