@@ -40,6 +40,10 @@ class Movie(models.Model):
         ordering = ["-created_on"]
     def __str__(self):
         return self.movie_title
+    
+    # def movie_genres(self):
+    #     return ', '.join([genre for genre in self.genre.all()])
+    
 
 class Review(models.Model):
     """

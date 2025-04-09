@@ -4,4 +4,6 @@ from .models import Movie
 
 # Create your views here.
 class MovieList(generic.ListView):
-    model = Movie
+    queryset = Movie.objects.all()
+
+    

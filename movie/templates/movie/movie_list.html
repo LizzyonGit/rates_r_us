@@ -12,8 +12,22 @@
     <h1>Movies list</h1>
     {% for movie in object_list %}
     <h2>{{movie.movie_title}}</h2>
-    <p>{{movie.plot}}</p>
+    <p>Released: {{movie.release_date}}</p>
+    
+    <!--Below Genre adds the genres and ends without comma-->
+    <p>Genre:     
+        {% for genre in movie.genre.all %}
+        {% if not forloop.last %}
+        {{genre}}, {% else %}
+        {{genre}}
+        {% endif %}
+        {% endfor %}
+    </p>
+   
     <p>Cast: {{movie.cast}}</p>
+    <p>Directed by: {{movie.director}}</p> 
+
+    <p>{{movie.plot}}</p>
     {% endfor %}
 </body>
 
