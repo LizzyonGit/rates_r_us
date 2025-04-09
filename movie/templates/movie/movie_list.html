@@ -14,7 +14,7 @@
     <h2>{{movie.movie_title}}</h2>
     <p>Released: {{movie.release_date}}</p>
 
-    <!--Below many-to-many fields are iterated through and separated by comma-->
+    <!--Below many-to-many fields are iterated through and separated by comma, maybe can fix this later with detail view.-->
     <p>Genre:     
         {% for genre in movie.genre.all %}
         {% if not forloop.last %}
