@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- index.html content starts here -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Movie Entries Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for movie in object_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                                <div class="image-flash">
+                                    
+   
+                                </div>
+                            </div>
+                            <a href="#" class="post-link">
+                                <h2 class="card-title">{{ movie.movie_title }}</h2>
+                            </a>
+                            <p>Released: {{movie.release_date}}</p>
+                            <p>Country: {{movie.country}}</p>
+                            <p>Genre:     
+                                {% for genre in movie.genre.all %}
+                                {% if not forloop.last %}
+                                {{genre}}, {% else %}
+                                {{genre}}
+                                {% endif %}
+                                {% endfor %}
+                            </p>
+                           
+                            <p>Cast: {% for actor in movie.cast.all %}
+                                {% if not forloop.last %}
+                                {{actor}}, {% else %}
+                                {{actor}}
+                                {% endif %}
+                                {% endfor %}</p>
+                        
+                            <p>Directed by: {% for director in movie.directed_by.all %}
+                                {% if not forloop.last %}
+                                {{director}}, {% else %}
+                                {{director}}
+                                {% endif %}
+                                {% endfor %}</p> 
+                        
+                            <p>{{movie.plot}}</p>
+
+                            <hr />
+                            <p class="card-text text-muted h6">{{ movie.created_on}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+<!-- index.html content ends here -->
+{% endblock %}
