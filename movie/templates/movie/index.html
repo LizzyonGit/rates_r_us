@@ -19,7 +19,7 @@
    
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
+                            <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
                                 <h2 class="card-title">{{ movie.movie_title }}</h2>
                             </a>
                             <p>Released: {{movie.release_date}}</p>
