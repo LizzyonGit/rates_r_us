@@ -1,9 +1,19 @@
 from django.contrib import admin
 from .models import Movie, Review, Actor, Director, Genre
+from django_summernote.admin import SummernoteModelAdmin
+
+@admin.register(Movie)
+class MovieAdmin(SummernoteModelAdmin):
+
+    list_display = ('movie_title', 'created_on', 'status')
+    search_fields = ['movie_title', 'cast']
+    list_filter = ('status',)
+    prepopulated_fields = {'slug': ('movie_title',)}
+    summernote_fields = ('plot',)
+
 
 # From https://stackoverflow.com/questions/14828168/django-show-filter-horizontal-on-user-change-admin-page
 # From https://stackoverflow.com/questions/73570167/django-filter-horizontal-how-to-connect-more-fields-together
-
 
 class HorizontalFilter(admin.ModelAdmin):
     """
@@ -16,7 +26,7 @@ class HorizontalFilter(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Movie, HorizontalFilter)
+# admin.site.register(HorizontalFilter)
 admin.site.register(Review)
 admin.site.register(Actor)
 admin.site.register(Director)

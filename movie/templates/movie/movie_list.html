@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Views Part 1</title>
+    <title>Movies</title>
 </head>
 
 <body>
@@ -13,6 +13,7 @@
     {% for movie in object_list %}
     <h2>{{movie.movie_title}}</h2>
     <p>Released: {{movie.release_date}}</p>
+    <p>Country: {{movie.country}}</p>
 
     <!--Below many-to-many fields are iterated through and separated by comma, maybe can fix this later with detail view.-->
     <p>Genre:     
