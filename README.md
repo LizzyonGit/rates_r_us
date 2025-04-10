@@ -19,3 +19,9 @@ I looked for cinema feleing in my fonts and after some googleing I decided on Li
 Colours
 For my colour scheme, I want to convey a home theater feeling so I took my inspiration from articles about which colours would be good when you build a theater room. Red chairs came to mind, and otherwise dark colours for walls. And some yellow details to mimic the small spotlights on the wall. I read this article https://www.happypaintingcompany.com/blog/the-top-5-best-home-theater-paint-colors/ and https://www.peliplat.com/en/article/10002576/why-are-movie-theater-seats-mostly-red and landed on the following palette:
 black, navy, red, yellow.
+
+
+
+Issues:
+displaying manytomany fields in html, fixed with all. 
+manytomany field in admin when adding movie, fixed with horizonal filter

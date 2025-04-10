@@ -28,9 +28,11 @@ def movie_detail(request, slug):
 
     queryset = Movie.objects.filter(status=1)
     movie = get_object_or_404(queryset, slug=slug)
+    
 
     return render(
         request,
         "movie/movie_detail.html",
         {"movie": movie},
     )
+
