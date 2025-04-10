@@ -10,6 +10,8 @@
                 <!-- Movie release date -->
                 <p class="post-subtitle">{{ movie.release_date }}</p>
                 <p class="post-subtitle">{{ movie.genre.all|join:", " }}</p>
+                <p class="post-subtitle">{{ movie.cast.all|join:", " }}</p>
+                <p class="post-subtitle">{{ movie.directed_by.all|join:", " }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <img src="{% static 'images/nobody.jpg' %}" class="scale" alt="placeholder">
