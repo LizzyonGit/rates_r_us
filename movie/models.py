@@ -53,7 +53,7 @@ class Review(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviewer"
     )
-    review = models.TextField(max_length=2000)
+    text = models.TextField(max_length=2000)
     approved = models.BooleanField(default=False)
     rating = models.IntegerField(choices=RATING)
     created_on = models.DateTimeField(auto_now_add=True)

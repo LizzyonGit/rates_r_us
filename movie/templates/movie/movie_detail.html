@@ -32,6 +32,46 @@
             </div>
         </div>
     </div>
+     <!-- Displaying count of reviews -->
+  <div class="row">
+    <div class="col-12">
+      <strong class="text-secondary">
+        <i class="far fa-comments"></i> {{ review_count }}
+      </strong>
+    </div>
+    <div class="col-12">
+      <hr>
+    </div>
+  </div>
+  <!-- Displaying reviews -->
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <h3>Reviews:</h3>
+      <div class="card-body">
+        <!-- Iterate through each review in reviews -->
+        {% for review in reviews %}
+        <div class="p-2 comments
+          {% if not review.approved and review.author == user %}
+          faded{% elif not review.approved %} d-none{% endif %}">
+          <p class="font-weight-bold">
+            {{ review.author }}
+            <span class="font-weight-normal">
+              {{ review.created_on }}
+            </span> wrote:
+          </p>
+          <div id="comment{{ comment.id }}">
+            {{ review.text | linebreaks }}
+          </div>
+          {% if not review.approved and review.author == user %}
+          <p class="approval">
+            This review is awaiting approval
+          </p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
