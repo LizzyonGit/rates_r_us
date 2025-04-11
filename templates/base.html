@@ -67,9 +67,9 @@
     <main class="flex-shrink-0 main-bg">
         <!--Personalised message to logged in or logged out user--> 
         {% if user.is_authenticated %}
-        <p class="text-end m-3">You are logged in as {{ user }}</p>
+        <p class="text-end m-3">Welcome {{ user }}!</p>
         {% else %}
-        <p class="text-end m-3">You are not logged in</p>
+        <p class="text-end m-3">You have successfully logged out</p>
         {% endif %}
 
         {% block content %}
