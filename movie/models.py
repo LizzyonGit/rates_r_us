@@ -21,7 +21,7 @@ class Movie(models.Model):
         User, on_delete=models.CASCADE, related_name="movie_posts"
     )
     genre = models.ManyToManyField(
-        'Genre', related_name="genre"
+        'Genre', related_name="genres"
     )
     country = CountryField()  # Installed according to https://pypi.org/project/django-countries/
     release_date = models.DateField()  # Datepicker shows when debug is True
@@ -40,10 +40,7 @@ class Movie(models.Model):
         ordering = ["-created_on"]
     def __str__(self):
         return self.movie_title
-    
-    # def movie_genres(self):
-    #     return ', '.join([genre for genre in self.genre.all()])
-    
+
 
 class Review(models.Model):
     """

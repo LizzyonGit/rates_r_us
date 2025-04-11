@@ -45,6 +45,9 @@ def movie_detail(request, slug):
                 'Review submitted and awaiting approval'
             )
 
+    # calcualte average rating?
+    # average_rating = reviews.rating.all().aggregate(Avg)
+
     review_form = ReviewForm()
     
 
