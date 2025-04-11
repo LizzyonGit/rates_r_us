@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib import messages
+from django.db.models import Avg
 from .models import Movie
 from .forms import ReviewForm
 
@@ -45,8 +46,8 @@ def movie_detail(request, slug):
                 'Review submitted and awaiting approval'
             )
 
-    # calcualte average rating?
-    # average_rating = reviews.rating.all().aggregate(Avg)
+    # calcualte average rating, need to fix display. Good it adds unapproved
+    average_rating = reviews.aggregate(Avg('rating'))
 
     review_form = ReviewForm()
     
@@ -58,7 +59,8 @@ def movie_detail(request, slug):
             "movie": movie,
             "reviews": reviews,
             "review_count": review_count,
-            "review_form": review_form
+            "review_form": review_form,
+            "average_rating": average_rating,
          },
     )
 

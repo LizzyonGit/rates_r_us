@@ -7,9 +7,10 @@
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
-                <!-- Movie title goes in these h1 tags -->
+               
                 <h1 class="post-title">{{ movie.movie_title }}</h1>
-                <!-- Movie release date -->
+
+                <p>Rating: {{ average_rating }}</p>
                 <p class="post-subtitle">{{ movie.release_date }}</p>
                 <p class="post-subtitle">{{ movie.genres.all|join:", " }}</p>
                 <p class="post-subtitle">{{ movie.cast.all|join:", " }}</p>
