@@ -38,24 +38,22 @@ def movie_detail(request, slug):
 
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
-        if review_form.is_valid():
-            if review.text and review.title:
-                review = review_form.save(commit=False)
-                review.author = request.user
-                review.movie = movie
+        if review_form.is_valid():            
+            review = review_form.save(commit=False)
+            review.author = request.user
+            review.movie = movie
+            if not review.text and not review.title:
+                review.approved = True
                 review.save()
                 messages.add_message(
                 request, messages.SUCCESS,
-                'Review submitted and awaiting approval'
+                'Thank you for your rating'
             )
             else:
-                review = review_form.save(commit=False)
-                review.author = request.user
-                review.movie = movie
                 review.save()
                 messages.add_message(
                 request, messages.SUCCESS,
-                'Your rating counts'
+                'Thank you for your review. It will be published after approval.'
             )
 
         
@@ -75,6 +73,7 @@ def movie_detail(request, slug):
             "review_count": review_count,
             "review_form": review_form,
             "average_rating": average_rating,
+            "approved_reviews": approved_reviews,
          },
     )
 

@@ -9,8 +9,8 @@
             <div class="col-md-6 masthead-text">
                
                 <h1 class="post-title">{{ movie.movie_title }}</h1>
-                <!--Displays rating if there are reviews-->
-                {% if reviews %}
+                <!--Displays rating if there are approved reviews-->
+                {% if approved_reviews %}
                 <p>Rating: {{ average_rating }} ({{ review_count }})</p>
                 {% else %}
                 <p>No rating yet</p>
