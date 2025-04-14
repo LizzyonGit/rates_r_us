@@ -46,11 +46,11 @@ class Review(models.Model):
     """
     Description
     """
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviewer"
     )
-    text = models.TextField(max_length=2000)
+    text = models.TextField(max_length=2000, blank=True)
     approved = models.BooleanField(default=False)
     rating = models.IntegerField(choices=RATING)
     created_on = models.DateTimeField(auto_now_add=True)
