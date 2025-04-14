@@ -42,11 +42,11 @@ class Movie(models.Model):
         return self.movie_title
 
 # function to conditionalise the dafult value of approved
-def default_approved():
-    if not (Review.text and Review.title):
-        return True
-    else:
-        return False
+# def default_approved():
+#     if not (Review.text and Review.title):
+#         return True
+#     else:
+#         return False
 
 
 class Review(models.Model):
@@ -60,7 +60,7 @@ class Review(models.Model):
         User, on_delete=models.CASCADE, related_name="reviewer"
     )
     text = models.TextField(max_length=2000, blank=True)
-    approved = models.BooleanField(default=default_approved)
+    approved = models.BooleanField(default=False)
     rating = models.IntegerField(choices=RATING)
     created_on = models.DateTimeField(auto_now_add=True)
     movie = models.ForeignKey(

@@ -31,7 +31,7 @@ class ReviewAdmin(admin.ModelAdmin):
     """
     Adds fields to table and adds filter
     """
-    list_display = ('title', 'rating', 'approved','created_on')
+    list_display = ('title', 'text', 'rating', 'approved', 'created_on')
     list_filter = ('approved', 'rating')
 
 # Register your models here.

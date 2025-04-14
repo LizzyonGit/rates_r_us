@@ -39,14 +39,26 @@ def movie_detail(request, slug):
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
-            review = review_form.save(commit=False)
-            review.author = request.user
-            review.movie = movie
-            review.save()
-            messages.add_message(
+            if review.text and review.title:
+                review = review_form.save(commit=False)
+                review.author = request.user
+                review.movie = movie
+                review.save()
+                messages.add_message(
                 request, messages.SUCCESS,
                 'Review submitted and awaiting approval'
             )
+            else:
+                review = review_form.save(commit=False)
+                review.author = request.user
+                review.movie = movie
+                review.save()
+                messages.add_message(
+                request, messages.SUCCESS,
+                'Your rating counts'
+            )
+
+        
 
     # Calculate average rating of approved reviews. Inspired by https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
     average_rating = approved_reviews.aggregate(Avg('rating')).get('rating__avg')
