@@ -33,7 +33,9 @@ def movie_detail(request, slug):
     queryset = Movie.objects.filter(status=1)
     movie = get_object_or_404(queryset, slug=slug)
     reviews = movie.reviews.all().order_by("-created_on")
-    review_count = movie.reviews.filter(approved=True).count()
+    approved_reviews = movie.reviews.filter(approved=True)
+    review_count = approved_reviews.count()
+
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
@@ -46,8 +48,8 @@ def movie_detail(request, slug):
                 'Review submitted and awaiting approval'
             )
 
-    # Calculate average rating. Good it adds unapproved. Inspired by https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
-    average_rating = reviews.aggregate(Avg('rating')).get('rating__avg')
+    # Calculate average rating of approved reviews. Inspired by https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
+    average_rating = approved_reviews.aggregate(Avg('rating')).get('rating__avg')
 
     review_form = ReviewForm()
     
