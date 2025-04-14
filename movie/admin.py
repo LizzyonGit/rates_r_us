@@ -26,9 +26,16 @@ class MovieAdmin(SummernoteModelAdmin):
 
 # Search manytotmany: https://stackoverflow.com/questions/51931762/how-can-we-search-many-to-many-field-in-django-admin-search-field
 
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    """
+    Adds fields to table and adds filter
+    """
+    list_display = ('title', 'rating', 'approved','created_on')
+    list_filter = ('approved', 'rating')
 
 # Register your models here.
-admin.site.register(Review)
+
 admin.site.register(Actor)
 admin.site.register(Director)
 admin.site.register(Genre)

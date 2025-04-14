@@ -25,3 +25,5 @@ black, navy, red, yellow.
 Issues:
 displaying manytomany fields in html, fixed with all. 
 manytomany field in admin when adding movie, fixed with horizonal filter
+
+approve review when there is not text, only rating, so it is added right away and calculated in the average. So I want a conditional default value of the approved field, a simple if else statement. I had trouble finding the answer to this, but then I found https://stackoverflow.com/questions/12649659/how-to-set-a-django-model-fields-default-value-to-a-function-call-callable-e/15289517. It did not work at first, when I added the function above the review model.
