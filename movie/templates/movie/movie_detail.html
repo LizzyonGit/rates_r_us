@@ -11,7 +11,7 @@
                 <h1 class="post-title">{{ movie.movie_title }}</h1>
                 <!--Displays rating if there are reviews-->
                 {% if reviews %}
-                <p>Rating: {{ average_rating }}</p>
+                <p>Rating: {{ average_rating }} ({{ review_count }})</p>
                 {% else %}
                 <p>No rating yet</p>
                 {% endif %}
