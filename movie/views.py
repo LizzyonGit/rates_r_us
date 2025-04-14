@@ -46,8 +46,8 @@ def movie_detail(request, slug):
                 'Review submitted and awaiting approval'
             )
 
-    # calcualte average rating, need to fix display. Good it adds unapproved
-    average_rating = reviews.aggregate(Avg('rating'))
+    # Calculate average rating. Good it adds unapproved. Inspired by https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
+    average_rating = reviews.aggregate(Avg('rating')).get('rating__avg')
 
     review_form = ReviewForm()
     

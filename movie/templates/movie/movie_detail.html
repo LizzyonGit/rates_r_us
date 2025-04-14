@@ -9,8 +9,12 @@
             <div class="col-md-6 masthead-text">
                
                 <h1 class="post-title">{{ movie.movie_title }}</h1>
-
+                <!--Displays rating if there are reviews-->
+                {% if reviews %}
                 <p>Rating: {{ average_rating }}</p>
+                {% else %}
+                <p>No rating yet</p>
+                {% endif %}
                 <p class="post-subtitle">{{ movie.release_date }}</p>
                 <p class="post-subtitle">{{ movie.genres.all|join:", " }}</p>
                 <p class="post-subtitle">{{ movie.cast.all|join:", " }}</p>
