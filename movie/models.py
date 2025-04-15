@@ -55,7 +55,7 @@ class Review(models.Model):
     """
      
 
-    title = models.CharField(max_length=200, blank=True)
+    title = models.CharField(max_length=200, blank=True, null=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviewer"
     )
