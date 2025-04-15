@@ -67,9 +67,11 @@
             </span> wrote:
           </p>
           <!--Check ids later-->
+          {% if review.title %}
           <div id="comment{{ comment.id }}">
             <h4>{{ review.title }}</h4>
           </div>
+          {% endif %}
           <div id="comment{{ comment.id }}">
           Rating: {{ review.rating }}
           </div>
