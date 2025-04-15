@@ -42,6 +42,7 @@ def movie_detail(request, slug):
             review = review_form.save(commit=False)
             review.author = request.user
             review.movie = movie
+            # Following code sets approved to True if the user only gives a rating, and adapts message to it
             if not review.text and not review.title:
                 review.approved = True
                 review.save()

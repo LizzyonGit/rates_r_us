@@ -70,7 +70,7 @@ class Review(models.Model):
     class Meta:
         ordering = ["-created_on"]
     def __str__(self):
-        return f'Review with title {self.title}'
+        return f'{self.title}'
 
    
 
