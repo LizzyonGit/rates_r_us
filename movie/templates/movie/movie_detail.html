@@ -9,9 +9,9 @@
             <div class="col-md-6 masthead-text">
                
                 <h1 class="post-title">{{ movie.movie_title }}</h1>
-                <!--Displays rating if there are approved reviews-->
+                <!--Displays rating if there are approved reviews, rounds it to two decimals-->
                 {% if approved_reviews %}
-                <p>Rating: {{ average_rating }} ({{ review_count }})</p>
+                <p>Rating: {{ average_rating|floatformat:2 }} ({{ review_count }})</p>
                 {% else %}
                 <p>No rating yet</p>
                 {% endif %}
@@ -32,7 +32,7 @@
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
                 <!-- The movie content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
+                
                 <p class="card-text">
                     {{ movie.plot | safe }}
                 </p>
@@ -66,7 +66,7 @@
               {{ review.created_on }}
             </span> wrote:
           </p>
-          <!--Check ids later-->
+          <!--Display title if the title is not empty (otherwise it displays 'None')-->
           {% if review.title %}
           <div id="comment{{ comment.id }}">
             <h4>{{ review.title }}</h4>
@@ -93,6 +93,7 @@
         <div class="card-body">
           {% if user.is_authenticated %}
           <h3>Have your say!</h3>
+          <p>Rate this movie and leave a review (optional).</p>
           <p>Posting as: {{ user.username }}</p>
           <form id="commentForm" method="post"
             style="margin-top: 1.3em;">
