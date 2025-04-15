@@ -84,6 +84,9 @@
             This review is awaiting approval
           </p>
           {% endif %}
+          {% if user.is_authenticated and reviwew.author == user %}
+          <button class="btn btn-edit" comment_id="{{ review.id }}">Edit</button>
+          {% endif %}
         </div>
         {% endfor %}
       </div>
