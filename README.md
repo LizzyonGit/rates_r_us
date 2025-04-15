@@ -41,3 +41,6 @@ Also when you just add a space, it does not need to be approved. Very good. But 
 
 
 Minor issue, after sending first rating which is approved right away, the total at the top is 0 althought the average is updated. After updating page it is fixed.
+
+Editing reviews
+I found that crispy gives the same id to all 3 of my form fields, and this hinders the edit button to work. Also, it is not good html. So I needed to fix this.

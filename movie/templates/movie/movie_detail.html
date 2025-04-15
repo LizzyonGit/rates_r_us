@@ -57,7 +57,7 @@
       <div class="card-body">
         <!-- Iterate through each review in reviews -->
         {% for review in reviews %}
-        <div class="p-2 comments
+        <div class="p-2 reviews
           {% if not review.approved and review.author == user %}
           faded{% elif not review.approved %} d-none{% endif %}">
           <p class="font-weight-bold">
@@ -68,15 +68,15 @@
           </p>
           <!--Display title if the title is not empty (otherwise it displays 'None')-->
           {% if review.title %}
-          <div id="comment{{ comment.id }}">
+          <div id="review{{ review.id }}">
             <h4>{{ review.title }}</h4>
           </div>
           {% endif %}
-          <div id="comment{{ comment.id }}">
+          <div id="review{{ review.id }}">
           Rating: {{ review.rating }}
           </div>
 
-          <div id="comment{{ comment.id }}">
+          <div id="review{{ review.id }}">
             {{ review.text | linebreaks }}
           </div>
           {% if not review.approved and review.author == user %}
@@ -84,8 +84,8 @@
             This review is awaiting approval
           </p>
           {% endif %}
-          {% if user.is_authenticated and reviwew.author == user %}
-          <button class="btn btn-edit" comment_id="{{ review.id }}">Edit</button>
+          {% if user.is_authenticated and review.author == user %}
+          <button class="btn btn-edit" review_id="{{ review.id }}">Edit</button>
           {% endif %}
         </div>
         {% endfor %}
@@ -98,7 +98,7 @@
           <h3>Have your say!</h3>
           <p>Rate this movie and leave a review (optional).</p>
           <p>Posting as: {{ user.username }}</p>
-          <form id="commentForm" method="post"
+          <form id="reviewForm" method="post"
             style="margin-top: 1.3em;">
             {{ review_form | crispy }}
             {% csrf_token %}
@@ -114,3 +114,6 @@
 </div>
 
 {% endblock content %}
+{% block extras %}
+<script src="{% static 'js/reviews.js' %}"></script>
+{% endblock %}
