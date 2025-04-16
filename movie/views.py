@@ -95,14 +95,16 @@ def review_edit(request, slug, review_id):
         if review_form.is_valid() and review.author == request.user:
             review = review_form.save(commit=False)
             review.movie = movie
-            # Sets approved to True if text and title are empty in the updated review, message is same for both situations
+            # Sets approved to True if text and title are empty in the updated review, message is different for both situations
             if not review.text and not review.title:
                 review.approved = True
+                review.save()
+                messages.add_message(request, messages.SUCCESS, 'Review updated and published')
             else:
                 review.approved = False
-            review.save()
-            messages.add_message(request, messages.SUCCESS, 'Review updated!')
+                review.save()
+                messages.add_message(request, messages.SUCCESS, 'Review updated and awaiting approval')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating review!')
+            messages.add_message(request, messages.ERROR, 'Error updating review')
 
     return HttpResponseRedirect(reverse('movie_detail', args=[slug]))
