@@ -27,7 +27,7 @@ for (let button of editButtons) {
     // Sets the selected option at the index of rating number +1, so the value is correct, bacuse index[0] = ----
     reviewRating.selectedIndex = (parseInt(reviewScore) + 1);
 
-    // The following code collects and updates title and text if they are not empty.
+    // The following code collects and prepopulates title and text if they are not empty.
 
     let titleField = document.getElementById(`review_title${reviewId}`);
 

@@ -95,7 +95,11 @@ def review_edit(request, slug, review_id):
         if review_form.is_valid() and review.author == request.user:
             review = review_form.save(commit=False)
             review.movie = movie
-            review.approved = False
+            # Sets approved to True if text and title are empty in the updated review, message is same for both situations
+            if not review.text and not review.title:
+                review.approved = True
+            else:
+                review.approved = False
             review.save()
             messages.add_message(request, messages.SUCCESS, 'Review updated!')
         else:
