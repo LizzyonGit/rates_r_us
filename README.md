@@ -43,4 +43,9 @@ Also when you just add a space, it does not need to be approved. Very good. But 
 Minor issue, after sending first rating which is approved right away, the total at the top is 0 althought the average is updated. After updating page it is fixed.
 
 Editing reviews
-I found that crispy gives the same id to all 3 of my form fields, and this hinders the edit button to work. Also, it is not good html. So I needed to fix this.
+I found that my form fields had the same id to all 3 of my form fields, and this hinders the edit functionality because the user should be able to update all three fields, so I should be able access the fields separately. Also, it is not good html. So I needed to fix this. I thought i was because of crispy, but it was just in the template.
+Editing the rating field was harder, as the selected option did not render in the form after clicking Edit. I needed to access it in a different way than usual, because it is "Rating {{review.rating}}" in the template, and in devtools it says "Rating: 4" in plain text, so how to access the 4? 
+
+I used print statements to see what values my variables actually got, since they are different form the actual reviews that users left, and the form when you fill it in.
+
+In this construction, the rating number is always the last character of the string, so I took help from this source https://javascript.plainenglish.io/javascript-get-last-character-of-string-4a7ac4d52bea, and fetched the number from the string that way. Then, I set the selectedIndex of the rating field at this number plus 1, so I would get the correct value on the field, since index[1] corresponds with a rating of 0, and so forth. 

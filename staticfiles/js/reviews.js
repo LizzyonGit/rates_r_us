@@ -22,11 +22,10 @@ for (let button of editButtons) {
 
     // The three fields are accessed here
     let reviewScoreText = document.getElementById(`review_rating${reviewId}`).innerText;
-    // Last character of string which is always the rating number
+    console.log(reviewScoreText);
     let reviewScore = reviewScoreText.charAt(reviewScoreText.length - 1);
-    // Sets the selected option at the index of rating number +1, so the value is correct, bacuse index[0] = ----
+    console.log(reviewScore);
     reviewRating.selectedIndex = (parseInt(reviewScore) + 1);
-
     let reviewSubject = document.getElementById(`review_title${reviewId}`).innerText;
     reviewTitle.value = reviewSubject;
     let reviewContent = document.getElementById(`review_text${reviewId}`).innerText;

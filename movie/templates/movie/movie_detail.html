@@ -68,15 +68,15 @@
           </p>
           <!--Display title if the title is not empty (otherwise it displays 'None')-->
           {% if review.title %}
-          <div id="review{{ review.id }}">
+          <div id="review_title{{ review.id }}">
             <h4>{{ review.title }}</h4>
           </div>
           {% endif %}
-          <div id="review{{ review.id }}">
+          <div id="review_rating{{ review.id }}">
           Rating: {{ review.rating }}
           </div>
 
-          <div id="review{{ review.id }}">
+          <div id="review_text{{ review.id }}">
             {{ review.text | linebreaks }}
           </div>
           {% if not review.approved and review.author == user %}
