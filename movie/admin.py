@@ -32,6 +32,8 @@ class ReviewAdmin(admin.ModelAdmin):
     Adds fields to table and adds filter
     """
     list_display = ('title', 'rating', 'movie', 'approved', 'created_on')
+    # With help of django doc, you can search on the movie title in earch field
+    search_fields = ['movie__movie_title'] 
     list_filter = ('approved', 'rating')
     
 
