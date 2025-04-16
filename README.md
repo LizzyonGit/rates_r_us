@@ -59,3 +59,5 @@ Also, when you want to edit a review with title and text, and remove title and t
 Admin
 Search fields some issues creating the right code in admin.py for the search fields when they are foreignkey or manytomany. Fixed with https://docs.djangoproject.com/en/5.2/ref/contrib/admin/#django.contrib.admin.ModelAdmin.search_fields.
 
+Security
+I got a GitHub warning about gunicorn and needed to upgrade to a higher version than CIs walkthrough.
