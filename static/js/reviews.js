@@ -27,10 +27,20 @@ for (let button of editButtons) {
     // Sets the selected option at the index of rating number +1, so the value is correct, bacuse index[0] = ----
     reviewRating.selectedIndex = (parseInt(reviewScore) + 1);
 
-    let reviewSubject = document.getElementById(`review_title${reviewId}`).innerText;
-    reviewTitle.value = reviewSubject;
-    let reviewContent = document.getElementById(`review_text${reviewId}`).innerText;
-    reviewText.value = reviewContent;
+    // The following code collects and updates title and text if they are not empty.
+
+    let titleField = document.getElementById(`review_title${reviewId}`);
+
+    if (titleField) {
+        let reviewSubject = titleField.innerText;
+        reviewTitle.value = reviewSubject;
+    }
+
+    let textField = document.getElementById(`review_text${reviewId}`);
+    if (textField){
+        let reviewContent = textField.innerText;
+        reviewText.value = reviewContent;
+    } 
 
     submitButton.innerText = "Update";
     reviewForm.setAttribute("action", `edit_review/${reviewId}`);
