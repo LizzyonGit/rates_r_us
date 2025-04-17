@@ -16,8 +16,8 @@ class MovieList(generic.ListView):
     template_name = "movie/index.html"
     paginate_by = 4
 
-# Followed tuturial https://learndjango.com/tutorials/django-search-tutorial and django doc for search functionality
-# But it does add the same movie several times, have to fix this
+# Followed tutorial https://learndjango.com/tutorials/django-search-tutorial and django doc for search functionality
+# Help from https://forum.djangoproject.com/t/find-objects-with-mix-distinct-and-order-by/13010, https://stackoverflow.com/questions/73164250/find-unique-values-in-django/73164902, django doc
 class SearchResultsView(generic.ListView):
     """
     Seach page
@@ -28,7 +28,7 @@ class SearchResultsView(generic.ListView):
         query = self.request.GET.get("q")
         object_list = Movie.objects.filter(
             Q(movie_title__icontains=query) | Q(cast__name__icontains=query) | Q(directed_by__name__icontains=query)
-            )
+            ).order_by('movie_title').distinct('movie_title')
         return object_list
 
 
