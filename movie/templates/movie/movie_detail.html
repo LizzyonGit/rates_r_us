@@ -21,7 +21,13 @@
                 <p class="post-subtitle">{{ movie.directed_by.all|join:", " }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/nobody.jpg' %}" class="scale" alt="placeholder">
+              {% if "placeholder" in post.featured_image.url %}
+              <img class="card-img-top" src="{% static 'images/nobody.jpg' %}"
+                alt="placeholder image">
+              {% else %}
+              <img class="card-img-top" src=" {{ post.featured_image.url }}"
+                alt="{{ post.title }}">
+              {% endif %}
             </div>
         </div>
     </div>
