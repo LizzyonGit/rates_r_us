@@ -90,8 +90,6 @@ def review_edit(request, slug, review_id):
         review = get_object_or_404(Review, pk=review_id)
         review_form = ReviewForm(data=request.POST, instance=review)
 
-        # Need to check this for editing rating
-
         if review_form.is_valid() and review.author == request.user:
             review = review_form.save(commit=False)
             review.movie = movie
@@ -106,5 +104,21 @@ def review_edit(request, slug, review_id):
                 messages.add_message(request, messages.SUCCESS, 'Review updated and awaiting approval')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating review')
+
+    return HttpResponseRedirect(reverse('movie_detail', args=[slug]))
+
+def review_delete(request, slug, review_id):
+    """
+    view to delete review
+    """
+    queryset = Movie.objects.filter(status=1)
+    movie = get_object_or_404(queryset, slug=slug)
+    review = get_object_or_404(Review, pk=review_id)
+
+    if review.author == request.user:
+        review.delete()
+        messages.add_message(request, messages.SUCCESS, 'Review deleted')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own reviews')
 
     return HttpResponseRedirect(reverse('movie_detail', args=[slug]))

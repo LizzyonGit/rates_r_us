@@ -40,7 +40,8 @@ Also when you just add a space, it does not need to be approved. Very good. But 
 
 
 
-Minor issue, after sending first rating which is approved right away, the total at the top is 0 althought the average is updated. After updating page it is fixed.
+Minor issue, after sending first rating which is approved right away, the total at the top is 0 althought the average is updated. After updating page it is fixed. Deleting a review affects both right away, so I should implement something like that with url?
+
 
 Editing reviews
 I found that my form fields had the same id to all 3 of my form fields, and this hinders the edit functionality because the user should be able to update all three fields, so I should be able access the fields separately. Also, it is not good html. So I needed to fix this. I thought i was because of crispy, but it was just in the template.

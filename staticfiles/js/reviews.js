@@ -5,6 +5,10 @@ const reviewText = document.getElementById("id_text");
 const reviewForm = document.getElementById("reviewForm");
 const submitButton = document.getElementById("submitButton");
 
+const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteButtons = document.getElementsByClassName("btn-delete");
+const deleteConfirm = document.getElementById("deleteConfirm");
+
 /**
 * Initializes edit functionality for the provided edit buttons.
 * 
@@ -27,7 +31,7 @@ for (let button of editButtons) {
     // Sets the selected option at the index of rating number +1, so the value is correct, bacuse index[0] = ----
     reviewRating.selectedIndex = (parseInt(reviewScore) + 1);
 
-    // The following code collects and updates title and text if they are not empty.
+    // The following code collects and prepopulates title and text if they are not empty.
 
     let titleField = document.getElementById(`review_title${reviewId}`);
 
@@ -46,3 +50,21 @@ for (let button of editButtons) {
     reviewForm.setAttribute("action", `edit_review/${reviewId}`);
   });
 }
+
+/**
+* Initializes deletion functionality for the provided delete buttons.
+* 
+* For each button in the `deleteButtons` collection:
+* - Retrieves the associated review's ID upon click.
+* - Updates the `deleteConfirm` link's href to point to the 
+* deletion endpoint for the specific review.
+* - Displays a confirmation modal (`deleteModal`) to prompt 
+* the user for confirmation before deletion.
+*/
+for (let button of deleteButtons) {
+    button.addEventListener("click", (e) => {
+      let reviewId = e.target.getAttribute("review_id");
+      deleteConfirm.href = `delete_review/${reviewId}`;
+      deleteModal.show();
+    });
+  }
