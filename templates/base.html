@@ -59,9 +59,9 @@
                     {% endif %}
 
                 </ul>
-                <!--Search field does not work yet-->
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <!--Search field functionality-->
+                <form class="d-flex" role="search" action="{% url 'search_results' %}" method="get">
+                    <input class="form-control me-2" type="search" placeholder="Search movie title, cast and director" aria-label="Search" name="q">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                   </form>
                 

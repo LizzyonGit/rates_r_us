@@ -16,6 +16,8 @@ class MovieList(generic.ListView):
     template_name = "movie/index.html"
     paginate_by = 4
 
+# Followed tuturial https://learndjango.com/tutorials/django-search-tutorial and django doc for search functionality
+# But it does add the same movie several times, have to fix this
 class SearchResultsView(generic.ListView):
     """
     Seach page
@@ -23,9 +25,11 @@ class SearchResultsView(generic.ListView):
     model = Movie
     template_name = 'movie/search_results.html'
     def get_queryset(self):
-        return Movie.objects.filter(
-            Q(movie_title__icontains='Gone') | Q(directed_by='Gone') | Q(cast='Gone')
+        query = self.request.GET.get("q")
+        object_list = Movie.objects.filter(
+            Q(movie_title__icontains=query) | Q(cast__name__icontains=query) | Q(directed_by__name__icontains=query)
             )
+        return object_list
 
 
 def movie_detail(request, slug):
