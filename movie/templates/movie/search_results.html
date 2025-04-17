@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+
+{% block content %}
+<h1>Search results</h1>
+<ul>
+    {% for movie in object_list %}
+    <li>
+        <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
+        <h2 class="card-title">{{ movie.movie_title }}</h2>
+        <p class="post-subtitle">{{ movie.release_date }}</p>
+        <!--Rating I think does not work in generic view, needs function view-->
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.db.models import Avg
+from django.db.models import Avg, Q
 from .models import Movie, Review
 from .forms import ReviewForm
 
@@ -15,6 +15,17 @@ class MovieList(generic.ListView):
     queryset = Movie.objects.all().filter(status=1)
     template_name = "movie/index.html"
     paginate_by = 4
+
+class SearchResultsView(generic.ListView):
+    """
+    Seach page
+    """
+    model = Movie
+    template_name = 'movie/search_results.html'
+    def get_queryset(self):
+        return Movie.objects.filter(
+            Q(movie_title__icontains='Gone') | Q(directed_by='Gone') | Q(cast='Gone')
+            )
 
 
 def movie_detail(request, slug):
