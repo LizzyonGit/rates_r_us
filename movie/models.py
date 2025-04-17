@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
+from cloudinary.models import CloudinaryField
+
 
 
 
@@ -20,6 +22,7 @@ class Movie(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="movie_posts"
     )
+    featured_image = CloudinaryField('image', default='placeholder')
     genre = models.ManyToManyField(
         'Genre', related_name="genres"
     )
@@ -34,7 +37,7 @@ class Movie(models.Model):
     )
     plot = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    # image
+    
     # average_rating = models.IntegerField? does not need to be here as it is collected from reviews, doe snot need to be stored here?
     class Meta:
         ordering = ["-created_on"]
