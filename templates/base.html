@@ -57,17 +57,19 @@
                         <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Log in</a>
                     </li>
                     {% endif %}
-
-                </ul>
-                <!--Search field functionality-->
-                <form class="d-flex" role="search" action="{% url 'search_results' %}" method="get">
-                    <input class="form-control me-2" type="search" placeholder="Search movie title, cast and director" aria-label="Search" name="q">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-                
+                </ul>   
             </div>
         </div>
     </nav>
+    <!--Search field functionality-->
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <form class="d-flex col-md-6" role="search" action="{% url 'search_results' %}" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search movie title, cast and director" aria-label="Search" name="q">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+    </div>
+    </div>
     <!-- displaying Django messages -->
     <div class="container">
         <div class="row">
