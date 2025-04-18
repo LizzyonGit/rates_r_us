@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.db.models import Avg, Q
+from django.db.models import Q
 from .models import Movie, Review
 from .forms import ReviewForm
 
@@ -15,6 +15,8 @@ class MovieList(generic.ListView):
     queryset = Movie.objects.all().filter(status=1)
     template_name = "movie/index.html"
     paginate_by = 4
+
+
 
 # Followed tutorial https://learndjango.com/tutorials/django-search-tutorial and django doc for search functionality
 # Help from https://forum.djangoproject.com/t/find-objects-with-mix-distinct-and-order-by/13010, https://stackoverflow.com/questions/73164250/find-unique-values-in-django/73164902, django doc
@@ -49,8 +51,8 @@ def movie_detail(request, slug):
     queryset = Movie.objects.filter(status=1)
     movie = get_object_or_404(queryset, slug=slug)
     reviews = movie.reviews.all().order_by("-created_on")
-    approved_reviews = movie.reviews.filter(approved=True)
-    review_count = approved_reviews.count()
+    # approved_reviews = movie.reviews.filter(approved=True)
+    
 
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
@@ -73,24 +75,19 @@ def movie_detail(request, slug):
                 'Thank you for your review. It will be published after approval.'
             )
 
-        
-
-    # Calculate average rating of approved reviews. Inspired by https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
-    average_rating = approved_reviews.aggregate(Avg('rating')).get('rating__avg')
 
     review_form = ReviewForm()
     
-
     return render(
         request,
         "movie/movie_detail.html",
         {
             "movie": movie,
             "reviews": reviews,
-            "review_count": review_count,
+            #"review_count": review_count,
             "review_form": review_form,
-            "average_rating": average_rating,
-            "approved_reviews": approved_reviews,
+            #"average_rating": average_rating,
+            # "approved_reviews": approved_reviews,
          },
     )
 

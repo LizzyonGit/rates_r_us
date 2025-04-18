@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from cloudinary.models import CloudinaryField
+from django.db.models import Avg
 
 
 
@@ -38,18 +39,19 @@ class Movie(models.Model):
     plot = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     
-    # average_rating = models.IntegerField? does not need to be here as it is collected from reviews, doe snot need to be stored here?
     class Meta:
         ordering = ["-created_on"]
     def __str__(self):
         return self.movie_title
+    # Two methods for displaying average rating when there are approved reviews
+    def approved_reviews(self):
+        return self.reviews.filter(approved=True)
+    def get_average_rating(self):
+        average_rating = self.approved_reviews().aggregate(Avg('rating')).get('rating__avg')
+        return average_rating
+        
+# Calculate average rating of approved reviews. Inspired by https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
 
-# function to conditionalise the dafult value of approved
-# def default_approved():
-#     if not (Review.text and Review.title):
-#         return True
-#     else:
-#         return False
 
 
 class Review(models.Model):

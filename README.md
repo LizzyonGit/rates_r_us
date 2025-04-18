@@ -62,3 +62,8 @@ Search fields some issues creating the right code in admin.py for the search fie
 
 Security
 I got a GitHub warning about gunicorn and needed to upgrade to a higher version than CIs walkthrough.
+
+
+Issue that took longer time
+Getting the average rating in my home screen. I had it in my movie_detail sceen and view, so I looked for a way of getting that exact value for the index.html template, without adding it to my view for the index.html. I found articles about context processors, and some other concepts, but they seemed too complicated for such an easy thing. Then I read through this post https://forum.djangoproject.com/t/aggregate-an-average-from-two-fields-from-separate-models/19705/2, and I realised I was wrong all along, I should have added my calculation of averages in the Movie model as a method, so then I can use that in all my templates based on my Movie model. So I did that, and it worked. I also read that .count can be used directly in the template instead of adding it as a variable in the view, so I did that, and on some forum someone said that rounding to two decimals is best done in the template to avoid calculation errors, so I did that with |floatformat:2.https://www.reddit.com/r/djangolearning/comments/jtvbxn/rounding_an_aggregation_to_2_decimal_places/
+
