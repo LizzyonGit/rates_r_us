@@ -1,6 +1,17 @@
+/*Card custom styles top 3*/
+.card-custom {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+
+
 body {
     background-color: #F9FAFC;
 }
+
+
+
 
 .brand {
     font-family: Lato, sans-serif;

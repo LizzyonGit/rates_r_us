@@ -14,7 +14,7 @@ class MovieAdmin(SummernoteModelAdmin):
 
     list_display = ('movie_title', 'created_on', 'release_date', 'status')
     search_fields = ['movie_title', 'cast__name']  # cast_name searches on actor names as cast is manytomany field
-    list_filter = ('status',)
+    list_filter = ('status', 'top_pick')
     prepopulated_fields = {'slug': ('movie_title','release_date')}
     filter_horizontal = ['cast', 'directed_by', 'genre']    
     summernote_fields = ('plot',)  # works when debug is true

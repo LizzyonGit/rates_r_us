@@ -4,45 +4,32 @@
 
 <!-- index.html content starts here -->
 <main class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../../../static/images/nobody.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../static/images/nobody.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../static/images/nobody.jpg" class="d-block w-100" alt="...">
-                </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-                </button>
-            </div>
 
-        </div>
+    <!--Three highlighted movies picked by the superuser-->
+    <div class="row">
+        <h2>This week's top pics</h2>
+        {% for movie in object_list %}
+        {% if movie.top_pick %}
+        <div class="card col-sm-4">
+            <img src="/static/images/image-test-1.jpg" class="card-img-top card-custom" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ movie.movie_title }}</h5>
+              <p class="card-text">{{ movie.plot|safe }}</p>
+              <a href="{% url 'movie_detail' movie.slug %}" class="btn btn-primary">Check it out</a>
+            </div>
+          </div>
+        {% endif %}  {% endfor %}
+       
     </div>
 
 
-
+    <!--All movies-->
     <div class="row">
+        <h2>All movies</h2>
 
 
 
-        <!-- Movie Entries Column -->
+        
         <div class="col-12 mt-3">
             <div class="row">
                 {% for movie in object_list %}

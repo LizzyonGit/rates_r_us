@@ -1,6 +1,16 @@
+/*Carousel styles*/
+.carousel-custom {
+    overflow: hidden;
+}
+
+
+
 body {
     background-color: #F9FAFC;
 }
+
+
+
 
 .brand {
     font-family: Lato, sans-serif;
