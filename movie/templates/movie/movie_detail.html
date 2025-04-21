@@ -10,7 +10,7 @@
                
                 <h1 class="post-title">{{ movie.movie_title }}</h1>
                 <!--Displays rating if there are approved reviews, rounds it to two decimals-->
-                <!--Same code as in index.html-->
+                <!--Same code as in index.html and search_results.html-->
                 {% if movie.approved_reviews %}
                 <p>Rating: {{ movie.get_average_rating|floatformat:2}} ({{ movie.approved_reviews.count }})</p>
                 {% else %}

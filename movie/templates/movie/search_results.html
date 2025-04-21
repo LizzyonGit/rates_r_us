@@ -9,6 +9,12 @@
     <li>
         <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
         <h2 class="card-title">{{ movie.movie_title }}</h2>
+         <!--Same code as in index.html and movie_detail.html-->
+         {% if movie.approved_reviews %}
+         <p>Rating: {{ movie.get_average_rating|floatformat:2}} ({{ movie.approved_reviews.count }})</p>
+         {% else %}
+         <p>No rating yet</p>
+         {% endif %}
         <p class="post-subtitle">{{ movie.release_date }}</p>
         <!--Rating I think does not work in generic view, needs function view-->
         </a>

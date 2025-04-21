@@ -58,7 +58,7 @@
                             <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
                                 <h2 class="card-title">{{ movie.movie_title }}</h2>
                                <!--Displays rating if there are approved reviews, rounds it to two decimals-->
-                               <!--Same code as in movie_detail.html-->
+                               <!--Same code as in movie_detail.html and search_results.html-->
                                 {% if movie.approved_reviews %}
                                 <p>Rating: {{ movie.get_average_rating|floatformat:2}} ({{ movie.approved_reviews.count }})</p>
                                 {% else %}
