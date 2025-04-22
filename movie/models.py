@@ -50,6 +50,8 @@ class Movie(models.Model):
     def get_average_rating(self):
         average_rating = self.approved_reviews().aggregate(Avg('rating')).get('rating__avg')
         return average_rating
+    
+
         
 # Calculate average rating of approved reviews. Inspired by https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
 

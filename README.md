@@ -70,3 +70,9 @@ Getting the average rating in my home screen. I had it in my movie_detail sceen 
 
 Design of index page
 I wanted to add something so that the index is not just a list of movies. Other movie websites have several blocks with content or images and genre based rows. So to add something extra to the home page, I decided to create a feature with top picks by the superuser. The superuser can change those whenever so other movies get the spot. This would actually need a bit more background information on this website since it becomes personalised, so for now I can add this in the footer.
+
+To only dispaly the top pics on the first page was more difficult than I thought it would be, I could not use a simple "if page does not have prev" condition, which is the same as the first page. Then I found that I could use the variable page_obj.number and used "page_obj.number == 1" as a condition to only display the top pics on the first page. But, the pagination also affected the top pics, so I needed to fix that pagination would only affect the all movies section.
+
+I found a way to put hte logic in the view and add two different querysets to the class based view of index.html, with post from Pran Kumar Sarkar in: https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view
+I used this to create a queryset for all published movies, and one for all published movies with top_pick selected. And by adding the [:3] it was easy to just get 3 movies. 
+Now I just had to fix the pagination issue.

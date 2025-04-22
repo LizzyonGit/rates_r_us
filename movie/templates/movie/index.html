@@ -7,18 +7,27 @@
 
     <!--Three highlighted movies picked by the superuser-->
     <div class="row">
-        <h2>This week's top pics</h2>
-        {% for movie in object_list %}
-        {% if movie.top_pick %}
-        <div class="card col-sm-4">
-            <img src="/static/images/image-test-1.jpg" class="card-img-top card-custom" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{ movie.movie_title }}</h5>
-              <p class="card-text">{{ movie.plot|safe }}</p>
-              <a href="{% url 'movie_detail' movie.slug %}" class="btn btn-primary">Check it out</a>
+        
+        
+
+        <h2>My top pics</h2>
+        <div class="col-12 mt-3">
+            <div class="row">
+                {% for movie in movies.top_picks %}        
+                <div class="card col-sm-4">
+                    <img src="/static/images/image-test-1.jpg" class="card-img-top card-custom" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ movie.movie_title }}</h5>
+                    <p class="card-text">{{ movie.plot|safe }}</p>
+                    <a href="{% url 'movie_detail' movie.slug %}" class="btn btn-primary">Check it out</a>
+                    </div>
+                </div>
+                
+                {% endfor %} 
             </div>
-          </div>
-        {% endif %}  {% endfor %}
+        </div>
+        <!--{% if page_obj.number == 1 %}--><!--{% endif %}-->
+
        
     </div>
 
@@ -32,7 +41,7 @@
         
         <div class="col-12 mt-3">
             <div class="row">
-                {% for movie in object_list %}
+                {% for movie in movies.published_movies %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
@@ -55,28 +64,7 @@
                             </a>
                             <p>Released: {{movie.release_date}}</p>
                             <p>Country: {{movie.country}}</p>
-                            <p>Genre:     
-                                {% for genre in movie.genre.all %}
-                                {% if not forloop.last %}
-                                {{genre}}, {% else %}
-                                {{genre}}
-                                {% endif %}
-                                {% endfor %}
-                            </p>
-                           
-                            <p>Cast: {% for actor in movie.cast.all %}
-                                {% if not forloop.last %}
-                                {{actor}}, {% else %}
-                                {{actor}}
-                                {% endif %}
-                                {% endfor %}</p>
-                        
-                            <p>Directed by: {% for director in movie.directed_by.all %}
-                                {% if not forloop.last %}
-                                {{director}}, {% else %}
-                                {{director}}
-                                {% endif %}
-                                {% endfor %}</p> 
+                            
                         
                             <p>{{movie.plot}}</p>
 
@@ -86,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:2 %}
+                {% if forloop.counter|divisibleby:3 %}
             </div>
             <div class="row">
                 {% endif %}

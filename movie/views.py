@@ -12,9 +12,21 @@ class MovieList(generic.ListView):
     """
     Filters on published movie posts
     """
-    queryset = Movie.objects.all().filter(status=1)
+    model = Movie
     template_name = "movie/index.html"
-    paginate_by = 4
+    # From https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view (post by Pran Kumar Sarkar)
+    context_object_name = 'movies'
+    #paginate_by = 9
+
+    def get_queryset(self): 
+        queryset = {'published_movies': Movie.objects.all().filter(status=1),
+        'top_picks': Movie.objects.all().filter(top_pick=True)[:3]
+        }
+        return queryset 
+
+
+    
+
 
 
 
