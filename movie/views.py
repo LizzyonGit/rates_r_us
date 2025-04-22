@@ -16,7 +16,7 @@ class MovieList(generic.ListView):
     template_name = "movie/index.html"
     # From https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view (post by Pran Kumar Sarkar)
     context_object_name = 'movies'
-    #paginate_by = 9
+    #paginate_by = 6
 
     def get_queryset(self): 
         queryset = {'published_movies': Movie.objects.all().filter(status=1),
