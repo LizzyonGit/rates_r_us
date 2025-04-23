@@ -80,3 +80,7 @@ With the solution of two querysets for the ListView, paginate_by raised an error
 After changing it and redoing the html template tags, it worked to paginate. Now, it also worked to have the condition of if page_obj.number == 1 % in my template, so the top picks only appear on the first page. The [:3] worked for this context override as well, so I kept that to only fetch 3 top picks. 
 
 I have also decided that it makes more sense to display the top pick motivation belonging to the movie, so I added a text field to the model allowing the superuser to write a text (max 300 characters) for the top pick motivation, and if the field is not empty, display it in the index html in the top pic section. 
+
+
+Only 1 review per user
+I found a useful post about implementing this limitation and followed those steps to implement this in the view, and in the template. Then the only issue was that after you leave a review and get the confirmation message, the form is still there since the page is not updated. So I just added the same return statements as when you edit or delete a review,a nd this worked. Now after leaving a review, you see the confirmation message and the form is gone.

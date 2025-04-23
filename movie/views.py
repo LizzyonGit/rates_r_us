@@ -5,6 +5,10 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from .models import Movie, Review
 from .forms import ReviewForm
+from django.core.exceptions import PermissionDenied
+
+
+
 
 
 # Create your views here.
@@ -17,13 +21,13 @@ class MovieList(generic.ListView):
     queryset = Movie.objects.all().filter(status=1)
     paginate_by = 3
 
-    # https://stackoverflow.com/questions/60560493/django-listview-pagination-when-passing-multiple-objects-in-queryset (post by Esmail Shabayek) and django docs
+    # According to https://stackoverflow.com/questions/60560493/django-listview-pagination-when-passing-multiple-objects-in-queryset (post by Esmail Shabayek) and django docs
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['top_picks'] = Movie.objects.all().filter(top_pick=True)[:3]  # Picks 3 top picks (From https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view (post by Pran Kumar Sarkar))
         return context
     
-    
+
 # Followed tutorial https://learndjango.com/tutorials/django-search-tutorial and django doc for search functionality
 # Help from https://forum.djangoproject.com/t/find-objects-with-mix-distinct-and-order-by/13010, https://stackoverflow.com/questions/73164250/find-unique-values-in-django/73164902, django doc
 class SearchResultsView(generic.ListView):
@@ -57,11 +61,21 @@ def movie_detail(request, slug):
     queryset = Movie.objects.filter(status=1)
     movie = get_object_or_404(queryset, slug=slug)
     reviews = movie.reviews.all().order_by("-created_on")
-    # approved_reviews = movie.reviews.filter(approved=True)
     
+    # According to https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos, for defensive programming
+    # Get the reviews posted by the user for this movie
+    user_reviews = movie.reviews.filter(author=request.user)
+    
+
 
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
+
+        # Check if there are any reviews posted by the user and raise error
+        if user_reviews:
+            raise PermissionDenied('You have already reviewed this movie.') 
+
+
         if review_form.is_valid():            
             review = review_form.save(commit=False)
             review.author = request.user
@@ -72,14 +86,15 @@ def movie_detail(request, slug):
                 review.save()
                 messages.add_message(
                 request, messages.SUCCESS,
-                'Thank you for your rating'
-            )
+                'Thank you for your rating')
+                return HttpResponseRedirect(reverse('movie_detail', args=[slug]))  # This updates the page after reviewing, so form dissapears
             else:
                 review.save()
                 messages.add_message(
                 request, messages.SUCCESS,
-                'Thank you for your review. It will be published after approval.'
-            )
+                'Thank you for your review. It will be published after approval.')
+                return HttpResponseRedirect(reverse('movie_detail', args=[slug]))  # This updates the page after reviewing, so form dissapears
+    
 
 
     review_form = ReviewForm()
@@ -90,10 +105,8 @@ def movie_detail(request, slug):
         {
             "movie": movie,
             "reviews": reviews,
-            #"review_count": review_count,
             "review_form": review_form,
-            #"average_rating": average_rating,
-            # "approved_reviews": approved_reviews,
+            "user_reviews": user_reviews,
          },
     )
 

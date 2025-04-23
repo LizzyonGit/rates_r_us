@@ -62,17 +62,27 @@
   <!-- Leave review form -->
   <div class="col-md-4 card mb-4 mt-3">
     <div class="card-body">
+      
       {% if user.is_authenticated %}
-      <h2>Have your say!</h2>
-      <p>Rate this movie and leave a review (optional).</p>
-      <p>Posting as: {{ user.username }}</p>
-      <form id="reviewForm" method="post"
-        style="margin-top: 1.3em;">
-        {{ review_form | crispy }}
-        {% csrf_token %}
-        <button id="submitButton" type="submit"
-          class="btn btn-signup btn-lg">Submit</button>
-      </form>
+      <!--
+      Regulates on the frontend that form is not visible for user that already left a review. Need to update page after leaving first review. 
+      But defensive error is also in place in the view. According to Darius Mandres in 
+      https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
+      -->
+        {% if user_reviews%}
+        <h2>You already reviewed this movie, but you can edit your review.</h2>
+        {% else %}
+        <h2>Have your say!</h2>
+        <p>Rate this movie and leave a review (optional).</p>
+        <p>Posting as: {{ user.username }}</p>
+        <form id="reviewForm" method="post"
+          style="margin-top: 1.3em;">
+          {{ review_form | crispy }}
+          {% csrf_token %}
+          <button id="submitButton" type="submit"
+            class="btn btn-signup btn-lg">Submit</button>
+        </form>
+        {% endif %}
       {% else %}
       <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
       {% endif %}
