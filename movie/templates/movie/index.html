@@ -16,7 +16,9 @@
                     <img src="/static/images/image-test-1.jpg" class="card-img-top card-custom" alt="...">
                     <div class="card-body">
                     <h5 class="card-title">{{ movie.movie_title }}</h5>
-                    <p class="card-text">{{ movie.plot|safe }}</p>
+                    {% if movie.pick_motivation %}
+                    <p class="card-text">{{ movie.pick_motivation }}</p>
+                    {% endif %}
                     <a href="{% url 'movie_detail' movie.slug %}" class="btn btn-primary">Check it out</a>
                     </div>
                 </div>
