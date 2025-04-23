@@ -15,7 +15,7 @@
                 <div class="card col-sm-4">
                     <img src="/static/images/image-test-1.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">{{ movie.movie_title }}</h5>
+                    <h3 class="card-title h5">{{ movie.movie_title }}</h3>
                     {% if movie.pick_motivation %}
                     <p class="card-text">{{ movie.pick_motivation }}</p>
                     {% endif %}
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
-                                <h2 class="card-title">{{ movie.movie_title }}</h2>
+                                <h3 class="card-title h5">{{ movie.movie_title }}</h3>
                             </a>   
                                <!--Displays rating if there are approved reviews, rounds it to two decimals-->
                                <!--Same code as in movie_detail.html and search_results.html-->
