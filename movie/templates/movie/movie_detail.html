@@ -51,17 +51,38 @@
   <div class="row">
     <div class="col-12">
       <strong class="text-secondary">
-        <i class="far fa-comments"></i> {{ movie.approved_reviews.count }}
+        <i class="fa-solid fa-comments"></i> {{ movie.approved_reviews.count }}
       </strong>
     </div>
     <div class="col-12">
       <hr>
     </div>
   </div>
+
+  <!-- Leave review form -->
+  <div class="col-md-4 card mb-4 mt-3">
+    <div class="card-body">
+      {% if user.is_authenticated %}
+      <h2>Have your say!</h2>
+      <p>Rate this movie and leave a review (optional).</p>
+      <p>Posting as: {{ user.username }}</p>
+      <form id="reviewForm" method="post"
+        style="margin-top: 1.3em;">
+        {{ review_form | crispy }}
+        {% csrf_token %}
+        <button id="submitButton" type="submit"
+          class="btn btn-signup btn-lg">Submit</button>
+      </form>
+      {% else %}
+      <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
+      {% endif %}
+    </div>
+  </div>
+
   <!-- Displaying reviews -->
   <div class="row">
     <div class="col-md-8 card mb-4  mt-3 ">
-      <h3>Reviews:</h3>
+      <h2>Reviews:</h2>
       <div class="card-body">
         <!-- Iterate through each review in reviews -->
         {% for review in reviews %}
@@ -101,25 +122,7 @@
         {% endfor %}
       </div>
     </div>
-    <!-- Leave review form -->
-    <div class="col-md-4 card mb-4 mt-3">
-        <div class="card-body">
-          {% if user.is_authenticated %}
-          <h3>Have your say!</h3>
-          <p>Rate this movie and leave a review (optional).</p>
-          <p>Posting as: {{ user.username }}</p>
-          <form id="reviewForm" method="post"
-            style="margin-top: 1.3em;">
-            {{ review_form | crispy }}
-            {% csrf_token %}
-            <button id="submitButton" type="submit"
-              class="btn btn-signup btn-lg">Submit</button>
-          </form>
-          {% else %}
-          <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
-          {% endif %}
-        </div>
-      </div>
+    
   </div>
 </div>
 <!-- Delete confirmation modal -->
