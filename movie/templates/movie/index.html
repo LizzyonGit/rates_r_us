@@ -6,14 +6,12 @@
 <main class="container">
 
     <!--Three highlighted movies picked by the superuser-->
+    {% if page_obj.number == 1 %}
     <div class="row">
-        
-        
-
         <h2>My top pics</h2>
         <div class="col-12 mt-3">
             <div class="row">
-                {% for movie in movies.top_picks %}        
+                {% for movie in top_picks %}        
                 <div class="card col-sm-4">
                     <img src="/static/images/image-test-1.jpg" class="card-img-top card-custom" alt="...">
                     <div class="card-body">
@@ -22,26 +20,19 @@
                     <a href="{% url 'movie_detail' movie.slug %}" class="btn btn-primary">Check it out</a>
                     </div>
                 </div>
-                
                 {% endfor %} 
             </div>
         </div>
-        <!--{% if page_obj.number == 1 %}--><!--{% endif %}-->
-
-       
     </div>
+    {% endif %}
 
 
     <!--All movies-->
     <div class="row">
         <h2>All movies</h2>
-
-
-
-        
         <div class="col-12 mt-3">
             <div class="row">
-                {% for movie in movies.published_movies %}
+                {% for movie in object_list %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">

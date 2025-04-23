@@ -14,22 +14,16 @@ class MovieList(generic.ListView):
     """
     model = Movie
     template_name = "movie/index.html"
-    # From https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view (post by Pran Kumar Sarkar)
-    context_object_name = 'movies'
-    #paginate_by = 6
+    queryset = Movie.objects.all().filter(status=1)
+    paginate_by = 3
 
-    def get_queryset(self): 
-        queryset = {'published_movies': Movie.objects.all().filter(status=1),
-        'top_picks': Movie.objects.all().filter(top_pick=True)[:3]
-        }
-        return queryset 
-
-
+    # https://stackoverflow.com/questions/60560493/django-listview-pagination-when-passing-multiple-objects-in-queryset (post by Esmail Shabayek) and django docs
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['top_picks'] = Movie.objects.all().filter(top_pick=True)[:3]  # Picks 3 top picks (From https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view (post by Pran Kumar Sarkar))
+        return context
     
-
-
-
-
+    
 # Followed tutorial https://learndjango.com/tutorials/django-search-tutorial and django doc for search functionality
 # Help from https://forum.djangoproject.com/t/find-objects-with-mix-distinct-and-order-by/13010, https://stackoverflow.com/questions/73164250/find-unique-values-in-django/73164902, django doc
 class SearchResultsView(generic.ListView):
