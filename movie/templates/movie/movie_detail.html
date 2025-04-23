@@ -18,7 +18,7 @@
                 {% endif %}
                 
                 <p class="post-subtitle">{{ movie.release_date }}</p>
-                <p class="post-subtitle">{{ movie.genres.all|join:", " }}</p>
+                <p class="post-subtitle">{{ movie.genre.all|join:", " }}</p>
                 <p class="post-subtitle">{{ movie.cast.all|join:", " }}</p>
                 <p class="post-subtitle">{{ movie.directed_by.all|join:", " }}</p>
             </div>

@@ -35,7 +35,7 @@
         <div class="col-12 mt-3">
             <div class="row">
                 {% for movie in object_list %}
-                <div class="col-md-4">
+                <div class="col-sm-4">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
@@ -46,6 +46,7 @@
                             </div>
                             <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
                                 <h2 class="card-title">{{ movie.movie_title }}</h2>
+                            </a>   
                                <!--Displays rating if there are approved reviews, rounds it to two decimals-->
                                <!--Same code as in movie_detail.html and search_results.html-->
                                 {% if movie.approved_reviews %}
@@ -53,17 +54,11 @@
                                 {% else %}
                                 <p>No rating yet</p>
                                 {% endif %}
-                                
-                            </a>
+
                             <p>Released: {{movie.release_date}}</p>
                             <p>Country: {{movie.country}}</p>
-                            
-                        
-                            <p>{{movie.plot}}</p>
 
-                            <hr />
-                            <p class="card-text text-muted h6">{{ movie.created_on}}
-                            </p>
+                            <p>{{ movie.genre.all|join:", " }}</p>
                         </div>
                     </div>
                 </div>
