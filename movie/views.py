@@ -9,9 +9,6 @@ from django.core.exceptions import PermissionDenied
 
 
 
-
-
-# Create your views here.
 class MovieList(generic.ListView):
     """
     Filters on published movie posts
@@ -153,3 +150,26 @@ def review_delete(request, slug, review_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own reviews')
 
     return HttpResponseRedirect(reverse('movie_detail', args=[slug]))
+
+
+
+def my_reviews(request):
+    """
+    Filters reviews per user for my reviews page
+    """
+    queryset = Review.objects.all()
+    my_reviews = queryset.filter(author=request.user)
+
+
+
+    
+    # paginate_by = 20
+
+    return render(
+        request,
+        "movie/my_reviews.html",
+        {
+            "my_reviews": my_reviews,
+         },
+    )
+

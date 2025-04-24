@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+
+{% block content %}
+<h1>My reviews</h1>
+<ul>
+    {% for review in my_reviews %}
+    <li>
+       <h2>{{review.title}}</h2>
+       <p>Rating: {{review.rating}}</p>
+       <p>{{review.movie}}</p>
+        
+        
+       
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
