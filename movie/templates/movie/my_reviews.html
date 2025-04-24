@@ -4,22 +4,26 @@
 
 {% block content %}
 <h1>My reviews</h1>
-{% if my_reviews%}
+{% if my_reviews %}
 <ul>
+    <!--Iterates through the reviews by the user-->
     {% for review in my_reviews %}
-    <li><h2>Reviewed movie: {{review.movie}}</h2>
+    <li><!--Iterates through all movies-->
+        {% for movie in movies%}
+        <!--When movie in movie model is the same as the reviewed movie in review model, it can use the movie.slug to link to the correct movie-->
+        {% if movie == review.movie %}
+        <h2>Reviewed movie: <a href="{% url 'movie_detail' movie.slug %}">
+        {{review.movie}}</a>
+        </h2>
+        {% endif %}
+        {% endfor %}
         <p>Rating: {{review.rating}}</p>
         {% if review.title %}
         <h3>Title: {{review.title}}</h2>
         {% endif %}
         {% if review.text %}
         <h3>Text: {{review.text}}</h2>
-        {% endif %}
-        
-        
-        
-        
-       
+        {% endif %} 
     </li>
     {% endfor %}
 </ul>

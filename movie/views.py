@@ -159,17 +159,23 @@ def my_reviews(request):
     """
     queryset = Review.objects.all()
     my_reviews = queryset.filter(author=request.user)
-
-
+    
+    movies = Movie.objects.filter(status=1)
+    
+    
+    
 
     
     # paginate_by = 20
+    # can I link to specific review in movie_detail?
 
     return render(
         request,
         "movie/my_reviews.html",
         {
             "my_reviews": my_reviews,
+            "movies": movies
+            
          },
     )
 
