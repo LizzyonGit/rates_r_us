@@ -96,7 +96,8 @@
       <div class="card-body">
         <!-- Iterate through each review in reviews -->
         {% for review in reviews %}
-        <div class="p-2 reviews
+        <!--review.id makes it possible to link to the specific review form my reviews page-->
+        <div id= "{{ review.id }}" class="p-2 reviews
           {% if not review.approved and review.author == user %}
           faded{% elif not review.approved %} d-none{% endif %}">
           <p class="font-weight-bold">

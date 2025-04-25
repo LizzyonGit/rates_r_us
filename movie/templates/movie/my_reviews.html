@@ -10,9 +10,9 @@
     {% for review in my_reviews %}
     <li><!--Iterates through all movies-->
         {% for movie in movies%}
-        <!--When movie in movie model is the same as the reviewed movie in review model, it can use the movie.slug to link to the correct movie-->
+        <!--When movie in movie model is the same as the reviewed movie in review model, it can use the movie.slug to link to the correct movie, and review.id to link to the review-->
         {% if movie == review.movie %}
-        <h2>Reviewed movie: <a href="{% url 'movie_detail' movie.slug %}">
+        <h2>Reviewed movie: <a href="{% url 'movie_detail' movie.slug %}#{{review.id}}">
         {{review.movie}}</a>
         </h2>
         {% endif %}
