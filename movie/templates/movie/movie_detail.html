@@ -69,9 +69,8 @@
       But defensive error is also in place in the view. According to Darius Mandres in 
       https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
       -->
-        {% if user_reviews%}
-        <h2>You already reviewed this movie, but you can edit your review.</h2>
-        {% else %}
+        
+        {% if not user_reviews %}
         <h2>Have your say!</h2>
         <p>Rate this movie and leave a review (optional).</p>
         <p>Posting as: {{ user.username }}</p>
@@ -82,6 +81,8 @@
           <button id="submitButton" type="submit"
             class="btn btn-signup btn-lg">Submit</button>
         </form>
+        {% else %}
+        <h2>You already reviewed this movie, but you can edit your review.</h2>
         {% endif %}
       {% else %}
       <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
@@ -126,8 +127,8 @@
           {% endif %}
           <!--Display delete and edit buttons when logged in user has written the review-->
           {% if user.is_authenticated and review.author == user %}
-          <button class="btn btn-delete" review_id="{{ review.id }}">Delete</button>
-          <button class="btn btn-edit" review_id="{{ review.id }}">Edit</button>
+          <button class="btn btn-delete"  review_id="{{ review.id }}">Delete</button>
+          <a class="btn btn-edit" role="button" href="#reviewForm" review_id="{{ review.id }}">Edit</a>
           {% endif %}
         </div>
         {% endfor %}
