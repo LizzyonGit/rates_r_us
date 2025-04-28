@@ -69,21 +69,27 @@
       But defensive error is also in place in the view. According to Darius Mandres in 
       https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
       -->
+      <h2>Have your say!</h2>
+      <p>Rate this movie and leave a review (optional). Max 1 review per user per movie.</p>
+      <p>Posting as: {{ user.username }}</p>
+      <form id="reviewForm" method="post"
+        style="margin-top: 1.3em;">
+        {{ review_form | crispy }}
+        {% csrf_token %}
+        <button id="submitButton" type="submit"
+          class="btn btn-signup btn-lg">Submit</button>
+      </form>
+
+        <!--{% if not user_reviews %}-->
+
+        <!--form code
+        It works now that with a lot of reviews, when you click edit, you go to the form. 
+        But I want to fix that the form does not show when you left a review, but appears when you edit a review-->
         
-        {% if not user_reviews %}
-        <h2>Have your say!</h2>
-        <p>Rate this movie and leave a review (optional).</p>
-        <p>Posting as: {{ user.username }}</p>
-        <form id="reviewForm" method="post"
-          style="margin-top: 1.3em;">
-          {{ review_form | crispy }}
-          {% csrf_token %}
-          <button id="submitButton" type="submit"
-            class="btn btn-signup btn-lg">Submit</button>
-        </form>
-        {% else %}
+        <!--{% else %}
         <h2>You already reviewed this movie, but you can edit your review.</h2>
-        {% endif %}
+        {% endif %}-->
+
       {% else %}
       <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
       {% endif %}
