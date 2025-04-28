@@ -6,8 +6,29 @@ from django.db.models import Q
 from .models import Movie, Review
 from .forms import ReviewForm
 from django.core.exceptions import PermissionDenied
+from django.conf import settings  # So I can access API key in settings
+import requests  # Handles API request
 
+# Following tutorial Piko Can Fly https://www.youtube.com/watch?v=uWfIoc-d0H4
 
+def all_movies_page(request):
+    category = request.GET.get("category", "popular")
+
+    API_KEY = settings.TMDB_API_KEY
+    base_url='https://api.themoviedb.org/3/movie/'
+    url = f"{base_url}{category}?api_key={API_KEY}"
+    response = requests.get(url)
+    data = response.json().get('results', [])
+    print(data)
+
+    return render(
+        request,
+        'movie/index.html',
+        {
+            'data': data,
+            'category': category
+        },
+        )
 
 class MovieList(generic.ListView):
     """

@@ -28,6 +28,37 @@
     </div>
     {% endif %}
 
+    <!--Testing API-->
+    <div class="row" >
+        <form method="get" action="{% url 'home' %}">
+            <select class="btn btn-primary dropdown-toggle" name="category" onchange="this.form.submit()" >
+                <option value="popular" {% if category == 'popular' %} selected {%endif%}>Popular</option>
+                <option value="now_playing" {% if category == 'now_playing' %} selected {%endif%}>Now Playing</option>
+                <option value="top_rated" {% if category == 'top_rated' %} selected {%endif%}>Top Rated</option>
+                <option value="upcoming" {% if category == 'upcoming' %} selected {%endif%}>Upcoming</option>
+        
+            </select>
+        </form>
+
+        <h2>All movies</h2>
+        <div class="col-12 mt-3">
+            <div class="row card-deck">
+                
+                {% for movie in data %}
+                    <div class="col-sm-4 card mb-4">
+                        <img class="card-img-top" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="Card image cap">
+
+                        <div class="card-body">
+                            <h3 class="card-body">{{ movie.title }}</h3>
+                                
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
 
     <!--All movies-->
     <div class="row">
