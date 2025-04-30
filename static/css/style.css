@@ -1,4 +1,8 @@
-
+/*Styles movie poster image on index.html, needs to be per  breakpoint*/
+.movie-poster {
+    min-height: 624px;
+    object-fit: cover;
+}
 
 
 

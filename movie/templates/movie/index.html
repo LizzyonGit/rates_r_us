@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
 <!-- index.html content starts here -->
@@ -65,15 +65,20 @@
         <div class="col-12 mt-3">
             <div class="row">
                 {% for movie in object_list %}
-                <div class="col-sm-4">
-                    <div class="card mb-4">
+                
+                    <div class="card mb-4 col-sm-4">
+                        
+
+                        {% if "placeholder" in movie.featured_image.url %}
+                        <img class="card-img-top movie-poster" src="{% static 'images/nobody.jpg' %}"
+                          alt="placeholder image">
+                        {% else %}
+                        <img class="card-img-top movie-poster" src=" {{ movie.featured_image.url }}"
+                          alt="{{ movie.movie_title }} movie poster">
+                        {% endif %}
+
                         <div class="card-body">
-                            <div class="image-container">
-                                <div class="image-flash">
-                                    
-   
-                                </div>
-                            </div>
+                            
                             <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
                                 <h3 class="card-title h5">{{ movie.movie_title }}</h3>
                             </a>   
@@ -91,7 +96,7 @@
                             <p>{{ movie.genre.all|join:", " }}</p>
                         </div>
                     </div>
-                </div>
+                
                 {% if forloop.counter|divisibleby:3 %}
             </div>
             <div class="row">
