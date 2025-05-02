@@ -1,3 +1,103 @@
+/*Import google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+/*CSS variables*/
+:root {
+    --primary-font: Merriweather, sans-serif;
+    --secondary-font: Limelight, cursive;
+    --highlight-light-color: #FFEA00; /* Canary yellow */
+    --highlight-color: #000080; /* navy blue */
+    --primary-color: #8B0000; /* dark red */
+    --secondary-color: #000000; /* black */
+    
+}
+
+/*Global styles*/
+h1, h2, h3, h4, h5 {
+    font-family: var(--secondary-font);
+    color: #FFFFFF;
+}
+
+p {
+    font-family: var(--primary-font);
+    color: #FFFFFF;
+
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+/*Logo name*/
+.logo {
+    font-family: var(--secondary-font);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--highlight-light-color);
+}
+
+/*Navbar styles*/
+.navbar {
+    background-color: var(--secondary-color);
+}
+
+.navbar a {
+    font-family: var(--primary-font);
+    color: #FFFFFF;
+}
+
+/*Search form styles*/
+.search-form button, .search-form input {
+    font-family: var(--primary-font);
+    color: var(--highlight-light-color);
+    
+}
+
+.search-form button {
+    border-color: var(--highlight-light-color);
+}
+.search-form button:hover{
+    background-color: var(--highlight-light-color);
+    color: var(--highlight-color);
+}
+
+/*Index page styles*/
+.movie-link {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.movie-card:hover {
+    background-color: var(--highlight-light-color);
+}
+
+.movie-card:hover p, .movie-card:hover h3 {
+    color: var(--highlight-color);
+
+}
+/*Top pick button styles*/
+.top-pick-button {
+    background-color: var(--highlight-light-color);
+    color: var(--highlight-color);
+    font-family: var(--primary-font);
+
+
+}
+.top-pick-button:hover {
+    background-color: var(--highlight-color);
+    color: var(--highlight-light-color);
+
+}
+
+
+/*Button text pagination*/
+.page-link {
+    background-color: var(--highlight-light-color);
+    color: var(--highlight-color);
+    font-family: var(--primary-font);
+
+}
+
 /*Styles movie poster image on index.html, needs to be per  breakpoint*/
 .movie-poster {
     min-height: 624px;
@@ -24,9 +124,6 @@
 
 /*Below styles are from blog walkthrough*/
 
-body {
-    background-color: #F9FAFC;
-}
 
 
 
@@ -91,15 +188,6 @@ body {
 
 
 
-.post-link {
-    text-decoration: none;
-    color: #445261;
-}
-
-.post-link:hover,
-.page-link {
-    color: #E84610;
-}
 
 
 

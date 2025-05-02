@@ -13,14 +13,17 @@
             <div class="row">
                 {% for movie in top_picks %}        
                 <div class="card col-sm-4">
-                    <img src="/static/images/image-test-1.jpg" class="card-img-top" alt="...">
+                    <a href="{% url 'movie_detail' movie.slug %}" class="movie-link">
+                    <img src="/static/images/image-test-1.jpg" class="card-img-top" alt="Movie poster of {{ movie.movie_title }}">
                     <div class="card-body">
                     <h3 class="card-title h5">{{ movie.movie_title }}</h3>
                     {% if movie.pick_motivation %}
                     <p class="card-text">{{ movie.pick_motivation }}</p>
                     {% endif %}
-                    <a href="{% url 'movie_detail' movie.slug %}" class="btn btn-primary">Check it out</a>
+                    <a href="{% url 'movie_detail' movie.slug %}" class="btn btn-primary top-pick-button">Check it out</a>
                     </div>
+                    </a>
+    
                 </div>
                 {% endfor %} 
             </div>
@@ -66,8 +69,9 @@
             <div class="row">
                 {% for movie in object_list %}
                 
-                    <div class="card mb-4 col-sm-4">
-                        
+                
+                    <div class="card mb-4 col-sm-4 movie-card">
+                        <a href="{% url 'movie_detail' movie.slug %}" class="movie-link">
 
                         {% if "placeholder" in movie.featured_image.url %}
                         <img class="card-img-top movie-poster" src="{% static 'images/nobody.jpg' %}"
@@ -79,9 +83,9 @@
 
                         <div class="card-body">
                             
-                            <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
+                            
                                 <h3 class="card-title h5">{{ movie.movie_title }}</h3>
-                            </a>   
+                             
                                <!--Displays rating if there are approved reviews, rounds it to two decimals-->
                                <!--Same code as in movie_detail.html and search_results.html-->
                                 {% if movie.approved_reviews %}
@@ -95,8 +99,9 @@
 
                             <p>{{ movie.genre.all|join:", " }}</p>
                         </div>
+                        </a>
                     </div>
-                
+               
                 {% if forloop.counter|divisibleby:3 %}
             </div>
             <div class="row">
@@ -112,11 +117,11 @@
             {% if page_obj.has_previous %}
             <li>
                 <a href="?page={{ page_obj.previous_page_number }}"
-                class="page-link">&laquo; PREV</a>
+                class="btn btn-primary page-link">&laquo; PREV</a>
             </li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary page-link"> NEXT &raquo;</a></li>
             {% endif %}
         </ul>
     </nav>
