@@ -4,7 +4,25 @@
     object-fit: cover;
 }
 
+.reviews {
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
 
+/*Media queries*/
+/*Poster in movie_detail html size smaller on larger screens, and floats to the right of its container*/
+@media (min-width: 992px) {
+    
+    .poster-detail{
+        max-height: 414px;
+        width: auto;
+        float: right;
+    }
+
+  }
+
+
+/*Below styles are from blog walkthrough*/
 
 body {
     background-color: #F9FAFC;
@@ -68,39 +86,10 @@ body {
     text-transform: uppercase;
 }
 
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
 
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
 
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
 
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
+
 
 .post-link {
     text-decoration: none;
@@ -112,15 +101,7 @@ body {
     color: #E84610;
 }
 
-.post-title {
-    margin-top: 10%;
-    margin-left: 5%;
-}
 
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
 
 .btn-signup,
 .btn-edit {

@@ -3,12 +3,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="masthead">
     <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
+        <div class="row justify-content-center">
+            <div class="col-md-5 text-center text-md-start">
                
-                <h1 class="post-title">{{ movie.movie_title }}</h1>
+                <h1>{{ movie.movie_title }}</h1>
                 <!--Displays rating if there are approved reviews, rounds it to two decimals-->
                 <!--Same code as in index.html and search_results.html-->
                 {% if movie.approved_reviews %}
@@ -17,90 +16,84 @@
                 <p>No rating yet</p>
                 {% endif %}
                 
-                <p class="post-subtitle">{{ movie.release_date }}</p>
-                <p class="post-subtitle">{{ movie.genre.all|join:", " }}</p>
-                <p class="post-subtitle">{{ movie.cast.all|join:", " }}</p>
-                <p class="post-subtitle">{{ movie.directed_by.all|join:", " }}</p>
+                <p>{{ movie.release_date }}</p>
+                <p>{{ movie.genre.all|join:", " }}</p>
+                <p>Cast: {{ movie.cast.all|join:", " }}</p>
+                <p>Directed by: {{ movie.directed_by.all|join:", " }}</p>
             </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
+            <div class="col-md-5">
               {% if "placeholder" in movie.featured_image.url %}
-              <img class="card-img-top" src="{% static 'images/nobody.jpg' %}"
+              <img class="img-fluid poster-detail" src="{% static 'images/nobody.jpg' %}"
                 alt="placeholder image">
               {% else %}
-              <img class="card-img-top" src=" {{ movie.featured_image.url }}"
+              <img class="img-fluid poster-detail" src=" {{ movie.featured_image.url }}"
                 alt="{{ movie.movie_title }} movie poster">
               {% endif %}
             </div>
         </div>
     </div>
-</div>
+
 
 <div class="container">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
+    <div class="row justify-content-center">
+        <div class="col-10 mb-4  mt-3">
+            <div>
                 <!-- The movie content goes inside the card-text. -->
                 
-                <p class="card-text">
+                <p>
                     {{ movie.plot | safe }}
                 </p>
             </div>
         </div>
     </div>
-     <!-- Displaying count of reviews -->
-  <div class="row">
-    <div class="col-12">
-      <strong class="text-secondary">
-        <i class="fa-solid fa-comments"></i> {{ movie.approved_reviews.count }}
-      </strong>
-    </div>
-    <div class="col-12">
-      <hr>
-    </div>
-  </div>
+     
+  
 
   <!-- Leave review form -->
-  <div class="col-md-4 card mb-4 mt-3">
-    <div class="card-body">
+  <div class="row justify-content-center">
+    <div class="col-md-10 mb-4 mt-3">
       
-      {% if user.is_authenticated %}
-      <!--
-      Regulates on the frontend that form is not visible for user that already left a review. Need to update page after leaving first review. 
-      But defensive error is also in place in the view. According to Darius Mandres in 
-      https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
-      -->
-      <h2>Have your say!</h2>
-      <p>Rate this movie and leave a review (optional). Max 1 review per user per movie.</p>
-      <p>Posting as: {{ user.username }}</p>
-      <form id="reviewForm" method="post"
-        style="margin-top: 1.3em;">
-        {{ review_form | crispy }}
-        {% csrf_token %}
-        <button id="submitButton" type="submit"
-          class="btn btn-signup btn-lg">Submit</button>
-      </form>
+      <div>
+        <!-- Displaying count of reviews -->
+      <p><i class="fa-solid fa-comments"></i> {{ movie.approved_reviews.count }}</p>
+        {% if user.is_authenticated %}
+        <!--
+        Regulates on the frontend that form is not visible for user that already left a review. Need to update page after leaving first review. 
+        But defensive error is also in place in the view. According to Darius Mandres in 
+        https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
+        -->
+        <h2>Have your say!</h2>
+        <p>Rate this movie and leave a review (optional). Max 1 review per user per movie.</p>
+        <p>Posting as: {{ user.username }}</p>
+        <form id="reviewForm" method="post"
+          style="margin-top: 1.3em;">
+          {{ review_form | crispy }}
+          {% csrf_token %}
+          <button id="submitButton" type="submit"
+            class="btn btn-signup btn-lg">Submit</button>
+        </form>
 
-        <!--{% if not user_reviews %}-->
+          <!--{% if not user_reviews %}-->
 
-        <!--form code
-        It works now that with a lot of reviews, when you click edit, you go to the form. 
-        But I want to fix that the form does not show when you left a review, but appears when you edit a review-->
-        
-        <!--{% else %}
-        <h2>You already reviewed this movie, but you can edit your review.</h2>
-        {% endif %}-->
+          <!--form code
+          It works now that with a lot of reviews, when you click edit, you go to the form. 
+          But I want to fix that the form does not show when you left a review, but appears when you edit a review-->
+          
+          <!--{% else %}
+          <h2>You already reviewed this movie, but you can edit your review.</h2>
+          {% endif %}-->
 
-      {% else %}
-      <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
-      {% endif %}
+        {% else %}
+        <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
+        {% endif %}
+      </div>
     </div>
-  </div>
 
-  <!-- Displaying reviews -->
-  <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <h2>Reviews:</h2>
-      <div class="card-body">
+    <!-- Displaying reviews -->
+    <div class="col-md-10 mb-4 mt-3">
+      
+      <div>
+        <h2>Reviews</h2>
         <!-- Iterate through each review in reviews -->
         {% for review in reviews %}
         <!--review.id makes it possible to link to the specific review form my reviews page-->
