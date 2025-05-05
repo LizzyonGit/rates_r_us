@@ -13,9 +13,14 @@
 }
 
 /*Global styles*/
-h1, h2, h3, h4, h5 {
+h3, h4, h5 {
     font-family: var(--secondary-font);
     color: #FFFFFF;
+}
+
+h1, h2 {
+    font-family: var(--secondary-font);
+    color: var(--highlight-light-color)
 }
 
 p {
@@ -109,13 +114,26 @@ body {
     border-bottom: 1px solid #000000;
 }
 
+/*Pop-up for messages and welcome/logout*/
+.pop-up-message {
+    z-index: 99;
+
+}
 /*Styles modal*/
-.modal{
+.modal-content{
     background-color: var(--highlight-color);
-    
+
 
 }
 
+/*Footer styles*/
+footer {
+    background-color: var(--secondary-color);
+    padding: 0.5rem 0; /*padding same as navbar*/
+}
+footer a {
+    color: #FFFFFF;
+}
 /*Media queries*/
 /*Poster in movie_detail html size smaller on larger screens, and floats to the right of its container*/
 @media (min-width: 992px) {
@@ -127,6 +145,17 @@ body {
     }
 
   }
+/*Movie poster in search and index*/
+  @media (min-width: 992px) {
+    
+    .movie-poster{
+        height: 50vh;
+        
+        object-fit: cover;
+    }
+
+  }
+
 
 
 /*Below styles are from blog walkthrough*/

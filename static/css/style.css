@@ -103,12 +103,8 @@ body {
 
 }
 
-/*Styles movie poster image on index.html, needs to be per  breakpoint*/
-.movie-poster {
-    min-height: 624px;
-    object-fit: cover;
-}
 
+/*Lines between reviews for better visual difference*/
 .reviews {
     border-top: 1px solid #000000;
     border-bottom: 1px solid #000000;
@@ -145,6 +141,19 @@ footer a {
     }
 
   }
+/*Movie poster in search and index*/
+ 
+  @media (min-width: 992px) {
+    
+    .movie-poster{
+       
+       max-width: 25vw;
+       height: auto;
+       
+    }
+
+  }
+  
 
 
 /*Below styles are from blog walkthrough*/
