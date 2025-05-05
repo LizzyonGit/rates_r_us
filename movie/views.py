@@ -54,11 +54,11 @@ class SearchResultsView(generic.ListView):
     """
     model = Movie
     template_name = 'movie/search_results.html'
+    
     def get_queryset(self):
         query = self.request.GET.get("q")
         object_list = Movie.objects.filter(
-            Q(movie_title__icontains=query) | Q(cast__name__icontains=query) | Q(directed_by__name__icontains=query)
-            ).order_by('movie_title').distinct('movie_title')
+            Q(movie_title__icontains=query) | Q(cast__name__icontains=query) | Q(directed_by__name__icontains=query), status=1).order_by('movie_title').distinct('movie_title')
         return object_list
 
 

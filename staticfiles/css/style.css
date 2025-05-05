@@ -109,6 +109,13 @@ body {
     border-bottom: 1px solid #000000;
 }
 
+/*Styles modal*/
+.modal{
+    background-color: var(--highlight-color);
+    
+
+}
+
 /*Media queries*/
 /*Poster in movie_detail html size smaller on larger screens, and floats to the right of its container*/
 @media (min-width: 992px) {

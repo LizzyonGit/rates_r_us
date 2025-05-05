@@ -3,21 +3,13 @@
 
 
 {% block content %}
-<h1>Search results</h1>
-<ul>
-    {% for movie in object_list %}
-    <li>
-        <a href="{% url 'movie_detail' movie.slug %}" class="post-link">
-        <h2 class="card-title">{{ movie.movie_title }}</h2>
-         <!--Same code as in index.html and movie_detail.html-->
-         {% if movie.approved_reviews %}
-         <p>Rating: {{ movie.get_average_rating|floatformat:2}} ({{ movie.approved_reviews.count }})</p>
-         {% else %}
-         <p>No rating yet</p>
-         {% endif %}
-        <p class="post-subtitle">{{ movie.release_date }}</p>
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+<main class="container">
+    <div class="row">
+        <h1>Search results</h1>
+
+        {% include 'movie/movie_list.html'%}
+
+
+    </div>
+</main>
 {% endblock %}

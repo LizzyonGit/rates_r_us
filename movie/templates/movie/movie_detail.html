@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<article>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5 text-center text-md-start">
@@ -31,10 +32,10 @@
               {% endif %}
             </div>
         </div>
-    </div>
+    
 
 
-<div class="container">
+
     <div class="row justify-content-center">
         <div class="col-10 mb-4  mt-3">
             <div>
@@ -48,12 +49,16 @@
     </div>
      
   
+</article>
+
+<div class="container">
 
   <!-- Leave review form -->
+  <section>
   <div class="row justify-content-center">
     <div class="col-md-10 mb-4 mt-3">
       
-      <div>
+      
         <!-- Displaying count of reviews -->
       <p><i class="fa-solid fa-comments"></i> {{ movie.approved_reviews.count }}</p>
         {% if user.is_authenticated %}
@@ -86,8 +91,12 @@
         {% else %}
         <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
         {% endif %}
-      </div>
+      
     </div>
+  </div>
+  </section>
+  <section>
+    <div class="row justify-content-center">
 
     <!-- Displaying reviews -->
     <div class="col-md-10 mb-4 mt-3">
@@ -113,16 +122,16 @@
           </div>
           {% endif %}
           <div id="review_rating{{ review.id }}">
-          Rating: {{ review.rating }}
+          <p>Rating: {{ review.rating }}</p>
           </div>
 
           <div id="review_text{{ review.id }}">
-            {{ review.text | linebreaks }}
+            <p>{{ review.text | linebreaks }}</p>
           </div>
           {% if not review.approved and review.author == user %}
-          <p class="approval">
-            This review is awaiting approval
-          </p>
+          <div class="approval">
+            <p>This review is awaiting approval</p>
+          </div>
           {% endif %}
           <!--Display delete and edit buttons when logged in user has written the review-->
           {% if user.is_authenticated and review.author == user %}
@@ -132,9 +141,9 @@
         </div>
         {% endfor %}
       </div>
-    </div>
-    
-  </div>
+    </div></div>
+  </section>
+  
 </div>
 <!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1"
@@ -148,7 +157,7 @@
           data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete your review?
+        <p>Are you sure you want to delete your review?
         This action cannot be undone.
       </div>
       <div class="modal-footer">
