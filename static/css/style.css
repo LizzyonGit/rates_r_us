@@ -103,6 +103,18 @@ body {
 
 }
 
+/*Movie detail styles*/
+.detail-heading {
+    color: var(--highlight-light-color);
+}
+
+.review-container {
+    border-top: 1px solid var(--secondary-color);
+}
+/*White text color for form headers*/
+#reviewForm label {
+    color: #FFFFFF;
+}
 
 /*Lines between reviews for better visual difference*/
 .reviews {
