@@ -12,15 +12,22 @@
         <div class="col-12 mt-3">
             <div class="row">
                 {% for movie in top_picks %}        
-                <div class="card col-sm-4">
+                <div class="card mb-4 col-sm-4 movie-card">
                     <a href="{% url 'movie_detail' movie.slug %}" class="movie-link">
-                    <img src="/static/images/image-test-1.jpg" class="card-img-top" alt="Movie poster of {{ movie.movie_title }}">
+
+                        {% if "placeholder" in movie.featured_image.url %}
+                        <img class="card-img-top movie-poster" src="{% static 'images/nobody.jpg' %}"
+                            alt="placeholder image">
+                        {% else %}
+                        <img class="card-img-top movie-poster" src=" {{ movie.featured_image.url }}"
+                            alt="{{ movie.movie_title }} movie poster">
+                        {% endif %}
+
                     <div class="card-body">
                     <h3 class="card-title h5">{{ movie.movie_title }}</h3>
                     {% if movie.pick_motivation %}
                     <p class="card-text">{{ movie.pick_motivation }}</p>
                     {% endif %}
-                    <a href="{% url 'movie_detail' movie.slug %}" class="btn btn-primary top-pick-button">Check it out</a>
                     </div>
                     </a>
     

@@ -37,14 +37,18 @@
 
 
     <div class="row justify-content-center">
-        <div class="col-10 mb-4  mt-3">
+        <div class="col-10 mb-4 mt-3">
             <div>
-                <!-- The movie content goes inside the card-text. -->
-                
-                <p>
-                    {{ movie.plot | safe }}
-                </p>
+                <p>{{ movie.plot | safe }}</p>
             </div>
+        </div>
+        
+        {% if movie.pick_motivation %}
+        <div class="col-10 mb-4 mt-3">
+          <div>
+            <h2 class="h5">My review</h2>
+            <p>{{ movie.pick_motivation }}</p>
+          </div>{% endif %}
         </div>
     </div>
      

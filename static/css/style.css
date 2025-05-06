@@ -147,8 +147,32 @@ footer a {
     
     .movie-poster{
        
-       max-width: 25vw;
-       height: auto;
+       min-height: 444px;
+       object-fit: cover;
+       
+       
+    }
+
+  }
+  @media (min-width: 1200px) {
+    
+    .movie-poster{
+       
+       min-height: 534px;
+       object-fit: cover;
+       
+       
+    }
+
+  }
+
+  @media (min-width: 1400px) {
+    
+    .movie-poster{
+       
+       height: 624px;
+       object-fit: cover;
+       
        
     }
 
