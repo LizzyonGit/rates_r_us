@@ -28,6 +28,7 @@
         {% if review.text %}
         <p>{{review.text}}</p>
         {% endif %} 
+        <p>Created on: {{review.created_on}}</p>
     </li>
     {% endfor %}
 </ul>

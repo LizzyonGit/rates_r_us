@@ -179,7 +179,7 @@ def my_reviews(request):
     Filters reviews per user for my reviews page
     """
     queryset = Review.objects.all()
-    my_reviews = queryset.filter(author=request.user)
+    my_reviews = queryset.filter(author=request.user).order_by("-created_on")
     
     movies = Movie.objects.filter(status=1)
     
