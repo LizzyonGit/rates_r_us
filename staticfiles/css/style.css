@@ -71,6 +71,10 @@ body {
     text-decoration: none;
     color: #FFFFFF;
 }
+/*
+.movie-card {
+    padding-top: 0.75rem;
+}*/
 
 .movie-card:hover {
     background-color: var(--highlight-light-color);
@@ -100,18 +104,49 @@ body {
     background-color: var(--highlight-light-color);
     color: var(--highlight-color);
     font-family: var(--primary-font);
+    margin: 0.5rem;
 
 }
 
-/*Styles movie poster image on index.html, needs to be per  breakpoint*/
-.movie-poster {
-    min-height: 624px;
-    object-fit: cover;
+/*Movie detail styles*/
+.detail-heading {
+    color: var(--highlight-light-color);
 }
 
+.review-col {
+    border-top: 1px solid var(--secondary-color);
+}
+
+/*Form styles*/
+/*White text color for form headers*/
+#reviewForm label {
+    color: #FFFFFF;
+}
+
+#reviewForm {
+    margin-top: 1.3em;
+}
+
+/*Lines between reviews for better visual difference*/
 .reviews {
     border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
+    
+}
+
+/*My reviews page styles*/
+.review-list {
+    padding-inline-start: 0;
+}
+.my-review {
+    border-top: 1px solid #000000;
+    list-style: none;
+}
+.my-review a{
+    text-decoration: none;
+}
+.my-review a:hover h2 {
+    background-color: var(--highlight-light-color);
+    color: var(--highlight-color);
 }
 
 /*Pop-up for messages and welcome/logout*/
@@ -136,7 +171,7 @@ footer a {
 }
 /*Media queries*/
 /*Poster in movie_detail html size smaller on larger screens, and floats to the right of its container*/
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
     
     .poster-detail{
         max-height: 414px;
@@ -146,16 +181,55 @@ footer a {
 
   }
 /*Movie poster in search and index*/
-  @media (min-width: 992px) {
+@media screen and (min-width: 576px) {
     
     .movie-poster{
-        height: 50vh;
-        
-        object-fit: cover;
+       
+       max-height: 234px;
+       object-fit: cover;
+       
+       
+    }
+
+
+}
+
+
+  @media screen and (min-width: 992px) {
+    
+    .movie-poster{
+       
+       max-height: 444px;
+       object-fit: cover;
+       
+       
+    }
+
+  }
+  @media screen and (min-width: 1200px) {
+    
+    .movie-poster{
+       
+       max-height: 534px;
+       object-fit: cover;
+       
+       
     }
 
   }
 
+  @media screen and (min-width: 1400px) {
+    
+    .movie-poster{
+       
+       max-height: 624px;
+       object-fit: cover;
+       
+       
+    }
+
+  }
+  
 
 
 /*Below styles are from blog walkthrough*/

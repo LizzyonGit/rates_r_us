@@ -72,6 +72,13 @@ body {
     color: #FFFFFF;
 }
 
+.movie-card {
+    padding-top: 0.75rem;
+    background-color: var(--primary-color);
+    border: 0;
+
+}
+
 .movie-card:hover {
     background-color: var(--highlight-light-color);
 }
@@ -167,7 +174,7 @@ footer a {
 }
 /*Media queries*/
 /*Poster in movie_detail html size smaller on larger screens, and floats to the right of its container*/
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
     
     .poster-detail{
         max-height: 414px;
@@ -177,11 +184,24 @@ footer a {
 
   }
 /*Movie poster in search and index*/
-@media (min-width: 576px) {
+@media screen and (min-width: 576px) {
     
     .movie-poster{
        
-       height: 234px;
+       max-height: 234px;
+       object-fit: cover;
+       
+       
+    }
+
+
+}
+
+@media screen and (min-width: 768px) {
+    
+    .movie-poster{
+       
+       max-height: 321px;
        object-fit: cover;
        
        
@@ -191,22 +211,22 @@ footer a {
 }
 
 
-  @media (min-width: 992px) {
+  @media screen and (min-width: 992px) {
     
     .movie-poster{
        
-       height: 444px;
+       max-height: 444px;
        object-fit: cover;
        
        
     }
 
   }
-  @media (min-width: 1200px) {
+  @media screen and (min-width: 1200px) {
     
     .movie-poster{
        
-       height: 534px;
+       max-height: 534px;
        object-fit: cover;
        
        
@@ -214,11 +234,11 @@ footer a {
 
   }
 
-  @media (min-width: 1400px) {
+  @media screen and (min-width: 1400px) {
     
     .movie-poster{
        
-       height: 624px;
+       max-height: 624px;
        object-fit: cover;
        
        
