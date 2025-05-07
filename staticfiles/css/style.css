@@ -164,9 +164,12 @@ body {
 
 }
 
-/*Log in and register page styles*/
+/*Log in and register page styles, override .link styles*/
 .auth-link {
-    color: var(--highlight-light-color);
+    color: var(--highlight-light-color) !important;
+}
+.auth-link:hover {
+    background-color: var(--highlight-color);
 }
 
 /*Footer styles*/
