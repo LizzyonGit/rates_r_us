@@ -108,18 +108,40 @@ body {
     color: var(--highlight-light-color);
 }
 
-.review-container {
+.review-col {
     border-top: 1px solid var(--secondary-color);
 }
+
+/*Form styles*/
 /*White text color for form headers*/
 #reviewForm label {
     color: #FFFFFF;
 }
 
+#reviewForm {
+    margin-top: 1.3em;
+}
+
 /*Lines between reviews for better visual difference*/
 .reviews {
     border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
+    
+}
+
+/*My reviews page styles*/
+.review-list {
+    padding-inline-start: 0;
+}
+.my-review {
+    border-top: 1px solid #000000;
+    list-style: none;
+}
+.my-review a{
+    text-decoration: none;
+}
+.my-review a:hover h2 {
+    background-color: var(--highlight-light-color);
+    color: var(--highlight-color);
 }
 
 /*Pop-up for messages and welcome/logout*/

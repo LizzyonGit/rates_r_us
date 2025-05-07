@@ -37,34 +37,34 @@
 
 
     <div class="row justify-content-center">
-        <div class="col-10 mb-4 mt-3">
+        <div class="col-10 mb-3 mt-3">
             <div>
                 <p>{{ movie.plot | safe }}</p>
             </div>
         </div>
         
         {% if movie.pick_motivation %}
-        <div class="col-10 mb-4 mt-3">
+        <div class="col-10 mb-3 mt-3">
           <div>
             <h2 class="h5 detail-heading">My review</h2>
             <p>{{ movie.pick_motivation }}</p>
-          </div>{% endif %}
-        </div>
+          </div>
+        </div>{% endif %}
     </div>
      
   
 </article>
 
-<div class="container review-container">
+<div class="container">
 
   <!-- Leave review form -->
   <section>
   <div class="row justify-content-center">
-    <div class="col-md-10 mb-4 mt-3">
+    <div class="col-md-10 mb-3 mt-2 review-col">
       
       
         <!-- Displaying count of reviews -->
-      <p><i class="fa-solid fa-comments"></i> {{ movie.approved_reviews.count }}</p>
+      <p class="pt-2"><i class="fa-solid fa-comments"></i> {{ movie.approved_reviews.count }}</p>
         {% if user.is_authenticated %}
         <!--
         Regulates on the frontend that form is not visible for user that already left a review. Need to update page after leaving first review. 
@@ -74,8 +74,7 @@
         <h2>Have your say!</h2>
         <p>Rate this movie and leave a review (optional). Max 1 review per user per movie.</p>
         <p>Posting as: {{ user.username }}</p>
-        <form id="reviewForm" method="post"
-          style="margin-top: 1.3em;">
+        <form id="reviewForm" method="post">
           {{ review_form | crispy }}
           {% csrf_token %}
           <button id="submitButton" type="submit"
@@ -103,7 +102,7 @@
     <div class="row justify-content-center">
 
     <!-- Displaying reviews -->
-    <div class="col-md-10 mb-4 mt-3">
+    <div class="col-md-10 mb-3 mt-3">
       
       <div>
         <h2>Reviews</h2>

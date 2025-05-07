@@ -3,26 +3,30 @@
 
 
 {% block content %}
+<main class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10 mt-3">
 <h1>My reviews</h1>
+
 {% if my_reviews %}
-<ul>
+<ul class="row review-list">
     <!--Iterates through the reviews by the user-->
     {% for review in my_reviews %}
-    <li><!--Iterates through all movies-->
-        {% for movie in movies%}
+    
+    
+    <li class="my-review py-3"><!--Iterates through all movies-->
+        {% for movie in movies%}<a href="{% url 'movie_detail' movie.slug %}#{{review.id}}">
         <!--When movie in movie model is the same as the reviewed movie in review model, it can use the movie.slug to link to the correct movie, and review.id to link to the review-->
         {% if movie == review.movie %}
-        <h2>Reviewed movie: <a href="{% url 'movie_detail' movie.slug %}#{{review.id}}">
-        {{review.movie}}</a>
-        </h2>
-        {% endif %}
+        <h2>{{review.movie}}</h2>
+        {% endif %}</a>
         {% endfor %}
         <p>Rating: {{review.rating}}</p>
         {% if review.title %}
-        <h3>Title: {{review.title}}</h2>
+        <h3>{{review.title}}</h3>
         {% endif %}
         {% if review.text %}
-        <h3>Text: {{review.text}}</h2>
+        <p>{{review.text}}</p>
         {% endif %} 
     </li>
     {% endfor %}
@@ -31,4 +35,8 @@
 <p>You have no reviews yet.</p>
 
 {% endif %}
+        </div>
+    </div>
+</main>
+
 {% endblock %}
