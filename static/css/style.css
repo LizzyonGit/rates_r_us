@@ -164,6 +164,11 @@ body {
 
 }
 
+/*Log in and register page styles*/
+.auth-link {
+    color: var(--highlight-light-color);
+}
+
 /*Footer styles*/
 footer {
     background-color: var(--secondary-color);
