@@ -177,12 +177,25 @@ footer a {
 
   }
 /*Movie poster in search and index*/
- 
+@media (min-width: 576px) {
+    
+    .movie-poster{
+       
+       height: 234px;
+       object-fit: cover;
+       
+       
+    }
+
+
+}
+
+
   @media (min-width: 992px) {
     
     .movie-poster{
        
-       min-height: 444px;
+       height: 444px;
        object-fit: cover;
        
        
@@ -193,7 +206,7 @@ footer a {
     
     .movie-poster{
        
-       min-height: 534px;
+       height: 534px;
        object-fit: cover;
        
        
