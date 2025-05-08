@@ -157,6 +157,9 @@ body {
 
 }
 /*Styles modal*/
+.modal-title {
+    color: var(--highlight-light-color);
+}
 .modal-content{
     background-color: var(--highlight-color);
 
@@ -181,17 +184,19 @@ body {
 }
 
 .btn-signup:hover,
-.btn-signup:active {
+.btn-signup:active, .btn-edit:hover, .btn-edit:active {
     background-color: var(--highlight-light-color);
     color: var(--highlight-color);
 }
 
 .btn-delete {
-    color: #FFFFFF;
-    background: var(--primary-color);
+    color: var(--highlight-light-color);
+    background: var(--secondary-color);
 }
 .btn-delete:hover, .btn-delete:active {
-    background: var(--secondary-color);
+    border-color: var(--highlight-light-color);
+    color: var(--highlight-light-color);
+
 }
 
 

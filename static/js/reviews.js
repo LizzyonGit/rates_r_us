@@ -10,12 +10,12 @@ const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 /**
-* Initializes edit functionality for the provided edit buttons.
+* Initialises edit functionality for the provided edit buttons.
 * 
 * For each button in the `editButtons` collection:
-* - Retrieves the associated comment's ID upon click.
-* - Fetches the content of the corresponding comment.
-* - Populates the `commentText` input/textarea with the comment's content for editing.
+* - Retrieves the associated review's ID upon click.
+* - Fetches the content of the corresponding review.
+* - Populates the form fields with the review's content for editing.
 * - Updates the submit button's text to "Update".
 * - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
 */

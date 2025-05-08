@@ -5,7 +5,6 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from .models import Movie, Review
 from .forms import ReviewForm
-from django.core.exceptions import PermissionDenied
 # from django.conf import settings  # So I can access API key in settings
 # import requests  # Handles API request
 
@@ -80,7 +79,7 @@ def movie_detail(request, slug):
     movie = get_object_or_404(queryset, slug=slug)
     reviews = movie.reviews.all().order_by("-created_on")
     
-    # According to https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos, for defensive programming
+    # According to https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
     # Get the reviews posted by the user for this movie
     user_reviews = movie.reviews.filter(author=request.user)
     
@@ -91,7 +90,9 @@ def movie_detail(request, slug):
 
         # Check if there are any reviews posted by the user and raise error
         if user_reviews:
-            raise PermissionDenied('You have already reviewed this movie.') 
+            messages.add_message(request, messages.ERROR, 'You have already reviewed this movie.')
+            return HttpResponseRedirect(reverse('movie_detail', args=[slug]))
+
 
 
         if review_form.is_valid():            
@@ -132,6 +133,7 @@ def review_edit(request, slug, review_id):
     """
     view to edit reviews
     """
+    
     if request.method == "POST":
 
         queryset = Movie.objects.filter(status=1)
