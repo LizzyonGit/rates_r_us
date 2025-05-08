@@ -130,8 +130,13 @@ body {
     
 }
 /*Texts after review*/
-.faded, .approval {
+.faded {
+    font-style: italic;
+}
+
+.approval {
     font-size: x-small;
+    color: var(--highlight-light-color);
 }
 
 
