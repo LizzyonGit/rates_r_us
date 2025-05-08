@@ -5,7 +5,7 @@
 {% block content %}
 <article>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-3">
             <div class="col-md-5 text-center text-md-start">
                
                 <h1>{{ movie.movie_title }}</h1>
@@ -99,7 +99,7 @@
         <!--review.id makes it possible to link to the specific review form my reviews page-->
         <div id= "{{ review.id }}" class="p-2 reviews
           {% if not review.approved and review.author == user %}
-          faded{% elif not review.approved %} d-none{% endif %}">
+          italic{% elif not review.approved %} d-none{% endif %}">
           <p class="font-weight-bold">
             {{ review.author }}
             <span class="font-weight-normal">
