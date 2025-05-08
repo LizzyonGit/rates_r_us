@@ -282,10 +282,15 @@ footer a {
     }
 }
 
+/* Add extra top padding pop-up-message so it does not cover navbar*/
 
+@media screen and (max-width: 991px) {
 
+    .pop-up-message{
+        padding-top: 4rem;
+    }
 
-
+}
 
 
 

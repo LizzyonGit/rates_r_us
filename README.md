@@ -104,3 +104,6 @@ For movie descriptions, I found https://aifreebox.com/list/ai-movie-description-
 Summernote editor and text color
 
 I realised that with the default summernote rich text editor, the font colour was set in html and I could not override this. But I need the text to be white, like the other normal fields in the movie-detail view. So I looked for a way to remove the possibility of choosing a font colour in the Summernote field, and found https://github.com/lqez/django-summernote/blob/main/README.md. So I added a custom toolbar for Summernote in settings.py. I also removed the font family from the toolbar so this would also be the same as the other fields. Now, the superuser can add some styles only. I had to check the existing plot fields make sure there were no previous styles in the html code, otherwise they would still be the wrong colour.
+
+Styling messages
+Could not remove personalised message so now it is just django messages. Wanted it to be on top of content but was messing with padding etc. 
