@@ -159,11 +159,14 @@ body {
 /*Pop-up for messages and welcome/logout*/
 .pop-up-message {
     font-family: var(--primary-font);
-    background-color: var(--highlight-color);
     color: var(--highlight-light-color);
-    border: 1px solid var(--highlight-light-color);
     margin-right: 12px; /*Aligns with right border of movie poster*/
 
+}
+/*Border is set here so it does not show when clicked away*/
+.pop-up-border {
+    border: 1px solid var(--highlight-light-color);
+    background-color: var(--highlight-color);
 }
 /*Styles modal*/
 .modal-title {
