@@ -66,11 +66,7 @@
         <!-- Displaying count of reviews -->
       <p class="pt-2"><i class="fa-solid fa-comments"></i> {{ movie.approved_reviews.count }}</p>
         {% if user.is_authenticated %}
-        <!--
-        Regulates on the frontend that form is not visible for user that already left a review. Need to update page after leaving first review. 
-        But defensive error is also in place in the view. According to Darius Mandres in 
-        https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
-        -->
+        <!--You can only leave review when logged in -->
         <h2>Have your say!</h2>
         <p>Rate this movie and leave a review (optional). Max 1 review per user per movie.</p>
         <p>Posting as: {{ user.username }}</p>
@@ -81,18 +77,10 @@
             class="btn btn-signup btn-lg">Submit</button>
         </form>
 
-          <!--{% if not user_reviews %}-->
-
-          <!--form code
-          It works now that with a lot of reviews, when you click edit, you go to the form. 
-          But I want to fix that the form does not show when you left a review, but appears when you edit a review-->
-          
-          <!--{% else %}
-          <h2>You already reviewed this movie, but you can edit your review.</h2>
-          {% endif %}-->
+         
 
         {% else %}
-        <p><a class="link" href="{{ signup_url }}">Register</a> or <a class="link" href="{{ login_url }}">log in</a> to add a review!</p>
+        <p><a class="auth-link" href="{{ signup_url }}">Register</a> or <a class="auth-link" href="{{ login_url }}">log in</a> to add a review!</p>
         {% endif %}
       
     </div>

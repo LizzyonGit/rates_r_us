@@ -88,6 +88,9 @@ I found a useful post (https://stackoverflow.com/questions/46082573/django-forms
 
 But this raised a bug, when you edit a review, the form does not show. I found a suggestion here: https://stackoverflow.com/questions/792410/django-how-can-i-identify-the-calling-view-from-a-template, by Carl Meyer, to create different template blocks. However, I went with the easier solution of instead of hiding the form and raising a PermissionDenied exception, I added an error message when you try to submit a new review in the movie_detail view, and this worked. So the user should read that they can only leave 1 review per movie, as is written in the form header.
 
+For a user who is not logged in, I got an error trying to view the movie_detail pages: "Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x00000189D24B7470>>.". I realised my page was checking the id of a user, and this caused the error for not logged in users. The page was checking this because I wanted to hide the form for when a user has left a review already. So I just needed to move my "user_reviews = movie.reviews.filter(author=request.user)" inside the "if request.method == "POST":" condition (as not logged in users cannot post anythong because they don't see the form), and remove it from the context, and the issue was fixed.
+
+
 My reviews page
 Creating a my revies page was not hard, and linking to the correct movie detail page from each review was in the end doable in the template, as I was struggling to fix the slug in the view, but ended up with simple for loop and if statement in the template. I wanted to link to the specific review on the movie detail page, and this was easy with the help of this forum: https://www.reddit.com/r/django/comments/fjbx0c/linking_to_an_anchor_on_another_page_in_django/. 
 

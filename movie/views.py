@@ -79,9 +79,7 @@ def movie_detail(request, slug):
     movie = get_object_or_404(queryset, slug=slug)
     reviews = movie.reviews.all().order_by("-created_on")
     
-    # According to https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
-    # Get the reviews posted by the user for this movie
-    user_reviews = movie.reviews.filter(author=request.user)
+    
     
 
 
@@ -89,6 +87,10 @@ def movie_detail(request, slug):
         review_form = ReviewForm(data=request.POST)
 
         # Check if there are any reviews posted by the user and raise error
+        # According to https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
+        # Get the reviews posted by the user for this movie
+        user_reviews = movie.reviews.filter(author=request.user)
+
         if user_reviews:
             messages.add_message(request, messages.ERROR, 'You have already reviewed this movie.')
             return HttpResponseRedirect(reverse('movie_detail', args=[slug]))
@@ -125,7 +127,7 @@ def movie_detail(request, slug):
             "movie": movie,
             "reviews": reviews,
             "review_form": review_form,
-            "user_reviews": user_reviews,
+            
          },
     )
 
