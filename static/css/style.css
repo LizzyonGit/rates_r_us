@@ -191,7 +191,7 @@ body {
 /*Button styles*/
 .btn-signup,
 .btn-edit, 
-.error-button {
+.btn.error-button {
     background-color: var(--highlight-color);
     color: var(--highlight-light-color);
     font-style: normal;
@@ -200,9 +200,9 @@ body {
 .btn-signup:hover,
 .btn-signup:active, 
 .btn-edit:hover, 
-.btn-edit:active
-.error-button:hover, 
-.error-button:active {
+.btn-edit:active,
+.btn.error-button:hover, 
+.btn.error-button:active {
     background-color: var(--highlight-light-color);
     color: var(--highlight-color);
 }
