@@ -130,11 +130,11 @@ body {
     
 }
 /*Texts after review*/
-.faded {
+.italic {
     font-style: italic;
 }
 
-.approval {
+.approval p {
     font-size: x-small;
     color: var(--highlight-light-color);
 }
@@ -158,8 +158,15 @@ body {
 
 /*Pop-up for messages and welcome/logout*/
 .pop-up-message {
-    z-index: 99;
+    font-family: var(--primary-font);
+    color: var(--highlight-light-color);
+    margin-right: 12px; /*Aligns with right border of movie poster*/
 
+}
+/*Border is set here so it does not show when clicked away*/
+.pop-up-border {
+    border: 1px solid var(--highlight-light-color);
+    background-color: var(--highlight-color);
 }
 /*Styles modal*/
 .modal-title {
@@ -186,6 +193,7 @@ body {
 .btn-edit {
     background-color: var(--highlight-color);
     color: var(--highlight-light-color);
+    font-style: normal;
 }
 
 .btn-signup:hover,
@@ -274,12 +282,24 @@ footer a {
     }
 }
 
+/* Customise padding pop-up-message so it does not cover navbar and aligns witih other content to the right in index page*/
 
+@media screen and (max-width: 991px) {
 
+    .pop-up-message{
+        padding: 1rem 0 1rem;
+    }
 
+}
 
+/*Reduce padding movie_list to make place for longer words*/
 
-
+@media screen and (min-width: 576px) {
+    
+    .card-body{
+       padding: 0.5rem;
+    }
+}
 
 
 

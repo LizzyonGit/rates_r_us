@@ -282,17 +282,24 @@ footer a {
     }
 }
 
-/* Add extra top padding pop-up-message so it does not cover navbar*/
+/* Customise padding pop-up-message so it does not cover navbar and aligns witih other content to the right in index page*/
 
 @media screen and (max-width: 991px) {
 
     .pop-up-message{
-        padding-top: 4rem;
+        padding: 1rem 0 1rem;
     }
 
 }
 
+/*Reduce padding movie_list to make place for longer words*/
 
+@media screen and (min-width: 576px) {
+    
+    .card-body{
+       padding: 0.5rem;
+    }
+}
 
 
 
