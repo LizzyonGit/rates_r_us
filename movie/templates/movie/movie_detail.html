@@ -2,6 +2,15 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block title %}
+<title>Rates 'R Us | {{ movie.movie_title }}</title>
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="Check reviews for {{ movie.movie_title }}.">
+{% endblock %}
+
+
 {% block content %}
 <article>
     <div class="container">
