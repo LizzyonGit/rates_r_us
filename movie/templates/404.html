@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block title %}<title>Rates 'R Us | 404 not found</title>{% endblock %}
+
+{% block description %}
+<meta name="description" content="Page not found">
+{% endblock %}
+
+{% block content %}
+<main class="container my_auto">
+    <div class="row justify-content-center">
+        <div class="col-md-10 mt-3 text-center">
+            <h1>Oops, nothing to see here.</h1>
+
+            <a href="{% url 'home' %}" class="btn error-button">Take me back Home.</a>
+        </div>
+    </div>
+</main>
+{% endblock %}
