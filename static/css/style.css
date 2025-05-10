@@ -146,7 +146,8 @@ body {
 
 /*My reviews page styles*/
 .review-list {
-    padding-inline-start: 0;
+    -webkit-padding-start: 0;
+            padding-inline-start: 0;
 }
 .my-review {
     border-top: 1px solid #000000;
@@ -248,7 +249,8 @@ footer a {
     
     .movie-poster {
        height: 624px;
-       object-fit: cover;
+       -o-object-fit: cover;
+          object-fit: cover;
        
        
     }
@@ -259,7 +261,8 @@ footer a {
     
     .movie-poster {
        max-height: 534px;
-       object-fit: cover;
+       -o-object-fit: cover;
+          object-fit: cover;
        
     }
 
@@ -269,7 +272,8 @@ footer a {
     
     .movie-poster {
        max-height: 444px;
-       object-fit: cover;
+       -o-object-fit: cover;
+          object-fit: cover;
     }
 
 }
@@ -278,7 +282,8 @@ footer a {
     
     .movie-poster {
        max-height: 324px;
-       object-fit: cover;
+       -o-object-fit: cover;
+          object-fit: cover;
        
     }
 }
@@ -287,7 +292,8 @@ footer a {
     
     .movie-poster{
        max-height: 234px;
-       object-fit: cover;
+       -o-object-fit: cover;
+          object-fit: cover;
     }
 }
 
@@ -309,8 +315,6 @@ footer a {
        padding: 0.5rem;
     }
 }
-
-
 
 
 

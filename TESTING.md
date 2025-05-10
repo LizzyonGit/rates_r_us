@@ -35,15 +35,26 @@
 
 ### HTML validator
 
-During development when I ran this [HTML validator](https://validator.w3.org/), I needed to add a hidden heading for the sections surrounding the game and credit info section index.html. Currently, there are no issues for index.html and 404.html: 
- -  [index.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Flizzyongit.github.io%2Ffruits-hold-em%2Findex.html)
- -  [404.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Flizzyongit.github.io%2Ffruits-hold-em%2F404.html)
+When I ran this [HTML validator](https://validator.w3.org/), I needed to add some hidden heading and I had some empty p tags because in the displayed reviews in move_detail.html, because users can chose to not write a text, but this was still displayed. So I added a condition in the template to not display anything if there is no review text. 
+
+For the my_reviews html, it did not work to chack the URL in the validator, but the source code gave no errors.
+
+The signup page does give errors in the validator, but they are of the actual form that is used there "form.as_p". I cannot access the form to fix the code. 
+
+Below are the direct links to the validator's result per page (for those that accepted URL input): 
+ -  [Home page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2F)
+ -  [movie_detail.html(Interstellar example)](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Finterstellar-2014-11-07%2F)
+ -  [Log in page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Faccounts%2Flogin%2F)
+ -  [Search page (no result)](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Fsearch%2F%3Fq%3Dhello)
+ -  [Search page with result](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Fsearch%2F%3Fq%3Dbullock)
+ -  [Log out page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Faccounts%2Flogout%2F)
+
 
 ### CSS validator
 
-For style.css, there are no errors in the [Jigsaw validator](https://jigsaw.w3.org/css-validator/). There are some warnings related to the imported Google Fonts and used variables, that can be ignored. There are also warnings about setting the same colours for backgrounds and borders on buttons and the middle row when there is no winning combination, which I did on purpose to override the Bootstrap button and border colours, and for the middle row, the border is the same colour but it is distinctive from the background colour, to highlight the middle row is the row the whole game is about. Because I ran my code through the [Autoprefixer](https://autoprefixer.github.io/), I also get warnings about this, which can be ignored.
+For style.css, there are no errors in the [Jigsaw validator](https://jigsaw.w3.org/css-validator/). There are some warnings related to the imported Google Fonts and used variables, that can be ignored. Because I ran my code through the [Autoprefixer](https://autoprefixer.github.io/), I also get warnings about this, which can be ignored.
 
- ![Css warnings](docs/screenshots/css-warnings.png)
+ ![Css warnings](docs/screenshots/css-validator.png)
 
 ### Python validator
 
