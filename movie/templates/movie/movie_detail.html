@@ -48,7 +48,7 @@
     <div class="row justify-content-center">
         <div class="col-10 mb-3 mt-3">
             <div>
-                <p>{{ movie.plot | safe }}</p>
+                {{ movie.plot | safe }}
             </div>
         </div>
         
@@ -61,13 +61,13 @@
         </div>{% endif %}
     </div>
      
-  
+    </div>
 </article>
 
 <div class="container">
 
   <!-- Leave review form -->
-  <section id="review-section">
+  <section id="review-section"><h2 class="visually-hidden">Review section</h2>
   <div class="row justify-content-center">
     <div class="col-md-10 mb-3 mt-2 review-col">
       
@@ -109,25 +109,22 @@
         <div id= "{{ review.id }}" class="p-2 reviews
           {% if not review.approved and review.author == user %}
           italic{% elif not review.approved %} d-none{% endif %}">
-          <p class="font-weight-bold">
-            {{ review.author }}
-            <span class="font-weight-normal">
-              {{ review.created_on }}
-            </span> wrote:
-          </p>
+          <p><strong>{{ review.author }}</strong>{{ review.created_on }} wrote:</p>
           <!--Display title if the title is not empty (otherwise it displays 'None')-->
           {% if review.title %}
           <div id="review_title{{ review.id }}">
-            <h4>{{ review.title }}</h4>
+            <h3 class="h4">{{ review.title }}</h3>
           </div>
           {% endif %}
           <div id="review_rating{{ review.id }}">
           <p>Rating: {{ review.rating }}</p>
           </div>
-
+          {% if review.text %}
           <div id="review_text{{ review.id }}">
             <p>{{ review.text | linebreaks }}</p>
           </div>
+          {% endif %}
+
           {% if not review.approved and review.author == user %}
           <div class="approval">
             <p>This review is awaiting approval</p>
