@@ -67,7 +67,7 @@
 <div class="container">
 
   <!-- Leave review form -->
-  <section>
+  <section id="review-section">
   <div class="row justify-content-center">
     <div class="col-md-10 mb-3 mt-2 review-col">
       
@@ -136,7 +136,7 @@
           <!--Display delete and edit buttons when logged in user has written the review-->
           {% if user.is_authenticated and review.author == user %}
           <button class="btn btn-delete"  review_id="{{ review.id }}">Delete</button>
-          <a class="btn btn-edit" role="button" href="#reviewForm" review_id="{{ review.id }}">Edit</a>
+          <a class="btn btn-edit" role="button" href="#review-section" review_id="{{ review.id }}">Edit</a>
           {% endif %}
         </div>
         {% endfor %}

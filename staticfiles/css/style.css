@@ -51,6 +51,10 @@ body {
     color: #FFFFFF;
 }
 
+.nav-link.active {
+    text-decoration: underline;
+}
+
 /*Search form styles*/
 .search-form button, .search-form input {
     font-family: var(--primary-font);
