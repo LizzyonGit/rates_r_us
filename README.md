@@ -107,3 +107,6 @@ I realised that with the default summernote rich text editor, the font colour wa
 
 Styling messages
 Could not remove personalised message so now it is just django messages. Wanted it to be on top of content but was messing with padding etc. 
+
+Admin
+As instructions to the superusers, I would add a text about the image to be uploaded, which should be ratio... and format webp. I would also add how many characters top pick can be.

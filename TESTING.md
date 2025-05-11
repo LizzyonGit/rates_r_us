@@ -70,7 +70,11 @@ I used [JSHint](https://jshint.com/) to validate my reviews.js file. With the se
 
 ### Lighthouse testing
 
-#### Index.html
+#### Home page
+
+I get a best practice error saying I have insecure requests not using HTTPS. This has to do with Cloudinary, and I found a solution for this on Slack [in this thread](https://code-institute-room.slack.com/archives/C026PTF46F5/p1706622757171679). Another performance issue is the format of my images, which I though would not be relevant because it is via Claudinary, but I still have to convert them to WebP. 
+
+My accessibility score is 100%.
 
 Along the way, I have used Lighthouse to check the colour contrast and it reminded me to add hidden headings for accessibility.
 
