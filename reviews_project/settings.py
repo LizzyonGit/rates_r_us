@@ -15,6 +15,7 @@ import os
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -65,6 +66,11 @@ SITE_ID = 1
 # After login or logout, redirect to home page
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Cloudinary fix for https (https://code-institute-room.slack.com/archives/C026PTF46F5/p1706623233793149?thread_ts=1706622757.171679&cid=C026PTF46F5)
+cloudinary.config (
+    secure = True,
+)
 
 #  Bootstrap5 as allowed and default template pack
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
