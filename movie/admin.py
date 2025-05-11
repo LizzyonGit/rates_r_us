@@ -2,28 +2,29 @@ from django.contrib import admin
 from .models import Movie, Review, Actor, Director, Genre
 from django_summernote.admin import SummernoteModelAdmin
 
+
 @admin.register(Movie)
 class MovieAdmin(SummernoteModelAdmin):
     """
-    Adds displayed fields in list, which fields can be searched, filter and prepopulated slug when writing post
-    filter_horizontal adds an extra filter to the cast, directed_by and genre field so 
-    it is easier to select from large lists    
+    Adds displayed fields in list, which fields can be searched, filter and
+    prepopulated slug when writing post
+    filter_horizontal adds an extra filter to the cast, directed_by and genre
+    field so it is easier to select from large lists
     Implements summernote field
 
     """
 
     list_display = ('movie_title', 'created_on', 'release_date', 'status')
-    search_fields = ['movie_title', 'cast__name']  # cast_name searches on actor names as cast is manytomany field
+    # cast_name searches on actor names as cast is manytomany field
+    search_fields = ['movie_title', 'cast__name']
     list_filter = ('status', 'top_pick')
-    prepopulated_fields = {'slug': ('movie_title','release_date')}
-    filter_horizontal = ['cast', 'directed_by', 'genre']    
+    prepopulated_fields = {'slug': ('movie_title', 'release_date')}
+    filter_horizontal = ['cast', 'directed_by', 'genre']
     summernote_fields = ('plot',)  # works when debug is true
-
 
 
 # From https://stackoverflow.com/questions/14828168/django-show-filter-horizontal-on-user-change-admin-page
 # From https://stackoverflow.com/questions/73570167/django-filter-horizontal-how-to-connect-more-fields-together
-
 # Search manytotmany: https://stackoverflow.com/questions/51931762/how-can-we-search-many-to-many-field-in-django-admin-search-field
 
 @admin.register(Review)
@@ -33,9 +34,9 @@ class ReviewAdmin(admin.ModelAdmin):
     """
     list_display = ('title', 'rating', 'movie', 'approved', 'created_on')
     # With help of django doc, you can search on the movie title in earch field
-    search_fields = ['movie__movie_title'] 
+    search_fields = ['movie__movie_title']
     list_filter = ('approved', 'rating')
-    
+
 
 # Register your models here.
 

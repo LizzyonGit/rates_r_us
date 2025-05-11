@@ -58,7 +58,7 @@ For style.css, there are no errors in the [Jigsaw validator](https://jigsaw.w3.o
 
 ### Python validator
 
-
+Firstly, I need to shorten my lines as I have ignored these problems completely. So before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/), I will fix this in VS code with help of the PROBLEMS tab.
 
 ### Javascript validator
 

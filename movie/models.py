@@ -4,15 +4,14 @@ from django_countries.fields import CountryField
 from cloudinary.models import CloudinaryField
 from django.db.models import Avg
 
-
-
-
+# Status variable
 STATUS = ((0, "Draft"), (1, "Published"))
 
 # Rating from 0 to 5
-RATING = [(i,i) for i in range(6)]
+RATING = [(i, i) for i in range(6)]
 
-# Create your models here.
+# Models
+
 
 class Movie(models.Model):
     """
@@ -27,7 +26,7 @@ class Movie(models.Model):
     genre = models.ManyToManyField(
         'Genre', related_name="genres"
     )
-    country = CountryField()  # Installed according to https://pypi.org/project/django-countries/
+    country = CountryField()  # From https://pypi.org/project/django-countries/
     release_date = models.DateField()  # Datepicker shows when debug is True
     status = models.IntegerField(choices=STATUS, default=0)
     cast = models.ManyToManyField(
@@ -43,11 +42,14 @@ class Movie(models.Model):
     
     class Meta:
         ordering = ["-created_on"]
+
     def __str__(self):
         return self.movie_title
+    
     # Two methods for displaying average rating when there are approved reviews
     def approved_reviews(self):
         return self.reviews.filter(approved=True)
+    
     def get_average_rating(self):
         average_rating = self.approved_reviews().aggregate(Avg('rating')).get('rating__avg')
         return average_rating
