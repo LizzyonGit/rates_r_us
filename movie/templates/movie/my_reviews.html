@@ -22,12 +22,15 @@
     {% for review in my_reviews %}
     
     
-    <li class="my-review py-3"><!--Iterates through all movies-->
-        {% for movie in movies%}<a href="{% url 'movie_detail' movie.slug %}#{{review.id}}" aria-label="Link to your review for {{review.movie}}">
-        <!--When movie in movie model is the same as the reviewed movie in review model, it can use the movie.slug to link to the correct movie, and review.id to link to the review-->
+    <li class="my-review py-3">
+        <!--Iterates through all movies-->
+        {% for movie in movies %}
         {% if movie == review.movie %}
+        <a href="{% url 'movie_detail' movie.slug %}#{{review.id}}" aria-label="Link to your review of {{movie.movie_title}}">
+        <!--When movie in movie model is the same as the reviewed movie in review model, it can use the movie.slug to link to the correct movie, and review.id to link to the review-->
         <h2>{{review.movie}}</h2>
-        {% endif %}</a>
+        </a>
+        {% endif %}
         {% endfor %}
         <p>Rating: {{review.rating}}</p>
         {% if review.title %}
