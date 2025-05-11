@@ -72,7 +72,10 @@ I used [JSHint](https://jshint.com/) to validate my reviews.js file. With the se
 
 #### Home page
 
-I get a best practice error saying I have insecure requests not using HTTPS. This has to do with Cloudinary, and I found a solution for this on Slack [in this thread](https://code-institute-room.slack.com/archives/C026PTF46F5/p1706622757171679). Another performance issue is the format of my images, which I though would not be relevant because it is via Claudinary, but I still have to convert them to WebP. 
+I get a best practice error saying I have insecure requests not using HTTPS. This has to do with Cloudinary, and I found a solution for this on Slack [in this thread](https://code-institute-room.slack.com/archives/C026PTF46F5/p1706622757171679). Another performance issue is the format of my images, which I though would not be relevant because it is via Cloudinary, but I still have to convert them to WebP. So I converted th images via [tinypng](https://tinypng.com/) and uploaded them again via admin.
+
+After I addressed these, I still had some issues related to Cloudinary and cookies.
+Also, my image size is still much larger than displayed, so I need to fix this.
 
 My accessibility score is 100% for Home and movie_detail, but My reviews gives an issue about my links not having discernible text. Looking better at the page with devtools, I saw the links were placed weirdly and there were a lot of empty links. The HTML validator had not seen this. I fixed the link tag to be inside the innerloop of {% if movie == review.movie %}, and added an aria-label as well. Now, the links look like they should. Rerunning Lighthouse, I get 100% for accessibility.
 
