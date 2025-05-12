@@ -81,7 +81,7 @@ Also, some of my images still were much larger than displayed, so I needed to fi
 
 For mobile reports, my best practices is a bit lower (96 %) due to the image size being a bit different, as the images can have slightly different sizes as they are all stacked veritcally, so you do not notice different heights. The report it expects the images to be 582 x 873, instead of the 416 x 624 I have uploaded to Cloudinary. I decided to keep this as it is. 
 
-
+For the mobile version, I get a low performance score due to the large movie poster. I decided to add css for screens up to 575 px and make the image smaller and center the content of the card.
 
 #### Detail pages
 
