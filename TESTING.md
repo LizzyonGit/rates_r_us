@@ -142,7 +142,7 @@ My 404 page has a best practice issue about a 404 error in the console, otherwis
 
 
 ### Favicon testing
-I ran https://lizzyongit.github.io/fruits-hold-em/ through Realfavicongenerator's [favicon checker](https://realfavicongenerator.net/favicon-checker/lizzyongit.github.io%2Ffruits-hold-em%2F), and I only got a warning about a missing title for web apps, which actually would be taken from the website's title if this would be applicable, which it is not because the website is not an app. There is a missing web app manifest which is also not applicable.
+I ran https://rates-r-us-f1ee65907d50.herokuapp.com/ through Realfavicongenerator's [favicon checker](https://realfavicongenerator.net/favicon-checker/rates-r-us-f1ee65907d50.herokuapp.com%2F), and I got a warning saying my svg icon is not squared, so I created a new one. Now I just have an issue saying "No touch web app title declared", but the web site's title should be used in this case.
 
 ## Manual testing
 
