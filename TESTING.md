@@ -74,21 +74,19 @@ I used [JSHint](https://jshint.com/) to validate my reviews.js file. With the se
 
 I get a best practice error saying I have insecure requests not using HTTPS. This has to do with Cloudinary, and I found a solution for this on Slack [in this thread](https://code-institute-room.slack.com/archives/C026PTF46F5/p1706622757171679). Another performance issue is the format of my images, which I though would not be relevant because it is via Cloudinary, but I still have to convert them to WebP. So I converted th images via [tinypng](https://tinypng.com/) and uploaded them again via admin.
 
-After I addressed these, I still had some issues related to Cloudinary and cookies. But I decided to leave these issues be, because I do not want to change Cloudinary.
+After I addressed these, I still had some issues related to Cloudinary and third-party cookies in Chrome. But I decided to leave these issues be, because I do not want to change Cloudinary. I found that Cloudinary was supposed to come with a solution (https://community.cloudinary.com/discussion/comment/1182#Comment_1182?utm_source=community-search&utm_medium=organic-search&utm_term=chrome+cookies), but I have not found any more information. And the latest information is that Chrome might not disable third-party cookies at all (https://www.didomi.io/blog/google-chrome-third-party-cookies-april-2025). I also found that in incognito mode, this issue is gone and Best practices scores 100 %
 
-Also, my image size is still much larger than displayed, so I need to fix this.
+Also, some of my images still were much larger than displayed, so I needed to fix this. I decided to cut all the movie poster images to around 416 x 624. Not all images have the same ratio, but I made sure the size is never smaller than this, as it is the largest displayed size on the largest screen size. I would urge the superuser to do this as well when they post a new movie. Now the issues I get for performance relate to my usage of Bootstrap, Heroku, Google Fonts, Cloudinary, but the score is 97 for the home page and similar scores for the next pages. For some movies with longer titles or where the image is adjusted by my css media queries I get a lower score because of larger layout shifts, but still acceptible scores of around 90 %. 
 
-My accessibility score is 100% for Home and movie_detail, but My reviews gives an issue about my links not having discernible text. Looking better at the page with devtools, I saw the links were placed weirdly and there were a lot of empty links. The HTML validator had not seen this. I fixed the link tag to be inside the innerloop of {% if movie == review.movie %}, and added an aria-label as well. Now, the links look like they should. Rerunning Lighthouse, I get 100% for accessibility.
 
-Along the way, I have used Lighthouse to check the colour contrast and it reminded me to add hidden headings for accessibility.
+For mobile reports, my best practices is a bit lower (96 %) due to the image size being a bit different, as the images can have slightly different sizes as they are all stacked veritcally, so you do not notice different heights. The report it expects the images to be 582 x 873, instead of the 416 x 624 I have uploaded to Cloudinary. I decided to keep this as it is. 
 
-Running the home page in Lighthouse, for desktops, results in 100% for accessibility and best practices, and 97% for performance:
 
-The main suggestions for the performance are related to Bootstrap and Google Fonts, which I can not avoid if I want to use them. 
 
-It also suggests a more efficient cache policy, which is related to static assets not being cached, with my background image as the most important one. According to the [Lighthouse documentation](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl), to fix this I would need to change a configuration in the server, which is beyond the scope of this project.
+#### Detail pages
 
-Running Lighthouse in incognito mode gives 100% on performance.
+For the detail page, I get from 90 % to 99 % performance, as it only has one image. The image size on the page is smaller than the size in cloudinary because it is smaller than the largest size on the home page, so I do get an issue for that, but I will not use separate images for the home and detail page. Otherwise, I get the same kind of issues as for the home page. The scores differ a little depending on the movie, because of the different content. Movies with longer titles score lower as they have larger layout shifts. Running lighthouse at different times does affect the scrore as well, I have gotten 100 % as well as 87 % at different times.
+
 
 ![Lighthouse result desktop](docs/screenshots/lighthouse-index-desktop-incognito.png)
 
@@ -96,7 +94,12 @@ For mobiles, the performance is 88% with a warning that the h1 element, the titl
 
 ![Lighthouse result mobile](docs/screenshots/lighthouse-index-mobile-incognito.png)
 
-#### 404.html
+#### My reviews page
+
+ My reviews gives an issue for accessibility about my links not having discernible text. Looking better at the page with devtools, I saw the links were placed weirdly and there were a lot of empty links. The HTML validator had not seen this. I fixed the link tag to be inside the innerloop of {% if movie == review.movie %}, and added an aria-label as well. Now, the links look like they should. Rerunning Lighthouse, I get 100% for accessibility.
+
+
+#### Log in, log out, register, 404
 
 The first Lighthouse report gives 99% on performance and 100% on accessibility and best practices.
 
