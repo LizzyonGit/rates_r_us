@@ -12,12 +12,13 @@
 
 
 {% block content %}
+<h1 class="visually-hidden">{{ movie.movie_title }} information and reviews</h1>
 <article>
     <div class="container">
         <div class="row justify-content-center mt-3">
             <div class="col-md-5 text-center text-md-start">
                
-                <h1 class="h2">{{ movie.movie_title }}</h1>
+                <h2>{{ movie.movie_title }}</h2>
                 <!--Displays rating if there are approved reviews, rounds it to two decimals-->
                 <!--Same code as in index.html and search_results.html-->
                 {% if movie.approved_reviews %}

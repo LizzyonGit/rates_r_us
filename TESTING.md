@@ -91,7 +91,7 @@ I get a warning on best practices saying I use a deprecated API "H1UserAgentFont
 ":where(h1) {
   margin-block: 0.67em;
   font-size: 2em;
-}" because someone says this should fix it, but this still did not work. I removed the code again. I decide to leave it now.
+}" because someone says this should fix it, but this still did not work. I removed the code again. I decide to leave it now. I tested to remove <article> and this actually gave me 100 %. But <article> is there for semantic information, so I want to use it. So instead I used a hidden h1 above article and changed my original h1 to h2 inside the article element. This finally worked and I have 100% on best practices.
 
 For accessibility, I got a lower score because my Log in and register links only rely on colour, so I added underline to this. Now I get 100%.
 
