@@ -317,6 +317,21 @@ footer a {
 }
 
 
+/*Reduce movie poster size for smaller screens and center it, center text underneath*/
+
+@media screen and (max-width: 575px) {
+    
+    .movie-poster {
+       width: 50%;
+       display: block;
+       margin: auto;
+    }
+    .card-body {
+        text-align: center;
+
+    }
+}
+
 
 
 

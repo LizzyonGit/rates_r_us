@@ -31,7 +31,7 @@
                 <p>Cast: {{ movie.cast.all|join:", " }}</p>
                 <p>Directed by: {{ movie.directed_by.all|join:", " }}</p>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 d-flex justify-content-center justify-content-lg-end">
               {% if "placeholder" in movie.featured_image.url %}
               <img class="img-fluid poster-detail" src="{% static 'images/nobody.jpg' %}"
                 alt="placeholder image">
@@ -69,7 +69,7 @@
   <!-- Leave review form -->
   <section id="review-section"><h2 class="visually-hidden">Review section</h2>
   <div class="row justify-content-center">
-    <div class="col-md-10 mb-3 mt-2 review-col">
+    <div class="col-10 mb-3 mt-2 review-col">
       
       
         <!-- Displaying count of reviews -->
@@ -99,7 +99,7 @@
     <div class="row justify-content-center">
 
     <!-- Displaying reviews -->
-    <div class="col-md-10 mb-3 mt-3">
+    <div class="col-10 mb-3 mt-3">
       
       <div>
         <h2>Reviews</h2>
