@@ -58,7 +58,7 @@ For style.css, there are no errors in the [Jigsaw validator](https://jigsaw.w3.o
 
 ### Python validator
 
-Firstly, I need to shorten my lines and fix the incorrect white spaces, as I have ignored these problems completely. So before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/), I will fix this in VS code with help of the PROBLEMS tab. I leave only the url links in my comments too long, as I found this is ok. The Python linter only reports these long url links. The reason I don't want to shorten them, is because the links are descriptive so it's more read-friendly in my opinion to keep the original urls (I checked [stackoverflow](https://stackoverflow.com/questions/10739843/how-should-i-format-a-long-url-in-a-python-comment-and-still-be-pep8-compliant) for this.
+Firstly, I need to shorten my lines and fix the incorrect white spaces, as I have ignored these problems completely. So before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/), I will fix this in VS code with help of the PROBLEMS tab. I leave only the url links in my comments too long, as I found this is ok. The Python linter only reports these long url links. The reason I don't want to shorten them, is because the links are descriptive so it's more read-friendly in my opinion to keep the original urls (I checked [stackoverflow](https://stackoverflow.com/questions/10739843/how-should-i-format-a-long-url-in-a-python-comment-and-still-be-pep8-compliant) for this).
 
 ![Python warnings]()IMAGE NEEDED
 
@@ -78,10 +78,16 @@ After I addressed these, I still had some issues related to Cloudinary and third
 
 Also, some of my images still were much larger than displayed, so I needed to fix this. I decided to cut all the movie poster images to around 416 x 624. Not all images have the same ratio, but I made sure the size is never smaller than this, as it is the largest displayed size on the largest screen size. I would urge the superuser to do this as well when they post a new movie. Now the issues I get for performance relate to my usage of Bootstrap, Heroku, Google Fonts, Cloudinary, but the score is 97 for the home page and similar scores for the next pages. For some movies with longer titles or where the image is adjusted by my css media queries I get a lower score because of larger layout shifts, but still acceptible scores of around 90 %. 
 
-
 For mobile reports, my best practices is a bit lower (96 %) due to the image size being a bit different, as the images can have slightly different sizes as they are all stacked veritcally, so you do not notice different heights. The report it expects the images to be 582 x 873, instead of the 416 x 624 I have uploaded to Cloudinary. I decided to keep this as it is. 
 
 For the mobile version, I get a low performance score due to the large movie posters. I decided to add css for screens up to 575 px and make the image smaller and center the content of the card for style purposes. I still get issues, and now it tells me to use smaller original images as well (see detail page below). But I managed to get 91 % for the first and second page.
+
+![Lighthouse result desktop first home page](docs/screenshots/lighthouse-home-1.png)
+![Lighthouse result desktop second home page](docs/screenshots/lighthouse-home-2.png)
+
+![Lighthouse result mobile first home page](docs/screenshots/lighthouse-home-mobile-1.png)
+![Lighthouse result mobile second home page](docs/screenshots/lighthouse-home-mobile-3.png)
+
 
 #### Detail pages
 
@@ -91,20 +97,30 @@ I get a warning on best practices saying I use a deprecated API "H1UserAgentFont
 ":where(h1) {
   margin-block: 0.67em;
   font-size: 2em;
-}" because someone says this should fix it, but this still did not work. I removed the code again. I decide to leave it now. I tested to remove <article> and this actually gave me 100 %. But <article> is there for semantic information, so I want to use it. So instead I used a hidden h1 above article and changed my original h1 to h2 inside the article element. This finally worked and I have 100% on best practices.
+}" because someone says this should fix it, but this still did not work. I removed the code again. I decide to leave it now. I tested to remove <article> and this actually gave me 100 %. But <article> is there for semantic information, so I want to use it. So instead I used a hidden h1 above article and changed my original h1 to h2 inside the article element. This finally worked and I have 100% on best practices. For mobile I get a bit lower because of the image issue, being too small in cloudinary. But still very good scores.
 
-For accessibility, I got a lower score because my Log in and register links only rely on colour, so I added underline to this. Now I get 100%.
+For accessibility, I got a lower score because my Log in and register links only rely on colour, so I added underline to this. Now I get 100% on desktop. As I mentioned, the scores differ for each movie, but they also differ for the same movie if you run lighthouse several times, so I think the largest issues have been addressed.
 
-![Lighthouse result desktop](docs/screenshots/lighthouse-index-desktop-incognito.png)
+![Lighthouse result desktop detail page](docs/screenshots/lighthouse-desktop-detail.png)
 
-For mobiles, the performance is 88% with a warning that the h1 element, the title, is the element that takes the longest to load. I really like the font for the title and I think the size is perfect, so I would not want to change it. When I run Lighthouse again for mobiles in incognito mode, the performance is 98% with the same issues as for desktops. So then there is no mention of the title taking too long to load. 
+![Lighthouse result mobile detail page](docs/screenshots/lighthouse-detail-mobile-1.png)
 
-![Lighthouse result mobile](docs/screenshots/lighthouse-index-mobile-incognito.png)
+#### Search page
+For the search page, I get an issue for accessibility about my headings not being in a correct descending order. This is because I reuse code from the home page, where there are h2 headings, but on the search page there is not. I added a visually hidden h2 to fix that. For search results without any result, this is not an issue.
+
+![Lighthouse result desktop search page no result mobile](docs/screenshots/lighthouse-desktop-detail.png)
+
+![Lighthouse result mobile detail page](docs/screenshots/lighthouse-detail-mobile-1.png)
 
 #### My reviews page
 
- My reviews gives an issue for accessibility about my links not having discernible text. Looking better at the page with devtools, I saw the links were placed weirdly and there were a lot of empty links. The HTML validator had not seen this. I fixed the link tag to be inside the innerloop of {% if movie == review.movie %}, and added an aria-label as well. Now, the links look like they should. Rerunning Lighthouse, I get 100% for accessibility.
+My reviews gave an issue for accessibility about my links not having discernible text. Looking better at the page with devtools, I saw the links were placed weirdly and there were a lot of empty links. The HTML validator had not seen this. I fixed the link tag to be inside the innerloop of {% if movie == review.movie %}, and added an aria-label as well. Now, the links look like they should. Rerunning Lighthouse, I get 100% for accessibility.
 
+I get 92 (mobile) and 93 (desktop) for performance and I think this could be improved my implementing pagination. But that is out of scope for the MVP.
+
+![Lighthouse result desktop My reviews](docs/screenshots/lighthouse-myreviews-desktop.png)
+
+![Lighthouse result mobile My reviews](docs/screenshots/lighthouse-myreviews-mobile.png)
 
 #### Log in, log out, register, 404
 
