@@ -173,6 +173,7 @@ body {
     border: 1px solid var(--highlight-light-color);
     background-color: var(--highlight-color);
 }
+
 /*Styles modal*/
 .modal-title {
     color: var(--highlight-light-color);
@@ -191,6 +192,13 @@ body {
 
 .auth-link:hover, .auth-link:active {
     background-color: var(--highlight-color);                               
+}
+
+/*Register form style, white text and same font as rest for password validation*/
+#signup_form ul li, form ul li
+ {
+    color: #FFFFFF;
+    font-family: var(--primary-font);
 }
 
 /*Button styles*/

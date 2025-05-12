@@ -106,11 +106,15 @@ For accessibility, I got a lower score because my Log in and register links only
 ![Lighthouse result mobile detail page](docs/screenshots/lighthouse-detail-mobile-1.png)
 
 #### Search page
-For the search page, I get an issue for accessibility about my headings not being in a correct descending order. This is because I reuse code from the home page, where there are h2 headings, but on the search page there is not. I added a visually hidden h2 to fix that. For search results without any result, this is not an issue.
+For the search page, I get an issue for accessibility about my headings not being in a correct descending order. This is because I reuse code from the home page, where there are h2 headings, but on the search page there is not. I added a visually hidden h2 to fix that, now it is 100 %. For search results without any result, this was not an issue in the first place.
 
-![Lighthouse result desktop search page no result mobile](docs/screenshots/lighthouse-desktop-detail.png)
+The performance score varies but is acceptible, and I do not see how to improve this at the moment.
 
-![Lighthouse result mobile detail page](docs/screenshots/lighthouse-detail-mobile-1.png)
+![Lighthouse result desktop search page no result mobile/desktop](docs/screenshots/lighthouse-search-noresult.png)
+
+![Lighthouse result desktop search page with result desktop](docs/screenshots/lighthouse-search-result-desktop.png)
+
+![Lighthouse result desktop search page with result mobile](docs/screenshots/lighthouse-search-result-mobile.png)
 
 #### My reviews page
 
@@ -124,15 +128,16 @@ I get 92 (mobile) and 93 (desktop) for performance and I think this could be imp
 
 #### Log in, log out, register, 404
 
-The first Lighthouse report gives 99% on performance and 100% on accessibility and best practices.
+For the register page, I get an accessibility issue because of the default form text color. The instructions for the password are black on a red background, instead of white like the rest of my text. I fixed it in css, and also made sure the font is the primary font used for p elements. I checked the Log in page and saw that warning texts can be black as well, so I added that in the same css style. That form does not have an id, so I had to simple set all ul and li descendants of form elements the white color and primary font family, but in this case this is ok, as I don't have ul or li in my other form to leave a review.  
 
-Any issues it mentions are the same as for index.html. In incognito, it gives 100% for performance.
+![Lighthouse result mobile log in](docs/screenshots/lighthouse-myreviews-desktop.png)
 
-![Lighthouse result desktop](docs/screenshots/lighthouse-404-desktop-incognito.png)
+![Lighthouse result mobile/desktop log out](docs/screenshots/lighthouse-logout-mobile.png)
 
-For mobile, it gives 98% for performance, and apart from the same issues as before caused by Bootstrap, Google Fonts and cache policy, it finds an issue with the used font for the h1 element because of a large layout shift. But the score of 98% is good so I am keeping this as it is. However, running it in incognito mode, first I had 88%, but when I tried it again, it got to 98% as well, with those same issues as before.
+![Lighthouse result mobile register](docs/screenshots/lighthouse-myreviews-mobile.png)
 
-![Lighthouse result mobile](docs/screenshots/lighthouse-404-mobile-incognito.png)
+![Lighthouse result mobile 404](docs/screenshots/lighthouse-myreviews-mobile.png)
+
 
 ### Favicon testing
 I ran https://lizzyongit.github.io/fruits-hold-em/ through Realfavicongenerator's [favicon checker](https://realfavicongenerator.net/favicon-checker/lizzyongit.github.io%2Ffruits-hold-em%2F), and I only got a warning about a missing title for web apps, which actually would be taken from the website's title if this would be applicable, which it is not because the website is not an app. There is a missing web app manifest which is also not applicable.
