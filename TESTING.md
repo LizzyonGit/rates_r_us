@@ -81,12 +81,19 @@ Also, some of my images still were much larger than displayed, so I needed to fi
 
 For mobile reports, my best practices is a bit lower (96 %) due to the image size being a bit different, as the images can have slightly different sizes as they are all stacked veritcally, so you do not notice different heights. The report it expects the images to be 582 x 873, instead of the 416 x 624 I have uploaded to Cloudinary. I decided to keep this as it is. 
 
-For the mobile version, I get a low performance score due to the large movie poster. I decided to add css for screens up to 575 px and make the image smaller and center the content of the card.
+For the mobile version, I get a low performance score due to the large movie posters. I decided to add css for screens up to 575 px and make the image smaller and center the content of the card for style purposes. I still get issues, and now it tells me to use smaller original images as well (see detail page below). But I managed to get 91 % for the first and second page.
 
 #### Detail pages
 
 For the detail page, I get from 90 % to 99 % performance, as it only has one image. The image size on the page is smaller than the size in cloudinary because it is smaller than the largest size on the home page, so I do get an issue for that, but I will not use separate images for the home and detail page. Otherwise, I get the same kind of issues as for the home page. The scores differ a little depending on the movie, because of the different content. Movies with longer titles score lower as they have larger layout shifts. Running lighthouse at different times does affect the scrore as well, I have gotten 100 % as well as 87 % at different times.
 
+I get a warning on best practices saying I use a deprecated API "H1UserAgentFontSizeInSection". I googled this error and found [documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements#specifying_a_uniform_font_size_for_h1) implying it has to do with h1 inside an article element and that the size should be specified. I tried this by adding class="h2" to my h1. But like someone mentions [here](https://github.com/GoogleChrome/lighthouse/issues/16404), this did not fix it, so then I added a piece of code 
+":where(h1) {
+  margin-block: 0.67em;
+  font-size: 2em;
+}" because someone says this should fix it, but this still did not work. I removed the code again. I decide to leave it now.
+
+For accessibility, I got a lower score because my Log in and register links only rely on colour, so I added underline to this. Now I get 100%.
 
 ![Lighthouse result desktop](docs/screenshots/lighthouse-index-desktop-incognito.png)
 
