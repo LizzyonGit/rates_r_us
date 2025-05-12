@@ -37,7 +37,7 @@
 
 When I ran this [HTML validator](https://validator.w3.org/), I needed to add some hidden heading and I had some empty p tags because in the displayed reviews in move_detail.html, because users can chose to not write a text, but this was still displayed. So I added a condition in the template to not display anything if there is no review text. 
 
-For the my_reviews html, it did not work to chack the URL in the validator, but the source code gave no errors.
+For the my_reviews html, it did not work to check the URL in the validator, but the source code gave no errors.
 
 The signup page does give errors in the validator, but they are of the actual form that is used there "form.as_p". I cannot access the form to fix the code. 
 
@@ -45,16 +45,17 @@ Below are the direct links to the validator's result per page (for those that ac
  -  [Home page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2F)
  -  [movie_detail.html(Interstellar example)](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Finterstellar-2014-11-07%2F)
  -  [Log in page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Faccounts%2Flogin%2F)
- -  [Search page (no result)](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Fsearch%2F%3Fq%3Dhello)
- -  [Search page with result](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Fsearch%2F%3Fq%3Dbullock)
  -  [Log out page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Frates-r-us-f1ee65907d50.herokuapp.com%2Faccounts%2Flogout%2F)
 
+The search pages can be rendered with URL but the links to the validator do not work at a later time. I run the following urls and there were no errors: https://rates-r-us-f1ee65907d50.herokuapp.com/search/?q=hello (no search result), https://rates-r-us-f1ee65907d50.herokuapp.com/search/?q=bullock (1 result).
 
 ### CSS validator
 
 For style.css, there are no errors in the [Jigsaw validator](https://jigsaw.w3.org/css-validator/). There are some warnings related to the imported Google Fonts and used variables, that can be ignored. Because I ran my code through the [Autoprefixer](https://autoprefixer.github.io/), I also get warnings about this, which can be ignored.
 
- ![Css warnings](docs/screenshots/css-validator.png)
+I have re-checked these results along the way in the testing fase, as I have changed my css continuously. Below is the latest result.
+
+![Css warnings](docs/screenshots/css-validator.png)
 
 ### Python validator
 
