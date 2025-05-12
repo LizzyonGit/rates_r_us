@@ -18,7 +18,7 @@ h3, h4, h5, h3.h4 {
     color: #FFFFFF;
 }
 
-h1, h2 {
+h1, h2, h1.h2 {
     font-family: var(--secondary-font);
     color: var(--highlight-light-color)
 }
@@ -186,7 +186,7 @@ body {
 /*Log in and register page styles*/
 .auth-link {
     color: var(--highlight-light-color);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .auth-link:hover, .auth-link:active {
@@ -304,8 +304,9 @@ footer a {
     .pop-up-message{
         padding: 1rem 0 1rem;
     }
-
 }
+
+
 
 /*Reduce padding movie_list to make place for longer words*/
 
@@ -320,7 +321,7 @@ footer a {
 /*Reduce movie poster size for smaller screens and center it, center text underneath*/
 
 @media screen and (max-width: 575px) {
-    
+    /*Used https://www.w3schools.com/css/css3_image_center.asp for this code*/
     .movie-poster {
        width: 50%;
        display: block;

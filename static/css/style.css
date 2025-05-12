@@ -18,7 +18,7 @@ h3, h4, h5, h3.h4 {
     color: #FFFFFF;
 }
 
-h1, h2 {
+h1, h2, h1.h2 {
     font-family: var(--secondary-font);
     color: var(--highlight-light-color)
 }
