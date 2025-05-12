@@ -128,15 +128,17 @@ I get 92 (mobile) and 93 (desktop) for performance and I think this could be imp
 
 #### Log in, log out, register, 404
 
-For the register page, I get an accessibility issue because of the default form text color. The instructions for the password are black on a red background, instead of white like the rest of my text. I fixed it in css, and also made sure the font is the primary font used for p elements. I checked the Log in page and saw that warning texts can be black as well, so I added that in the same css style. That form does not have an id, so I had to simple set all ul and li descendants of form elements the white color and primary font family, but in this case this is ok, as I don't have ul or li in my other form to leave a review.  
+For the register page, I get an accessibility issue because of the default form text color. The instructions for the password are black on a red background, instead of white like the rest of my text. I fixed it in css, and also made sure the font is the primary font used for p elements. I checked the Log in page and saw that warning texts are black as well, i.e. when you enter the wrong password, so I added that in the same css style. That form does not have an id, so I had to simply set all ul and li descendants of form elements the white color and primary font family, but in this case this is ok, as I don't have ul or li in my other form to leave a review. Below are only the mobile screenshots for testing, but the desktop tests were similar.
 
-![Lighthouse result mobile log in](docs/screenshots/lighthouse-myreviews-desktop.png)
+My 404 page has a best practice issue about a 404 error in the console, otherwise ok.
 
-![Lighthouse result mobile/desktop log out](docs/screenshots/lighthouse-logout-mobile.png)
+![Lighthouse result mobile log in](docs/screenshots/lighthouse-login-mobile.png)
 
-![Lighthouse result mobile register](docs/screenshots/lighthouse-myreviews-mobile.png)
+![Lighthouse result mobile log out](docs/screenshots/lighthouse-logout-mobile.png)
 
-![Lighthouse result mobile 404](docs/screenshots/lighthouse-myreviews-mobile.png)
+![Lighthouse result mobile register](docs/screenshots/lighthouse-register-mobile.png)
+
+![Lighthouse result mobile 404](docs/screenshots/lighthouse-404.png)
 
 
 ### Favicon testing
