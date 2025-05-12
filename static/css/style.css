@@ -12,6 +12,12 @@
     
 }
 
+/*Because of lighthouse error (https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements#specifying_a_uniform_font_size_for_h1)*/
+:where(h1) {
+  margin-block: 0.67em;
+  font-size: 2em;
+}
+
 /*Global styles*/
 h3, h4, h5, h3.h4 {
     font-family: var(--secondary-font);
