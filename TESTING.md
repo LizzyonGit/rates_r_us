@@ -151,11 +151,11 @@ I ran https://rates-r-us-f1ee65907d50.herokuapp.com/ through Realfavicongenerato
 
 |   User story                                                            | How it is achieved    |
 |  -----------                                                             | -----------           |
-|**As a gamer, I want to:**|
-|easily navigate on the game page on any device, so that I get a user-friendly experience,|Responsive layout, favicon, possible to play with keys as well as mouse, only a few buttons that you need to click|
-|find information on how the game works, so that I can play the game,|**How to play** button which you can click to trigger modal with information on how the game works.|
-|be able to play the game,|**GO** button that you use both to start the game and spin the fruits, the game is playable with keys as well as with a mouse and not colour-dependent as held **HOLD** buttons change text as well as colour.|
-|have the possibilty to hold certain fruits, so that I can increase the chance of winning,|**HOLD** button under each column which you can click to hold a fruit.|
+|**As a site admin, I can:**|
+|create, read, update and delete movie posts so that I can manage my website,|Admin platform enables adding movies with relevant fields, updating them, and deleting them or setting them on draft so they are not visible on the website.|
+|create a draft so that I can control when and if posts will be published on the website,|**Status** field in admin can be set on **Draft** and the movie will not be visible on the website.|
+|pick out several movies to be highlighted on the website so that I can make my website more personal,|**Top pick** check box in admin and code functionlaity that 3 top picks will display on the first homepage on top, in admin the top picks can be filtered so the user can see which movies are selected for it.|
+|write a motivation for my chosen top movies in admin so that I can make the website more personal,|**Pick motivation** field, the text will be displayed in the **Top pic** section on the home page, as well as in the movie detail page under **Moby's review** under the movie description. Even if a movie is not selected as a top pick, the motivation text will display on the movie detail page, as long as the site admin does not remove it.|
 |keep track of how many spins I have left, so that I can adapt my tactic,|**Spins left** in the credit info section, which counts down from 3 to 0.|
 |keep track of my credit, so that I can follow my progress,|**Credit** in the credit info section, which increases with 10 for each win, and decreases with 5 at the start of each new round|
 |keep track of how many rounds I have played, so that I can follow my progress or decide if I should stop or continue,|**Rounds played** in the credit info section, which increases with 1 at the start of each new round, and the **Game over** modal which pops up after the last round you played if you have no credit left, with the final number of rounds you played.|
