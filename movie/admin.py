@@ -38,7 +38,7 @@ class ReviewAdmin(admin.ModelAdmin):
     list_filter = ('approved', 'rating')
 
 
-# Register your models here.
+# Register the models
 
 admin.site.register(Actor)
 admin.site.register(Director)
