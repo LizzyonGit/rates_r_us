@@ -191,8 +191,71 @@ In admin when the review title is empty, you can not click it to approve. So whe
 
 Because of *null=True* in the **Review** model title, *None* got displayed as a title in the frontend when a user added a review with no title. So in the template, I had to add another if statement to only display the title if it is not empty.
 
+Along the way, I did get an issue where after adding only a rating, the average would be updated but the number of ratings in brackets would not be updated. This would be corrected after refreshing the page. This was eventually fixed and I am not sure at what point, probably after approving ratings directly in the view.
 
-#### Error in console
+##### Edit reviews
+
+I found that all 3 of my review form fields had the same id, and this hindered the edit functionality because the user should be able to update all three fields, so I should be able to access the fields separately. Also, it is not good HTML to have similar ids of course. So I needed to fix this. I thought it was because of crispy, but it turned out it was simply in the template.
+
+Editing the rating field was harder, because after clicking **Edit**, the original rating did not render in the form to update the review. I used print statements to see what values my variables actually got. I needed to access the rating value in a different way than usual, because it said *Rating {{review.rating}}* in the template, and in Devtools it said *Rating: 4* in plain text, so the question was how to access the 4? In this construction, the rating number is always the last character of the string, so I took help from https://javascript.plainenglish.io/javascript-get-last-character-of-string-4a7ac4d52bea, and fetched the number from the string that way. Then, I found *selectedIndex* on stackoverflow and set the *selectedIndex* of the rating field at the rating number plus 1, so I would get the correct value on the field, since index[1] corresponds with a rating of 0, and so forth. 
+
+Sometimes editing did not work, the **Submit** button did not change to **Update** on reviews with only a rating. This was because of the javascript code, since I am collecting content (review title and text) that is not there. I also got an error like this in the console, that it "cannot read properties of null". So I added javascript if statements to evaluate these fields only if they are not empty in the current review. This worked. I was surprised it worked, I thought maybe then you can not add a title and text to a current review that had none, but it still worked. I guess the rest is handled by the view and works as normal as though you would submit a new review.
+
+Another issue, when you wanted to edit a review with a title and text, and would remove the title and text so there is only a rating left, and you updated it, it needed to be approved again. This should not happen as reviews with only a rating do not need approval. I needed to adjust the *if review_form.is_valid() and review.author == request.user:* in the edit_review view corresponding to the code in the movie_detail view. So I added an if else statement to set approved to True if there is no title and text in the new review, and otherwise approved is set to False. I also adapted the message to the two different situations for clearer feedback to the user.
+
+##### Display average rating
+
+Getting the average movie rating on my home page for each listed movie was not straightforward. I had it displayed in the movie_detail page and view, so I looked for a way of getting that exact value for the index.html template, without adding it to my view for the index.html. I found articles about context processors, and some other concepts, but they seemed too complicated for such an easy thing. Then I read through https://forum.djangoproject.com/t/aggregate-an-average-from-two-fields-from-separate-models/19705/2, and I realised I was wrong all along, I should have added my calculation of averages in the **Movie** model as a method, so then I could use that in all my templates based on the **Movie** model. So I did that, and it worked. 
+
+I also read that *.count* can be used directly in the template instead of adding it as a variable in the view, so I did that, and on some forum (https://www.reddit.com/r/djangolearning/comments/jtvbxn/rounding_an_aggregation_to_2_decimal_places/) someone said that rounding to two decimals is best done in the template to avoid calculation errors, so I did that with *|floatformat:2*. The good thing is that now I could also easily add it to my search results list and page.
+
+##### One review per movie per user
+
+I found a useful post (https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos) about implementing this limitation and followed those steps to implement this in the view, and in the template. Then the only issue was that after you leave a review and get the confirmation message, the form is still there since the page is not updated. So I just added the same return statements as when you edit or delete a review, and this worked. Now, after giving a review, you see the confirmation message and the form is gone.
+
+But this raised a bug, when you edit a review, the form does not show because it is set to not be visible when there is already a review by the user. I found a suggestion here: https://stackoverflow.com/questions/792410/django-how-can-i-identify-the-calling-view-from-a-template, by Carl Meyer, to create different template blocks. However, I went with the easier solution of instead of hiding the form and raising a *PermissionDenied* exception, I added an error message when you try to submit a new review in the movie_detail view, and this worked. So the user should read that they can only give 1 review per movie, as is written in the form header.
+
+For a user who is not logged in, I got an error trying to view the movie_detail pages: *Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x00000189D24B7470>>.*. I realised my page was checking the id of a user, and this caused the error for not logged in users. The page was checking this because I wanted to hide the form for when a user has left a review already. So I just needed to move my "user_reviews = movie.reviews.filter(author=request.user)" inside the "if request.method == "POST":" condition (as not logged in users cannot post anything because they don't see the form), and remove it from the context, and the issue was fixed.
+
+##### My reviews page
+
+Creating a **My reviews** page was not hard, and linking to the correct movie detail page from each review was in the end doable in the template, as I was struggling to fix the slug in the view, but ended up with a simple for loop and if statement in the template. I wanted to link to the specific review on the movie detail page, and this was easy with the help of this forum: https://www.reddit.com/r/django/comments/fjbx0c/linking_to_an_anchor_on_another_page_in_django/.
+
+#### Populate the database via TMDB API
+
+I wanted to add movie data from the TMDB API into my website and followed a tutorial doing something like this, but it ignored admin and the fact that I want to add the possibility for the superuser to change info and add the top pick text. I looked a lot for this issue but all solutions seemed to use the views.py file, and I felt I did not need to do it there, because my views.py works fine collecting data from the models. This post seemed promising and easy, so I decided to test it: https://stackoverflow.com/questions/32139777/populate-django-database-with-data-from-api-get-request by Shobhit Srivastava. So I decided to change back some of the changes I did following the tutorial and restore urls.py and views.py to what it was. I halfway stopped trying populating the database as I saw too many issues arrising, like the directors not being accessible directly in TMDB. 
+
+My real reason for trying to get API data is that I needed movie images that I am allowed to use and that are not affected by copyright. So I went to look for a simple way to get those images only and upload them manually in my admin through Cloudinary. This was not easy either, but with *urllib.request* (https://stackoverflow.com/questions/30229231/python-save-image-from-url, Ankit Lad), I managed. With https://www.kaggle.com/code/mrinalkalitapy20/data-extraction-using-python-and-tmdb-api I found how to make simple requests, so I decided to create a new file get_api.py and run that to get the images I need. I put this file in gitignore as it is not needed anywhere and just for internal use to get the images. This way, I did not need to keep the API key a secret since the whole file would be secret, since I was struggling with accessing the settings variable somehow.
+
+#### Index page design
+
+I wanted to add something so that the index page is not just a list of movies. Other movie websites have several blocks with content or images and genre based rows. So to add something extra to the home page, I decided to create a feature with top picks by the superuser to display on the home page. The superuser is supposedly a famous movie critic Moby Viesca (or his workers pretend to be him). The superuser can change the top picks whenever so other movies get the spot. This extra feature actually called for a bit more background information on the website since it becomes personalised, so I added the movie critic's name in the footer.
+
+To only display the top picks on the first page was more difficult than I thought it would be, it did not work to use a simple *if page does not have prev* condition, which effectively is the same as the first page. Then I found that I could use the variable *page_obj.number* and used *page_obj.number == 1* as a condition to only display the top picks on the first page. 
+
+But, the pagination also affected the top picks, so I needed to fix that pagination would only affect the all movies section.
+
+I found a way to put the logic in the view and add two different querysets to the class based view of index.html, with help from a post from Pran Kumar Sarkar (https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view). I used this to create a queryset for all published movies, and one for all published movies with top_pick selected. And by adding the [:3] it was easy to just get 3 movies. 
+
+Now I just had to fix the pagination issue. With the solution of two querysets for the ListView, *paginate_by* raised an error so I needed to check a different way to paginate. I checked similar issues on the internet and realised it has to do with me having two dictionaries in my queryset, so it does not know which queryset to paginate. Here it says I should use another method: https://stackoverflow.com/questions/60560493/django-listview-pagination-when-passing-multiple-objects-in-queryset, and I also found it in the django docs that that is better to do, so I had to change it. 
+
+After changing it and redoing the html template tags, it worked to paginate. Now, it also worked to have the condition of if page_obj.number == 1 % in my template, so the top picks only appear on the first page. The [:3] worked for this context override as well, so I kept that to only fetch 3 top picks. 
+
+I have also decided that it makes more sense to display some sort of top pick motivation for the movie, so I added a text field to the model allowing the superuser to write a text (max 300 characters) for the top pick motivation, and if the field is not empty, display it in the index html in the top pic section (as well as in the movie detail view).
+
+#### Summernote editor and text colour
+
+I realised that with the default Summernote rich text editor, the font colour was set in html and I could not override this. But I needed the text to be white, like the other normal fields in the movie_detail view. So I looked for a way to remove the possibility of choosing a font colour in the Summernote field, and found https://github.com/lqez/django-summernote/blob/main/README.md. So I added a custom toolbar for Summernote in settings.py. I also removed the font family from the toolbar so this would also be the same as the other fields. Now, the superuser can add some styles only. I had to check all the existing plot fields and make sure there were no previous styles in the html code, otherwise they would still be the wrong colour.
+
+#### Messages
+
+First, I had a personal welcome message that stayed on the screen, and I could not find an easy way to remove it, as it would come back with each new page load. So now, I only use django messages. They can be removed with the cross.
+
+#### Security
+
+I got a GitHub warning about gunicorn and needed to upgrade to a higher version than CIs walkthrough. So I installed gunicorn again and adjusted the requirements.txt. I needed to ask a question on slack how to do this.
+
+
 
 The error about *aria-hidden* seemed a much larger issue, as I found posts about it being an issue with the attribute *disabled*: https://github.com/WordPress/gutenberg/issues/56547, and about Bootstrap using this attribute while it should not: https://github.com/twbs/bootstrap/issues/41005. So I did find a workaround [here](https://stackoverflow.com/questions/62677291/aria-hidden-elements-do-not-contain-focusable-elements-issue-when-modal-is-sho) that says you should use *aria-modal* for modals. But I saw in Chrome developer tools that this is actually added in all the modals, and not *aria-hidden*. But the **Game over** modal seemed to sometimes get *aria-hidden* instead of *aria-modal*, and the error only seemed to appear when *aria-hidden* was added. So I thought I could not do anything about it because I can not control which of these are added to this modal.
 
