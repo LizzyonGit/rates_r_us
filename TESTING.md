@@ -157,7 +157,7 @@ I ran https://rates-r-us-f1ee65907d50.herokuapp.com/ through Realfavicongenerato
 |pick out several movies to be highlighted on the website so that I can make my website more personal,|**Top pick** check box in admin and code functionlaity that 3 top picks will display on the first homepage on top, in admin the top picks can be filtered so the user can see which movies are selected for it.|
 |write a motivation for my chosen top movies in admin so that I can make the website more personal,|**Pick motivation** field, the text will be displayed in the **Top pic** section on the home page, as well as in the movie detail page under **Moby's review** under the movie description. Even if a movie is not selected as a top pick, the motivation text will display on the movie detail page, as long as the site admin does not remove it.|
 |prevent reviews from displaying so that I have control over which reviews appear on my website.|**Reviews** section in admin and the **Approved** check box in each review. A review is not publicly visible until the **Approved** check box is selected. Reviews that only consist of a rating will automaticly get approved, but the site admin can also choose to clear the check box. The reviews have a filter in admin so the site admin can filter on approved or not approved reviews.|
-
+| | |
 |**As a site user, I can:**|
 |view a paginated list of movie posts so that I can quickly find the movie I want to view,|Paginated home page with max 3 movies, excluding the first home page that has a top pick section by the superuser with 3 extra movies.|
 |search movies on title, director or cast member so that I can find what I'm looking for,|**Search** bar on top of the page that leads to a search result page.|
