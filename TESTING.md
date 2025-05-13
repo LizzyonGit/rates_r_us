@@ -257,47 +257,12 @@ I got a GitHub warning about gunicorn and needed to upgrade to a higher version 
 
 
 
-The error about *aria-hidden* seemed a much larger issue, as I found posts about it being an issue with the attribute *disabled*: https://github.com/WordPress/gutenberg/issues/56547, and about Bootstrap using this attribute while it should not: https://github.com/twbs/bootstrap/issues/41005. So I did find a workaround [here](https://stackoverflow.com/questions/62677291/aria-hidden-elements-do-not-contain-focusable-elements-issue-when-modal-is-sho) that says you should use *aria-modal* for modals. But I saw in Chrome developer tools that this is actually added in all the modals, and not *aria-hidden*. But the **Game over** modal seemed to sometimes get *aria-hidden* instead of *aria-modal*, and the error only seemed to appear when *aria-hidden* was added. So I thought I could not do anything about it because I can not control which of these are added to this modal.
-
-Below are screenshots of when the error was triggered and when not, without me changing any code. The first screenshot shows that *aria-hidden = true* is added, the second screenshot shows *aria-modal = true* is added to the same modal, and then there is no error.
-
-
-![Error aria-hidden](docs/screenshots/aria-hidden-error.png)
-
-
-![No error aria-modal](docs/screenshots/aria-modal.png)
-
-
-Looking at this issue later again, I found that even sometimes when the *aria-hidden = true* is added, I do not get the error. So since the error talks about *Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology*, I decided to check which button is in focus after this modal closes. It seems that no button is in focus, which may mean that the button in focus is in the closed, now hidden modal, and that is the reason for this error. So I thought I should add another *buttonGo.focus();* after this modal closes, to move focus to the **GO** button after you click **Play again**. It is not needed for **Quit** because it just goes back to the start pre-game page. 
-
-
-I now added *buttonGo.focus();* at the start of the *resetGame* function. This benefits the **Restart** button as well since it uses the same function, and after you click **Restart**, it is good that **GO** is in focus so you can start right away. When I test it, the **GO** button is now in focus after you click **Play again** in the **Game over** modal, and I have not gotten the error in the console anymore. However, since this error was random from the start, I am unsure if this issue is fixed.
 
 #### Responsiveness
 
-I used Chrome developer tools and [Responsinator](http://www.responsinator.com/) to keep track of responsiveness, placement and size of buttons and how the content and background image behaved together on different screen sizes. 
-
-The background image was a challenge, as it's a frame that needs to be around the content at all times. It needs to be stretched and it is not a problem that the aspect ratio is not kept in this case, because it is only a decorative curly frame which can be a bit distorted and still look good. I started with *vh100* and *vw100* which seemed ok, but then when you tilt your smartphone, the game and credit info sections overlapped the frame. So I needed some different css properties. I tried adding the background to another div above the content, but this did not work, and I tried different size values for the background, like *cover*. In the end, *background-size: 100% 100%* worked. First I had *object-fit: fill* as well, as I found these two lines together on some forum, and thought that was the one that did the trick, but I could comment it out in Chrome developer tools without any effect. So I realised it was exactly this *background-size: 100% 100%* that did what I wanted. When I look up why, it makes sense that it works since it sets the image to the full size of its parent element, the *body* in this case. And now I understand better what the different values do since I found a clear description [here](https://cloudinary.com/guides/front-end-development/6-ways-to-stretch-a-background-image-with-css). I understand now as well that *object-fit* does not work on a body tag, it only works on *replaced elements*, as I read [here](https://www.sitepoint.com/using-css-object-fit-object-position-properties/). 
-After I found this solution, I just had to adjust the padding and margin for different screen sizes so the content would fit inside the decorative frame and not overlap it.
-
-#### Different fruit looks
-The fruit symbols on my newer computer with Window 11 look different than on my older computer with Windows 10. This is something I did not notice until I got a new computer, so it came as a surprise. Normally, this kind of thing depends on a browser, but this was not the case. I had to test if the background colour for a winning combination worked for both computers. I changed the background temporarely in Chrome developer tools for all the columns and think it looks OK.
+I used Chrome developer tools and [Responsinator](http://www.responsinator.com/) to check responsiveness, after installing *Ignore X-Frame headers*.
 
 
-Later I noticed that Firefox also has a slightly different fruit look than Chrome and Edge on my new Windows 11 computer. Firefox's symbols look a bit more three-dimensional. I tested the green winning background and it still works for them.
-
-
-My Android phone and iPhone also have different fruits, but they do work with the background colours.
-
-
-This is the price I am willing to pay by choosing HTML symbols instead of images. For the game functionality, it does not matter and I do think performance is more important than similar images.
-
-#### Safari lacks font support
-Unfortunately, Safari does not support *Nabla*, my chosen font for all *h1* elements. I considered creating an image for all h1 elements so that these can be the same for all browsers, but I don't like the impact that would have on performance. I also did not want to change my font, because I really like it. So I tried to find a similar one that would be supported in Safari. I found one in Google Fonts, *Passero One*. After some searching on the internet, I found a way to only target Safari with CSS [in this article](https://wojtek.im/journal/targeting-safari-with-css-media-query). While not ideal, Safari now has a different font for the logo and titles for modals and the 404 page. And the favicon now does not match the logo in Safari, but I find this an acceptable discrepancy. 
-
-Below is a screenshot of how the logo looks in Safari, and this font is also used for the modal titles and the 404 page.
-
-![Logo in Safari](docs/screenshots/safari-logo.png)
 
 ### Full testing
 
@@ -355,4 +320,4 @@ This website does not have a lot of different layouts on different screen sizes,
 
 #### Unfixed bugs
 
-None.
+*Remember Me* on **Log in** page. I do not like the capital M in *Me*, and would fix it if it was easy. But I have to override the whole form if I do this, and feel that is not a priority. So I decided to leave it.
