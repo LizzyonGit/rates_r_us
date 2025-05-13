@@ -152,20 +152,26 @@ I ran https://rates-r-us-f1ee65907d50.herokuapp.com/ through Realfavicongenerato
 |   User story                                                            | How it is achieved    |
 |  -----------                                                             | -----------           |
 |**As a site admin, I can:**|
-|create, read, update and delete movie posts so that I can manage my website,|Admin platform enables adding movies with relevant fields, updating them, and deleting them or setting them on draft so they are not visible on the website.|
+|create, read, update and delete movie posts so that I can manage my website,|Admin platform with **Movies** section enables adding movies with relevant fields, updating them, and deleting them or setting them on draft so they are not visible on the website.|
 |create a draft so that I can control when and if posts will be published on the website,|**Status** field in admin can be set on **Draft** and the movie will not be visible on the website.|
 |pick out several movies to be highlighted on the website so that I can make my website more personal,|**Top pick** check box in admin and code functionlaity that 3 top picks will display on the first homepage on top, in admin the top picks can be filtered so the user can see which movies are selected for it.|
 |write a motivation for my chosen top movies in admin so that I can make the website more personal,|**Pick motivation** field, the text will be displayed in the **Top pic** section on the home page, as well as in the movie detail page under **Moby's review** under the movie description. Even if a movie is not selected as a top pick, the motivation text will display on the movie detail page, as long as the site admin does not remove it.|
-|keep track of how many spins I have left, so that I can adapt my tactic,|**Spins left** in the credit info section, which counts down from 3 to 0.|
-|keep track of my credit, so that I can follow my progress,|**Credit** in the credit info section, which increases with 10 for each win, and decreases with 5 at the start of each new round|
-|keep track of how many rounds I have played, so that I can follow my progress or decide if I should stop or continue,|**Rounds played** in the credit info section, which increases with 1 at the start of each new round, and the **Game over** modal which pops up after the last round you played if you have no credit left, with the final number of rounds you played.|
-|be able to quit or restart the game, so that I have control over the game without needing to leave the website.|**Restart** and **Quit** buttons in the credit info section, the **Quit game** modal triggered by the **Quit** button, with buttons to confirm if you want to quit, or if you change your mind you can stay on the current game, and the **Game over** modal after last round, with a button to restart and a button to quit the game.|
-|**As a site owner, I want to offer visitors a:**|
-|fun and addictive, user-friendly game, so that I can get a steady user base and gain traffic to my website.|Responsive layout, favicon, the game is easy and fast to play with not too many clicks, and the game is playable with keys as well as with a mouse.|
+|prevent reviews from displaying so that I have control over which reviews appear on my website.|**Reviews** section in admin and the **Approved** check box in each review. A review is not publicly visible until the **Approved** check box is selected. Reviews that only consist of a rating will automaticly get approved, but the site admin can also choose to clear the check box. The reviews have a filter in admin so the site admin can filter on approved or not approved reviews.|
+
+|**As a site user, I can:**|
+|view a paginated list of movie posts so that I can quickly find the movie I want to view,|Paginated home page with max 3 movies, excluding the first home page that has a top pick section by the superuser with 3 extra movies.|
+|search movies on title, director or cast member so that I can find what I'm looking for,|**Search** bar on top of the page that leads to a search result page.|
+|open a movie post so that I can read the whole post,|From the home or search result page, any user can click on a movie card which leads to the respective movie detail page with the description, Moby's review and all users' (approved) reviews and ratings.|
+|register an account so that I can rate movies and add reviews,|**Register** page where the user can create an account, **Log in** page to log in to account and access the movies' review form.|
+|review a movie so that I can share my opinion,|When logged in, the review form is available on the movie detail page. A user who has not left a review yet, can fill in this form and submit it.|
+|rate movies so that I can contribute to the overall rating of the movie,|When logged in, the review form is available on the movie detail page. A user who has not left a rating yet, can add a rating. If the user does not leave a text review, the rating will be published immediately and calculated in the average movie rating. If the user leaves a text review as well as a rating, the review needs to be approved before the rating will be calculated in the average movie rating.|
+|edit or delete my review so that I have control on my contribution to the website|When logged in, a user can view all their reviews on the **My reviews** page. The user can click on the review to go to the specific review on the movie's detail page, and there, the user can click **Edit**. The user moves up to the review form where the old review is displayed, the user can change anything and click **Update**. If the updated review has text, it needs to be approved again by the site admin to be published. If a user clicks **Delete**, a modal pops up where the user can confirm deleting the review, and the review will be removed.|
+|edit or delete my rate so that I have control on my contribution to the website,|This works the same as editing or deleting a review, but when a user only rates a movie without any text contribution, the edited rating will be approved automatically and calculated in the movie rating average.|
+
 
 ### Issues
 
-Here I want to highligt some issues and bugs that were not straightforward to fix.
+Here I list some issues and bugs that took extra effort to fix.
 
 #### Logic
 
