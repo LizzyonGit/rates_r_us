@@ -295,10 +295,11 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone.
 #### Feature testing
 
 |Feature|Expected outcome|Testing performed|Result|Pass/Fail|
-|Navbar|
+|Navbar|||||
 |Navbar links when logged out|**Log in** and **Register** appear when not logged in|Made sure I am logged out and clicked the links|The links appear and go to the correct pages|Pass|
 |Navbar links when logged in|**Log out** and **My reviews** appear when logged in|Made sure I am logged in and clicked the links|The links appear and go to the correct pages|Pass|
 |Navbar links to Home|**Home** is always visible, both **Home** and logo go to first home page|Clicked the links|Logo and **Home** go to (first) home page|Pass|
+
 |Search field and button|Can fill in the field, can click **Search** and go to **Search results** page**|Clicked **Search** both with and without typed text in field|Can type text in field, click **Search** and it will go to **Search results** page|Pass|
 |Home page(s)|
 |**My top pics** section on first home page|Displays max 3 movies from admin, displays motivation text if it is there|Selected/deslected **Top pick** checkbox in admin, added/removed text motivation, selected more than 3 movies as top pick|Displays 3 movies even if more are selected as top pick, displays text motivation if it is filled in in admin, displays top picks only on first home page|Pass|
