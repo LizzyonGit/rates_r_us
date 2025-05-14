@@ -9,7 +9,7 @@
                 <a href="{% url 'movie_detail' movie.slug %}" class="movie-link">
 
                 {% if "placeholder" in movie.featured_image.url %}
-                <img class="card-img-top movie-poster" src="{% static 'images/nobody.jpg' %}"
+                <img class="card-img-top movie-poster" src="{% static 'images/placeholder.webp' %}"
                     alt="placeholder image">
                 {% else %}
                 <img class="card-img-top movie-poster" src=" {{ movie.featured_image.url }}"

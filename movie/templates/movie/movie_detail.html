@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-5 d-flex justify-content-center justify-content-lg-end">
               {% if "placeholder" in movie.featured_image.url %}
-              <img class="img-fluid poster-detail" src="{% static 'images/nobody.jpg' %}"
+              <img class="img-fluid poster-detail" src="{% static 'images/placeholder.webp' %}"
                 alt="placeholder image">
               {% else %}
               <img class="img-fluid poster-detail" src=" {{ movie.featured_image.url }}"
