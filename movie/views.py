@@ -115,7 +115,7 @@ def movie_detail(request, slug):
             else:
                 review.save()
                 messages.add_message(request, messages.SUCCESS,
-                                     'Thank you for your review.'
+                                     'Thank you for your review. '
                                      'It will be published after approval.')
                 # This updates the page after reviewing
                 return HttpResponseRedirect(reverse

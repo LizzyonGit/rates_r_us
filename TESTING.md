@@ -260,7 +260,7 @@ I got a GitHub warning about gunicorn and needed to upgrade to a higher version 
 
 #### Responsiveness
 
-I used Chrome developer tools along the way to fix responsiveness with media queries and bpptstrap classes. Finally, I used [Responsinator](http://www.responsinator.com/) to check responsiveness, after installing *Ignore X-Frame headers*.
+I used Chrome developer tools along the way to fix responsiveness with media queries and bootstrap classes. Finally, I used [Responsinator](http://www.responsinator.com/) to check responsiveness, after installing *Ignore X-Frame headers*. I could however not log in and check **My reviews**.
 
 I noticed I needed extra padding on the home page from the second page, because the **Top pic** section is not there and when the navbar is wider on small screens, it overlaps a bit.
 
@@ -268,14 +268,13 @@ For the **Register** and **Log in** pages, there was need for margin below the f
 
 In the reviews, there was need for a space between the username and date.
 
-
 ### Full testing
 
 #### Browser testing
 
 I tested on Chrome, Edge and FireFox. The layout and functionality were tested in Safari as well.
 
-In Firefox, I get two warnings in the console about the used font using an empty gid in glyph 1 and 209: *downloadable font: glyf: empty gid 1364 used as component in glyph 1 (font-family: "Nabla" style:normal weight:400 stretch:100 src index:0) source: https://fonts.gstatic.com/s/nabla/v10/j8_D6-LI0Lvpe7Makz5UhJt9C3uqg_X_75gyGS4jAxsNIjrRBRdeFQx8.woff2*, and *downloadable font: glyf: empty gid 1649 used as component in glyph 209 (font-family: "Nabla" style:normal weight:400 stretch:100 src index:0) source: https://fonts.gstatic.com/s/nabla/v10/j8_D6-LI0Lvpe7Makz5UhJt9C3uqg_X_75gyGS4jAxsNIjrRBRdeFQx8.woff2*. While I could not figure out what glyphs these are, I found someone else getting the same kind of warning which could be ignored [here](https://github.com/arrowtype/recursive/issues/539). But this was related to a different font. I know that my font *Nabla* is not supported everywhere, but it renders OK in Firefox. When I check the console for the [Google Fonts page for Nabla](https://fonts.google.com/specimen/Nabla/glyphs), I get similar warnings including the two exact ones I got. My conclusion is that I did not do anything wrong, these are warnings related to *Nabla* only.
+In FireFox devtools, everything looks good and there are no errors in the console.
 
 #### Device testing
 
