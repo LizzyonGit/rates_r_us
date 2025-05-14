@@ -140,6 +140,8 @@ The website aims to offer users:
 
 ### User stories
 
+See [project board](https://github.com/users/LizzyonGit/projects/5/views/1) for the agile methodology followed and end result during this project.
+
 #### As a site admin, I can:
 
 - create, read, update and delete movie posts so that I can manage my website,
@@ -158,39 +160,6 @@ The website aims to offer users:
 - rate movies so that I can contribute to the overall rating of the movie,
 - edit or delete my review so that I have control on my contribution to the website,
 - edit or delete my rating so that I have control on my contribution to the website.
-
-#### Tasks to achieve user stories
-
-Create a:
-- **How to play** button that triggers information on how to play, which combinations make you win, and how the game ends,
-- responsive slot machine-like box with:
-  - three columns with fruits,
-  - **HOLD** buttons under each column, with logic to:
-    - hold a column so it does not spin when you click **GO**,
-    - keep the held columns held each spin in the same round,
-    - change to **HELD** and a different colour when clicked,
-    - change back to **HOLD** and the original colour when clicked again,
-    - not being able to hold three columns at once,
-    - reset buttons at the start of a new round.
-  - a **GO** button to start the game and spin the machine,
-- section with: 
-  - always visible information on how: 
-    - much credit left,
-    - many spins left,
-    - many games played.
-  - a button to restart,
-  - a button to quit the game,
-  - logic to:
-    - increase the credit with a winning combination, 
-    - decrease the credit at the start of a new round,
-    - decrease spins left per round and reset it at the start of a round,
-    - increase rounds played,
-    - display a visual effect and an appropriate text when there is a winning combination.
-- modal with information when:
-  - the game ends due to insufficient credit, with the final number of rounds played and an option for the user to restart or quit,
-  - you click **Quit**, with an appropriate text and option for the user to stay or confirm quit.
-- suitable background image for the pages, to add to the overall positive experience,
-- favicon.
 
 ### Design
 
