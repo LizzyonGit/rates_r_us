@@ -110,7 +110,7 @@
         <div id= "{{ review.id }}" class="p-2 reviews
           {% if not review.approved and review.author == user %}
           italic{% elif not review.approved %} d-none{% endif %}">
-          <p><strong>{{ review.author }}</strong>{{ review.created_on }} wrote:</p>
+          <p><strong>{{ review.author }}</strong> {{ review.created_on }} wrote:</p>
           <!--Display title if the title is not empty (otherwise it displays 'None')-->
           {% if review.title %}
           <div id="review_title{{ review.id }}">

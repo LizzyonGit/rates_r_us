@@ -260,8 +260,13 @@ I got a GitHub warning about gunicorn and needed to upgrade to a higher version 
 
 #### Responsiveness
 
-I used Chrome developer tools and [Responsinator](http://www.responsinator.com/) to check responsiveness, after installing *Ignore X-Frame headers*.
+I used Chrome developer tools along the way to fix responsiveness with media queries and bpptstrap classes. Finally, I used [Responsinator](http://www.responsinator.com/) to check responsiveness, after installing *Ignore X-Frame headers*.
 
+I noticed I needed extra padding on the home page from the second page, because the **Top pic** section is not there and when the navbar is wider on small screens, it overlaps a bit.
+
+For the **Register** and **Log in** pages, there was need for margin below the form button. Even if I could not log in, I assumed the same would be true for the **Log out** page. I simply changed *mt-3* to *my-3*.
+
+In the reviews, there was need for a space between the username and date.
 
 
 ### Full testing
