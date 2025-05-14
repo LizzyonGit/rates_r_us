@@ -328,25 +328,15 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone.
 |When there are reviews, all are listed|Lists all reviews (reviewed movie, given rating, title, text, review creation date) left by the logged in user|Logged in as user without reviews and with reviews to see what is on the page|Users who have left reviews see them listed, newest first, there is no distinction between approved/not-approved reviews. Users who have not left reviews see text *You have no reviews yet.*|Pass|
 |Review links to concurrent review on movie_detail page|The title of the movie links to the applicable review left by the user on that movie_detail page.|Click on title of movie|Links to movie_detail page and scrolls down to review right away|Pass|
 |Account handling and feedback| --- | --- | --- | --- |
-|**Register** page and message| --- | --- | --- | --- |
-|**Log in** page and message| --- | --- | --- | --- |
+|**Register** page and message|After filling in the form and clicking **Register**, the user is registred and sees a feedback message|Register new user|After filling in the fields and clicking **Register**, the user is logged in automatically and message *Successfully signed in as (Username).* appears|Pass|
+|**Log in** page and message|After filling in the form and clicking **Log in**, the user is logged in and sees a feedback message|Log in with username and password, click **Log in**|After filling in the correct username and password, clicking **Log in**, message *Successfully signed in as (Username).* appears and the user is logged in|Pass|
 |**Log out** page and message|After clicking **Log out**, there should be a message and the user should be logged out|Log in and go to **Log out** page, click **Log out**|After clicking **Log out**, message *You have signed out.* comes up and user's state is logged out|Pass|
-|404 page| --- | --- | --- | --- |
-
-
-
-#### Scenario testing
-
-|Scenario|Expected outcome|Testing performed|Result|Pass/Fail|
-| --- | --- | --- | --- | --- |
-|Completing the game without holding columns|**Spins left**, **Credit**, **Rounds played** are updated accordingly throughout the game|Playing the game and checking the credit info section values|**Spins left** goes from 3 to 1, **Credit** decreases with 5 at start of new round, increases with 10 when winning row, **Rounds played** increases with 1 at start if each round|Pass|
-|End of game|During the last round, after the last spin, the game ends and the **Game over** modal triggers|Play through the game until **Credit** is 0, **Spins left** is 1, click/press **GO** and when there is no winning row this last spin|**Game over** modal triggers|Pass|
-|Not possible to hold on winning rows|When you get a winning row, you can not hold any of the columns for the next round|Get a winning row and try to click/press **HOLD** buttons|It is not possible to click/press **HOLD** buttons an the new round starts after 1 second with reset columns|Pass|
-|Not possible to click/press **GO** during pause at end of a round so **Spins left** will not go negative|**GO** button is not possible to click/press at the end of a round during the 1-second pause|Try to click/press **GO** at end of a round during the pause|It is not possible to click/press **GO** during pause at end of a round, and **Spins left** is not going negative|Pass|
-|Winning row on first 'spin'|A winning row counts also when it comes after fruits are reset at start of the game or a new round, not after an actual spin|Playing until I get a winning row at the start|The winning row works as expected with the background, text, credit increase and pause before a new round|Pass|
+|404 page|Any incorrect url leads to custom 404 page with link to home page|Type incorrect url, click link|404 page appears and clicking link to home page works|Pass|
 
 #### Unfixed bugs
 
-*Remember Me* on **Log in** page. I do not like the capital M in *Me*, and would fix it if it was easy. But I have to override the whole form if I do this, and feel that is not a priority. So I decided to leave it.
+- *Remember Me* on **Log in** page. I do not like the capital M in *Me*, and would fix it if it was easy. But I have to override the whole form if I do this, and feel that is not a priority. So I decided to leave it.
 
-Search issue
+- The search functionality does not work perfectly. It only works to search on one actor, if you search two actors, you do not get the movie in which both of these actors play, even if it is precisely written like it is registred. 
+
+The order in which you search a first and last name of the same actor should be exactly the same as how it is registred. For example, if I look for a movie with Tommy Lee Jones, and I write *Tommy Jones*, the movie does not come up. But when I search on *Lee Jones* or *Tommy Lee Jones* or *Tommy Lee*, the movie does come up. The same goes for when you search on a movie title, *Once upon a time in the west* does not come up when you search on *once west*, but it does come up when you search on *west* or *once upon*, for example. So the search engine is limited and should be improved, but the besic functionality works for the MVP.

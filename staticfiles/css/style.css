@@ -241,13 +241,12 @@ footer a {
 }
 
 /*Media queries*/
-/*Poster in movie_detail html size smaller on larger screens, and floats to the right of its container*/
+/*Poster in movie_detail html size smaller on larger screens*/
 @media screen and (min-width: 992px) {
     
     .poster-detail{
         max-height: 414px;
         width: auto;
-        float: right;
     }
 
 }
@@ -305,7 +304,7 @@ footer a {
     }
 }
 
-/* Customise padding pop-up-message so it does not cover navbar and aligns witih other content to the right in index page*/
+/* Customise padding pop-up-message so it does not cover navbar and aligns with other content to the right in index page*/
 
 @media screen and (max-width: 991px) {
 
