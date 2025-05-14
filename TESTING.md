@@ -290,19 +290,38 @@ In FireFox and Edge devtools, everything looks good and there are no errors in t
 
 #### Device testing
 
-Tested on a Dell and a Lenovo laptop, and on a Huawei phone.
+Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone.
 
 #### Feature testing
 
 |Feature|Expected outcome|Testing performed|Result|Pass/Fail|
-| --- | --- | --- | --- | --- |
-|**How to play** button|Opens **How to play** modal|Clicked/pressed button|**How to play** modal opens|Pass|
-|**How to play** modal|Can close it|Clicked/pressed the closing buttons|**How to play** modal closes|Pass|
-|**GO** button|Starts the game|Clicked/pressed button when game has not started|Fruits displayed, **Spins left**, **Credit**, **Rounds played** get default values|Pass|
-|**GO** button|Triggers new spin|Clicked/pressed button when game has started|New fruits displayed, **Spins left** decreases with 1|Pass|
-|**GO** button|Triggers new round|Clicked/pressed button when 1 spin left|Pauses the last result 1 sec, then moves to new round where **Spins left** is 3, **Credit** decreases with 5, **Rounds played** increases with 1 |Pass|
-|**HOLD** button|Holds column from getting new fruits|Clicked/pressed a **HOLD** button, then **GO**|Fruits in the column do not change, other columns change|Pass|
-|**HOLD** buttons|Change colour and text when clicked/pressed|Clicked/pressed **HOLD** buttons|Text changes to **HELD**, colour to red, changes back to original when clicked/pressed again|Pass|
+|Navbar| --- | --- | --- | --- |
+|Navbar links when logged out|**Log in** and **Register** appear when not logged in|Made sure I am logged out and clicked the links|The links appear and go to the correct pages|Pass|
+|Navbar links when logged in|**Log out** and **My reviews** appear when logged in|Made sure I am logged in and clicked the links|The links appear and go to the correct pages|Pass|
+|Navbar links to Home|**Home** is always visible, both **Home** and logo go to first home page|Clicked the links|Logo and **Home** go to (first) home page|Pass|
+|Search field and button|Can fill in the field, can click **Search** and go to **Search results** page**|Clicked **Search** both with and without typed text in field|Can type text in field, click **Search** and it will go to **Search results** page|Pass|
+|Home page(s)| --- | --- | --- | --- |
+|**My top pics** section on first home page|Displays max 3 movies from admin, displays motivation text if it is there|Selected/deslected **Top pick** checkbox in admin, added/removed text motivation, selected more than 3 movies as top pick|Displays 3 movies even if more are selected as top pick, displays text motivation if it is filled in in admin, displays top picks only on first home page|Pass|
+|**All movies**|All published movies appear, draft movies do not appear|Add/update movies with status **Published** and **Draft**|Only published movies are posted on the home page|Pass|
+|Pagination|Max 3 movies per page, except first page that has **My top pics** section, **PREV**/**NEXT** buttons underneath the page|Moved through the pages|**PREV**/**NEXT** buttons, max 3 movies per page under **All movies**|Pass|
+|Footer| --- | --- | --- | --- |
+|Footer|Links to social media opening in new tabs|Clicked links in footer|Links open in new tabs|Pass|
+|**Search results** page| --- | --- | --- | --- |
+|**Search results** page|Alphabetically ordered movie results, text if no result|Search on search terms, without search term, and with search term which should not have a result|Not filling in any search term gives all movies alphabetically, searching for actor, director or title gives relevant movies, if no result there is a text that there are no results|Pass|
+|Movie's rating, release date, country, genres under **All movies** and in **Search results** page|Average rating with nr of ratings in brackets, text when there is no rating, release date, country displayed from admin, and genres displayed with comma's inbetween if there are several|Checked for movies with no rating, added/deleted ratings to see updates, checked outcome for one or more genres in admin, different countries and release dates|Ratings is displayed with nr in brackets, *No rating yet* displayed when there is no approved rating, release data and country correct according to admin, genre correctly displayed with comma's if there is more than one|Pass|
+|Movie_detail page| --- | --- | --- | --- |
+|Open movie_detail page|Clicking on movie card from home page(s) or **Search results** goes to movie_detail page|Clicked movie cards both as logged in and logged out|Opens correct movie_detial page|Pass|
+|Information| --- | --- | --- | --- |
+|**Moby's review**| --- | --- | --- | --- |
+|Review count| --- | --- | --- | --- |
+|**Have your say!** form for logged in user| --- | --- | --- | --- |
+|**Have your say!** form for logged out user| --- | --- | --- | --- |
+|Review submission and message/result for different review sorts| --- | --- | --- | --- |
+|**Reviews** section| --- | --- | --- | --- |
+|Reviews display for user who has written a review| --- | --- | --- | --- |
+|Review update and message/result for different review sorts| --- | --- | --- | --- |
+|Review deletion and message/result for different review sorts| --- | --- | --- | --- |
+
 |**HOLD** buttons|Only possible to click/press 3 **HOLD** buttons|Clicked/pressed 2 **HOLD** buttons|Third **HOLD** button gets disabled and not possible to click/press, disabled button gets enabled when you click/press one of the **HELD** buttons|Pass|
 |Winning middle row|When three identical fruits are there: 1 Change background, 2 Display winner text above columns, 3 **Credit** increases with 10, 4 Game pauses 1 second before new round|Spin until a winning row comes|Background changes to green with golden border, *WINNER!!* displays above columns, **Credit** increases with 10 and game pauses 1 second before new round|Pass|
 |**Restart** button|Resets fruits and **Spins left**, **Credit**, **Rounds played** go back to default values |Click/press **Restart** button|Fruits are reset and **Spins left** is 3, **Credit** is 10, **Rounds played** is 0|Pass|
@@ -327,3 +346,5 @@ Tested on a Dell and a Lenovo laptop, and on a Huawei phone.
 #### Unfixed bugs
 
 *Remember Me* on **Log in** page. I do not like the capital M in *Me*, and would fix it if it was easy. But I have to override the whole form if I do this, and feel that is not a priority. So I decided to leave it.
+
+Search issue
