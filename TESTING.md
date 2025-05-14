@@ -17,17 +17,24 @@
 * [Manual testing](#manual-testing)
   * [User story testing](#user-story-testing)
   * [Issues](#issues)
-    * [Logic](#logic)
-    * [Accessibility](#accessibility)
-    * [Error in console](#error-in-console)
+    * [Many-to-many fields](#many-to-many-fields)
+    * [Review functionality](#review-dunctionality)
+      * [Approve ratings](#approve-review-when-there-is-no-text-only-a-rating)
+      * [Edit reviews](#edit-reviews)
+      * [Average rating display](#display-average-rating)
+      * [One review per movie per user](#one-review-per-movie-per-user)
+      * [My reviews page](#my-reviews-page)
+    * [Populate database with TMDB API](#populate-the-database-via-tmdb-api)
+    * [Index page design](#index-page-design)
+    * [Summernote editor and text colour](#summernote-editor-and-text-colour)
+    * [Messages](#messages)
+    * [Security](#security)
     * [Responsiveness](#responsiveness)
-    * [Different fruit looks](#different-fruit-looks)
-    * [Safari lacks font support](#safari-lacks-font-support)
+      * [Screen size adaptations](#screen-size-adaptations)
   * [Full testing](#full-testing)
     * [Browser testing](#browser-testing)
     * [Device testing](#device-testing)
     * [Feature testing](#feature-testing)
-    * [Scenario testing](#scenario-testing)
     * [Unfixed bugs](#unfixed-bugs)
 
 
@@ -339,5 +346,4 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone.
 - *Remember Me* on **Log in** page. I do not like the capital M in *Me*, and would fix it if it was easy. But I have to override the whole form if I do this, and feel that is not a priority. So I decided to leave it.
 
 - The search functionality does not work perfectly. It only works to search on one actor, if you search two actors, you do not get the movie in which both of these actors play, even if it is precisely written like it is registred. 
-
 The order in which you search a first and last name of the same actor should be exactly the same as how it is registred. For example, if I look for a movie with Tommy Lee Jones, and I write *Tommy Jones*, the movie does not come up. But when I search on *Lee Jones* or *Tommy Lee Jones* or *Tommy Lee*, the movie does come up. The same goes for when you search on a movie title, *Once upon a time in the west* does not come up when you search on *once west*, but it does come up when you search on *west* or *once upon*, for example. So the search engine is limited and should be improved, but the besic functionality works for the MVP.
