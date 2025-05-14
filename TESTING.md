@@ -295,6 +295,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone.
 #### Feature testing
 
 |Feature|Expected outcome|Testing performed|Result|Pass/Fail|
+| :--- | :--- | :--- | :--- | :--- |
 |Navbar|
 |Navbar links when logged out|**Log in** and **Register** appear when not logged in|Made sure I am logged out and clicked the links|The links appear and go to the correct pages|Pass|
 |Navbar links when logged in|**Log out** and **My reviews** appear when logged in|Made sure I am logged in and clicked the links|The links appear and go to the correct pages|Pass|
