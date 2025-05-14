@@ -190,7 +190,7 @@ Another issue I had was related to the search field in admin. I want the site ad
 
 #### Review functionality
 
-##### Approve review when there is no text, only a rating
+##### Approve ratings
 
 I wanted to approve reviews automatically when there is no text, only a rating, so it is published right away and calculated in the movie's average rating. So I thought about a conditional default value of the approved field, a simple if else statement. I had trouble finding the answer to this, but then I found https://stackoverflow.com/questions/12649659/how-to-set-a-django-model-fields-default-value-to-a-function-call-callable-e/15289517. It did not work, and I tried different places to put the code, below, above, inside the review model. But I read that the field itself cannot have an if statement, so I thought it should be a callable. But I tried something else instead, and added it in the view before the review is saved to the database. Now it sets approved to True when both the title and text are empty, and it displays an appropriate message and the rating is visible and calculated into the average right away. And when title and text are not empty, it needs to be approved by the site admin. In admin, when I add a review with empty title and text, it does not get approved right away, which I think is not a relevant issue as the superuser can just approve it.
 
@@ -210,7 +210,7 @@ Sometimes editing did not work, the **Submit** button did not change to **Update
 
 Another issue, when you wanted to edit a review with a title and text, and would remove the title and text so there is only a rating left, and you updated it, it needed to be approved again. This should not happen as reviews with only a rating do not need approval. I needed to adjust the *if review_form.is_valid() and review.author == request.user:* in the edit_review view corresponding to the code in the movie_detail view. So I added an if else statement to set approved to True if there is no title and text in the new review, and otherwise approved is set to False. I also adapted the message to the two different situations for clearer feedback to the user.
 
-##### Display average rating
+##### Average rating dispaly
 
 Getting the average movie rating on my home page for each listed movie was not straightforward. I had it displayed in the movie_detail page and view, so I looked for a way of getting that exact value for the index.html template, without adding it to my view for the index.html. I found articles about context processors, and some other concepts, but they seemed too complicated for such an easy thing. Then I read through https://forum.djangoproject.com/t/aggregate-an-average-from-two-fields-from-separate-models/19705/2, and I realised I was wrong all along, I should have added my calculation of averages in the **Movie** model as a method, so then I could use that in all my templates based on the **Movie** model. So I did that, and it worked. 
 
@@ -228,7 +228,7 @@ For a user who is not logged in, I got an error trying to view the movie_detail 
 
 Creating a **My reviews** page was not hard, and linking to the correct movie detail page from each review was in the end doable in the template, as I was struggling to fix the slug in the view, but ended up with a simple for loop and if statement in the template. I wanted to link to the specific review on the movie detail page, and this was easy with the help of this forum: https://www.reddit.com/r/django/comments/fjbx0c/linking_to_an_anchor_on_another_page_in_django/.
 
-#### Populate the database via TMDB API
+#### Populate database with TMDB API
 
 I wanted to add movie data from the TMDB API into my website and followed a tutorial doing something like this, but it ignored admin and the fact that I want to add the possibility for the superuser to change info and add the top pick text. I looked a lot for this issue but all solutions seemed to use the views.py file, and I felt I did not need to do it there, because my views.py works fine collecting data from the models. This post seemed promising and easy, so I decided to test it: https://stackoverflow.com/questions/32139777/populate-django-database-with-data-from-api-get-request by Shobhit Srivastava. So I decided to change back some of the changes I did following the tutorial and restore urls.py and views.py to what it was. I halfway stopped trying populating the database as I saw too many issues arrising, like the directors not being accessible directly in TMDB. 
 
@@ -261,9 +261,6 @@ First, I had a personal welcome message that stayed on the screen, and I could n
 #### Security
 
 I got a GitHub warning about gunicorn and needed to upgrade to a higher version than CIs walkthrough. So I installed gunicorn again and adjusted the requirements.txt. I needed to ask a question on slack how to do this.
-
-
-
 
 #### Responsiveness
 
