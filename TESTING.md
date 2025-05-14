@@ -304,6 +304,7 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone.
 |**My top pics** section on first home page|Displays max 3 movies from admin, displays motivation text if it is there|Selected/deslected **Top pick** checkbox in admin, added/removed text motivation, selected more than 3 movies as top pick|Displays 3 movies even if more are selected as top pick, displays text motivation if it is filled in in admin, displays top picks only on first home page|Pass|
 |**All movies**|All published movies appear, draft movies do not appear|Add/update movies with status **Published** and **Draft**|Only published movies are posted on the home page|Pass|
 |Pagination|Max 3 movies per page, except first page that has **My top pics** section, **PREV**/**NEXT** buttons underneath the page|Moved through the pages|**PREV**/**NEXT** buttons, max 3 movies per page under **All movies**|Pass|
+
 |Footer| --- | --- | --- | --- |
 |Footer|Links to social media opening in new tabs|Clicked links in footer|Links open in new tabs|Pass|
 |**Search results** page| --- | --- | --- | --- |
