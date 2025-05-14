@@ -268,27 +268,29 @@ For the **Register** and **Log in** pages, there was need for margin below the f
 
 In the reviews, there was need for a space between the username and date.
 
+##### Screen size adaptations
+
+The different media queries based on screen size work as intended. Mainly the poster size on the index pages needed different media queries. At each breaking point, I added a max-height, and a set height on the largest screen size above 1400 px. For the movie_detail page, for screen sizes above 992 px, the max-height is also limited. I added an additional size limit of 50 % to screens up to 575px because the movie poster size was too large for performance.
+
+The poster sizes work with the movie posters I have uploaded, but if a superuser would create a new movie, it is not given that any poster works with these sizes. So I would need to add instructions that uploaded movie posters should remain at 416x624 (or similar) so the poster is still displayed well.
+
+The displayed messages have some customised padding to not cover the navbar, but it is ok if it covers content as you can click it away.
+
+Another small adaptation is the padding for the card-body class where the movie motivation and title is written in the **Top pic** section, the padding is a bit smaller to make place for longer words.
+
+I have also used Bootstrap classes for different col, margin and padding values at different screen sizes, as well as for text alignment and flexbox properties.
+
 ### Full testing
 
 #### Browser testing
 
 I tested on Chrome, Edge and FireFox. The layout and functionality were tested in Safari as well.
 
-In FireFox devtools, everything looks good and there are no errors in the console.
+In FireFox and Edge devtools, everything looks good and there are no errors in the console. I noticed that with the splitting of the messages that was needed for python, I needed to add a space between two sentences.
 
 #### Device testing
 
 Tested on a Dell and a Lenovo laptop, and on a Huawei phone.
-
-This website does not have a lot of different layouts on different screen sizes, the differences I have implemented work as intended:
-
-- From 768px width, the game section and the credit info section display next to each other. Below that, they display vertically with the credit info section under the game section. The credit info section does then not have the empty space between the text and buttons, as it does not need to be aligned with the height of the game section. 
-
-- From 768px width, the header with the logo, intro text and **How to play** button, displays with the logo and intro text left aligned above the game section, and the button left aligned above the credit info section. Below 768px, they are centered and vertically stacked above the game section. 
-
-- From 576px width, there is added padding left and right of the box with fruit columns, below 576px, there is no padding so that the fruits have enough space to be visible on small screens.
-
-- On some screen sizes, the content had a tendency to overlap with the decoration in the background image, while the buttons would be distorted with too large of a padding. I have added Bootstrap classes for padding and margin to the container section for the game and credit info sections, and adapted this with media queries where necessary. Until 368px width, the padding left and right of the game and credit info sections was minimised to allow for the buttons to remain wide enough, with the padding still large enough to not overlap the decoration. Until 650px width, I added extra padding on the bottom to not overlap the decoration. I see that sometimes it still touches the decoration, but I think this is acceptable.
 
 #### Feature testing
 
