@@ -140,7 +140,7 @@ The website aims to offer users:
 
 ### User stories
 
-See [project board](https://github.com/users/LizzyonGit/projects/5/views/1) for the agile methodology followed and end result during this project.
+See [project board](https://github.com/users/LizzyonGit/projects/5/views/1) for the agile methodology followed during this project and end result.
 
 #### As a site admin, I can:
 
@@ -162,71 +162,55 @@ See [project board](https://github.com/users/LizzyonGit/projects/5/views/1) for 
 - edit or delete my rating so that I have control on my contribution to the website.
 
 ### Design
+#### Database
+
+Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/) to create it.
+
+<details>
+    <summary>Database schema</summary>This schema includes some features I did not implement, and it misses some features that I did implement. I did not implement the **Likes** model and related field in the **Review** model. The **Top pick** functionality called for an check box and field in the **Movie** model. The *average rating* is not in the database, but implemented as a model method.
+
+  ![Database schema](docs/erd-start.png)
+
+</details>
 
 #### Wireframes
 
-Below are my initial wireframes per page for mobile, tablet, and laptop screen sizes. I used [Figma](https://www.figma.com/) to create them.
+Below are my initial wireframes for mobile and laptop screen sizes. I used [Figma](https://www.figma.com/) to create them.
 
 <details>
-    <summary>Start page (not used)</summary>I decided to not have this separate start page as it just increases the amount of clicks and does not give any value, since the buttons can be on the game page.
+    <summary>Home, movie_detail, Register, Log in and My reviews</summary>These are my first wireframes. The final design does not differ much from the wireframes, but I did not implement a star rating, filter (but I created a search field instead), and in My reviews I did not add a filter or editing or deleting possibilities. Log out, 404 are missing.
 
-  ![Startpage wireframe for mobile, tablet and laptop](docs/wireframes/wireframe-start.png)
+  ![Home, movie_detail, Register, Log in, My reviews wireframes for mobile](docs/wireframes/mobile-wireframes.png)
 
 </details>
 <details>
-    <summary>Game page</summary>This is how I saw the page with the game itself. Later, I decided to not have a footer as it is not needed for an MVP.
+    <summary>Home page and movie_detail/summary>I only saw the home page and movie_detail page with all the movie poster to be different on larger screen sizes, so I only created wireframes for these pages for tablet/desktop sizes. I chenged from rows with two movies to rows with three movies, as movie posters are not wide so this fits better. Then I just moved the poster to the right in the movie_detail page and the description takes a wider space under the image and short movie facts.
 
-  ![Game page wireframe for mobile, tablet and laptop](docs/wireframes/wireframe-game.png)
-
-</details>
-<details>
-    <summary>Page 404 not found</summary>
-
-  ![Page 404 not found, wireframe for mobile, tablet and laptop](docs/wireframes/wireframe-404.png)
+  ![Home page and movie_detail for desktop](docs/wireframes/desktop-wireframes.png)
 
 </details>
 
-#### Color schemes
 
- A lot has been written about colours in casinos and slot machines in particular, and not all give the same reason for using particular colors. Basically, all websites I found say red is the main colour in casinos, because it symbolises excitement, and it attracts attention. Red in combination with gold represents success and winning, and gold of course symbolises luxury. I based my choices on i.e. [this article](https://www.newwavemagazine.com/single-post/the-psychology-of-color-in-casinos-how-design-choices-influence-the-player-s-mood), which says gold and red simulate a real-life casino feel in online games.
- 
- 
- Purple and black convey exclusiveness and class and I have seen a purple background a lot in images of slot machines, so I use this as well. 
- 
- 
- Several sources say orange is a much-used colour for spin/go buttons, so I use it for my **GO** button. 
- 
- 
- I use dark green as a background for credit info, to mimic the green tables in casinos. I also use this for my **HOLD** buttons. I use a darker variation of this green as well as a hover colour, based on how disabled **HOLD** buttons appear on the screen.
+#### Colour schemes
 
- 
- As I went on, I used black more than I initially intended, for some buttons and the background for the fruits. I think it adds to the luxury feel of the website and works well with purple, green, and gold.
+For my colour scheme, I want to convey a home theater feeling so I took my inspiration from articles about which colours would be good when you build a theater room. Red chairs came to mind, and otherwise dark colours for walls. And some yellow details to mimic the small spotlights on the wall. I read articles https://www.happypaintingcompany.com/blog/the-top-5-best-home-theater-paint-colors/ and https://www.peliplat.com/en/article/10002576/why-are-movie-theater-seats-mostly-red and landed on the following palette:
+black, navy, red, yellow.
 
- 
- This is my palette: https://coolors.co/4c004c-ff0000-ffd700-105837-28775b-000000-ffa500.
+This is my palette: https://coolors.co/ffea00-000080-8b0000-000000.
 
 #### Fonts
 
-Searching for fonts on [Google Fonts](https://fonts.google.com/), when I filtered on a *Calm* feeling, *Poiret One* really stood out to me. The calm feeling that I lack because I don't use blue in my colours (which the colour websites stated), can be compensated with this font. So I like it for my headings, but it is not good for informative texts. I found this article https://www.creatopy.com/blog/google-font-pairings/#21, and decided to pair it with *Didact Gothic* for my main body text.
-
-
-When I filtered on a *Shaded* appearance and *Color* technology, I found *Nabla*, which I liked for my logo, because of the tilted look and the orange colour makes a good match with my fruity theme, although I could change the colour later of course. 
-
-
-Because *Nabla* is not supported by Safari, I use *Passero One* for Safari, as it looks a bit like *Nabla*.
+I looked for a cinema feeling in my fonts and after some googleing I decided on *Limelight* for my larger font sizes and logo, and *Merriweather* for the smaller ones. *Limelight* is connected to theatre and filmmaking as per its description in [Google Fonts](https://fonts.google.com/specimen/Limelight/about), and *Merriweather* was suggested in this blog post: https://wpmudev.com/blog/more-google-font-combinations-for-you-to-use/.
 
 #### Logos and images
 
-For my fruit images, I use HTML symbols. I chose fruits that look distinctive to enhance accessibility, and another advantage of HTML symbols is that it does not impact my performance as much as images would do. Later, I saw that my old computer displayed the symbols differently than my new computer. This would not be with images, but I think for the game functionality, performance is more important. The different symbols do not impact the game's functionality. I realise it is not good for consistency and for example marketing, that's why I did not reuse these symbols as images elsewhere on the website, like the favicon, because then it can get messy with different designs on the same page, for some devices. 
+The logo is the website name written in font *Limelight*.
 
+The favicon is an image of the **R** in the logo. To create the favicon files, I used [RealFaviconGenerator](https://realfavicongenerator.net/).
 
-The background image is from [Canva](https://www.canva.com/). Originally a black background with gold decoration, I changed the background to purple and removed the outer frame of the decoration, but kept the curly decoration in the same colour as it was. I think the image enhances the luxury feeling I want to convey.
+All movie posters come from [TMDB](https://www.themoviedb.org/), collected via API, converted to a smaller size (via Microsoft Photos) and webP format (via [tinify](https://tinypng.com)), and manually uploaded in admin to Cloudinary. 
 
-
-The favicon is an image of the **'em** in the logo in font *Nabla*. To create the favicon files, I used [RealFaviconGenerator](https://realfavicongenerator.net/).
-
-
-The logo is the game name written in font *Nabla*, and in *Passero One* for the Safari browser.
+I made the placeholder movie poster in Microsoft Paint.
 
 ## Features 
 
