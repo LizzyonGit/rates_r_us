@@ -140,20 +140,24 @@ The website aims to offer users:
 
 ### User stories
 
-#### As a gamer, I want to:
+#### As a site admin, I can:
 
-- easily navigate on the game page on any device, so that I get a user-friendly experience,
-- find information on how the game works, so that I can play the game,
-- be able to play the game,
-- have the possibility to hold certain fruits, so that I can increase the chance of winning,
-- keep track of how many spins I have left, so that I can adapt my tactic,
-- keep track of my credit, so that I can follow my progress,
-- keep track of how many rounds I have played, so that I can follow my progress or decide if I should stop or continue,
-- be able to quit or restart the game, so that I have control over the game without needing to leave the website.
+- create, read, update and delete movie posts so that I can manage my website,
+- create a draft so that I can control when and if posts will be published on the website,
+- pick out several movies to be highlighted on the website so that I can make my website more personal,
+- write a motivation for my chosen top movies in admin so that I can make the website more personal,
+- prevent reviews from displaying so that I have control over which reviews appear on my website.
 
-#### As a site owner, I want to offer visitors a:
+#### As a site user, I can
 
-- fun and addictive, user-friendly game, so that I can get a steady user base and gain traffic to my website.
+- view a paginated list of movie posts so that I can quickly find the movie I want to view,
+- search movies on title, director or cast member so that I can find what I'm looking for,
+- open a movie post so that I can read the whole post,
+- register an account so that I can rate movies and add reviews,
+- review a movie so that I can share my opinion,
+- rate movies so that I can contribute to the overall rating of the movie,
+- edit or delete my review so that I have control on my contribution to the website,
+- edit or delete my rating so that I have control on my contribution to the website.
 
 #### Tasks to achieve user stories
 
