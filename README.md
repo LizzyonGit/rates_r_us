@@ -226,33 +226,40 @@ Moby's reviews and user reviews by myself.
 
   - The navbar holds the logo, menu links depending on login state of the user, search field and button. 
 
- ![Navbar logged in user](docs/screenshots/header.png)
- ![Navbar logged out user](docs/screenshots/header.png)
+  ![Navbar logged in user](docs/screenshots/header.png)
+  ![Navbar logged out user](docs/screenshots/header.png)
 
- ![Navbar compressed](docs/screenshots/header.png)
+  ![Navbar compressed](docs/screenshots/header.png)
 
+  Project file: templates/base.html
 
-- __My top pics__
+-__Home page__
 
-  - Max 3 top picks from admin, with poster, movie title and motivation text by Moby Viesca. The whole card serves as a link to the movie_detail page.
+   - __My top pics__
 
- ![Top pics](docs/screenshots/how-to-play-modal.png)
+     - Max 3 top picks from admin, with poster, movie title and motivation text by Moby Viesca. The whole card serves as a link to the movie_detail page.
 
-- __All movies__
+     ![Top pics](docs/screenshots/how-to-play-modal.png)
 
-  All published movies are listed under **All movies**. Each movie card has a movie poster, the title, rating with review count (if there is), release date, country and genres. The whole card serves as a link to the movie_detail page. 
+   - __All movies__
+
+     - All published movies are listed under **All movies**. Each movie card has a movie poster, the title, rating with review count (if there is), release date, country and genres. The whole card serves as a link to the movie_detail page. 
   
-  The **All movies** are paginated and display max 3 per page. Under the movies is the button **PREV** if there is a previous page, and **NEXT** if there is a next page.
+     - The **All movies** are paginated and display max 3 per page. Under the movies is the button **PREV** if there is a previous page, and **NEXT** if there is a next page.
    
- ![All movies and pagination](docs/screenshots/game-before-start.png)
+     ![All movies and pagination](docs/screenshots/game-before-start.png)
 
- ![Mobile lay-out movie lists](docs/screenshots/game-in-play.png)
+     ![Mobile lay-out movie lists](docs/screenshots/game-in-play.png)
+
+    Project file: movie/templates/movie/index.html
 
 - __Footer__
 
-  The footer has the text *By famous movie critic Moby Viesca*, and links to Facebook, X and Instagram.
+  - The footer has the text *By famous movie critic Moby Viesca*, and links to Facebook, X and Instagram.
 
- ![Footer](docs/screenshots/credit-info-section.png)
+  ![Footer](docs/screenshots/credit-info-section.png)
+ 
+  Project file: templates/base.html
 
 - __Movie_detail__
 
@@ -276,7 +283,7 @@ Moby's reviews and user reviews by myself.
     
     __Reviews__
 
-      - Lists all approved reviews with username, creation date and time of the review, title and text (if applicable) and the rating. 
+      - Lists all approved reviews with newest first, with username, creation date and time of the review, title and text (if applicable) and the rating. 
       - If a logged in user has left a review, there are the buttons **Delete** and **Edit**.
       - If a logged in user has left a review that is not approved, the whole review is in italic style and there is a yellow text *This review is awaiting approval* above the buttons.
 
@@ -286,58 +293,76 @@ Moby's reviews and user reviews by myself.
 
       ![Update review form](docs/screenshots/game-over-modal.png)
 
-      - After clicking **Delete**, the **Delete review?** modal pops up where you can confirm deleting the review or close the modal and not delete the review.
+      - After clicking **Delete**, the Bootstrap **Delete review?** modal pops up where you can confirm deleting the review or close the modal and not delete the review.
 
       ![Delete review modal](docs/screenshots/game-over-modal.png)
-
+    
+    Project file: movie/templates/movie/movie_detail.html
 
 - __Search results__
 
-   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   - The **Search results** page lists the movies the same way as in the **All movies** section, this is reused code. You can click the movie card to go to its movie_detail page. 
    
-   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+   - When there are no results, there is a text. I added this to urge the user to only search for one word or on one actor or director, because of the known bug that word sequences should be written exactly as how they appear to find a movie title, and that two actor or director names do not result in any found movies.
+   
+   ![Search results with result](docs/screenshots/quit-game-modal.png)
+   ![Search results no result](docs/screenshots/quit-game-modal.png)
+
+   Project file: movie/templates/movie/search_results.html
 
 - __My reviews__
 
-   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   - The **My reviews** page is available when a user is logged in. When a user has left reviews, they are listed with the newest first on this page. There is no difference between approved and not-approved reviews. The reviewed movie title links to the movie's detailed page, directly to the associated review down on that page. 
    
-   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+   - If the user has not left any reviews yet, there is just a text. 
+   
+   ![My reviews with reviews](docs/screenshots/quit-game-modal.png)
+   ![My reviews with no reviews](docs/screenshots/quit-game-modal.png)
+
+    Project file: movie/templates/movie/my_reviews.html
 
 - __Register__
 
-   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   - The **Register** page is available when a user is not logged in. There is a form and button to register and you log in right away after doing so.
    
-   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+   ![Register](docs/screenshots/quit-game-modal.png)¨
+
+    Project file: templates/accounts/signup.html
 
 - __Log in__
 
-   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   - The **Log in** page is available when a user is not logged in. There is a form and button to log in.
    
-   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+   ![Log in](docs/screenshots/quit-game-modal.png)
+
+    Project file: templates/accounts/login.html
 
 - __Log out__
 
-   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   - The **Log out** page is available when a user is logged in. There is a text and button to log out.
    
-   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+   ![Log out](docs/screenshots/quit-game-modal.png)
+
+   Project file: templates/accounts/logout.html
+
+-__Feedback messages__
+
+   - Messages appear after you register or log in, log out and when you delete,edit and add a rating or review. You can close them by clicking the cross.
+   
+   ![Message example](docs/screenshots/quit-game-modal.png)
 
 - __The 404 page__
 
-  - The 404.html page consists of a simple text saying it is not a lucky page, and a **Play Fruits hold 'em** button that links to the home page.
+  - The 404.html page consists of a text and button to link to the (first) home page.
   
   ![404 not found](docs/screenshots/404.png)
 
-  Project file: 404.html
+  Project file: movie/templates/404.html
 
 ### Features left to implement
 
-- Sound toggle with different sounds depending on a win or not.
-- More exciting graphics when you have a winning row, like flashing effects.
-- Different credit values for different fruits.
-- Different winning lines.
-- Spinning wheel effect in each spin before the fruits are settled.
-- Social media links or links to an external website of the game makers.
-- Shiny effects and bling overall in the game.
+- Change the **Rating** field in the review form to five empty stars where you can select a number of stars, and convert it to a rating from 0 to 5.
+- For the **My reviews** page, add the edit/delete functionality and distinguish between approved/not-approved reviews, add pagination.
 
 ## Testing 
 
