@@ -389,14 +389,15 @@ See [TESTING.md](TESTING.md).
 ### Frameworks - libraries - programs used
 
 - [Bootstrap](https://getbootstrap.com/) version 5.3
+- [Django](https://www.djangoproject.com/) version
+- [Lucidchart](https://lucid.app/lucidchart/) for database
 - [Figma](https://www.figma.com/) for wireframes
 - Chrome DevTools for verifying responsibility and troubleshooting code
-- [CodePen](https://codepen.io/pen/) for troubleshooting code
-- [Gitpod](https://www.gitpod.io/) for coding
+- [VS Code](https://code.visualstudio.com/) as IDE
 - [GitHub](https://github.com/) for version control and hosting
 - [Google Fonts](https://fonts.google.com/) for my font pair
-- [Canva](https://www.canva.com/) for background image
-- Windows Paint for the cropping background image
+- Windows Paint for creating placeholder movie poster and favicon
+- Windows Photos for adjusting images
 - [TinyPNG](https://tinypng.com/) for compressing image size and converting to .webp
 - Windows snipping tool for the favicon
 - [RealFaviconGenerator](https://realfavicongenerator.net/) for creating favicon icons and the HTML code, and checking the favicon
