@@ -454,11 +454,14 @@ __Planning__
 - For getting a colour scheme and checking the color contrast, [Coolors.co](https://coolors.co).
 
 __During development and testing__
+- Inspiration and code bits from CI walkthrough project *I think therefore I blog*.
 - Bootstrap documentation [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
-- [W3schools](https://www.w3schools.com/) for getting the fruit icons and reading up on concepts.
+- [Django documentation]
+- [djangoforum]
+- [W3schools](https://www.w3schools.com/) to read up on concepts.
 - [MDN Web Docs](https://developer.mozilla.org/en-US/) to read up on concepts.
-- [Stackoverflow](https://stackoverflow.com/) for general code questions.
-- Inspiration and code bits from CI walkthrough project *Simon says*.
+- [Stackoverflow](https://stackoverflow.com/) for code questions.
+
 - How to redirect to another page with JavaScript: [tutorialspoint](https://www.tutorialspoint.com/how-to-redirect-to-another-webpage-using-javascript).
 - How to open a Bootstrap modal with JavaScript: [Stackoverflow](https://stackoverflow.com/questions/62101647/.javascript-bootstrap-open-bootstrap-modal-with-javascript-and-not-with-button).
 - To set focus on an element: [Laracasts](https://laracasts.com/index.php/discuss/channels/vue/how-to-focus-on-an-input-after-disabling).
@@ -478,4 +481,3 @@ __Project finalisation__
 
 ### Acknowledgments
 - My mentor Jubril for the feedback.
-- My cohort facilitator Kay for the pep talks.
