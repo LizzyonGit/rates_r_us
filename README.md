@@ -212,86 +212,110 @@ All movie posters come from [TMDB](https://www.themoviedb.org/), collected via A
 
 I made the placeholder movie poster in Microsoft Paint.
 
+#### Content
+
+Movie descriptions from https://aifreebox.com/list/ai-movie-description-generator.
+Other movie facts from Wikipedia or IMDB.
+Moby's reviews and user reviews by myself.
+
 ## Features 
 
 ### Existing features
 
-- __Header__
+- __Navbar__
 
-  - The header holds the logo, a motivating text, and the button **How to play**. 
+  - The navbar holds the logo, menu links depending on login state of the user, search field and button. 
 
- ![Header](docs/screenshots/header.png)
+ ![Navbar logged in user](docs/screenshots/header.png)
+ ![Navbar logged out user](docs/screenshots/header.png)
 
-- __How to play modal__
+ ![Navbar compressed](docs/screenshots/header.png)
 
-  - When you click **How to play**, the corresponding modal opens with information on how to play the game. You can close this modal by clicking **Close** or **X** in the top right corner.
 
- ![How to play modal](docs/screenshots/how-to-play-modal.png)
+- __My top pics__
 
-- __Game section__
+  - Max 3 top picks from admin, with poster, movie title and motivation text by Moby Viesca. The whole card serves as a link to the movie_detail page.
 
-  The game section holds three columns, a **HOLD** button under each column, and a **GO** button at the bottom. Here is where you play the game.
+ ![Top pics](docs/screenshots/how-to-play-modal.png)
 
-     __GO button__
+- __All movies__
 
-     - You click **GO** to start the game so the columns get filled with fruits, and from there, you just click **GO** to 'spin' the columns each time. 
+  All published movies are listed under **All movies**. Each movie card has a movie poster, the title, rating with review count (if there is), release date, country and genres. The whole card serves as a link to the movie_detail page. 
   
-     __HOLD buttons__
-
-     - You can click **HOLD** to prevent the column above it from spinning. The **HOLD** button changes from green to red with the button text **HELD**, and it changes back when you click it again. When you hold two columns, the third **HOLD** button becomes disabled so you can not hold three columns. If you enable one of the two **HELD** buttons again, the disabled button gets enabled again.
-
-     - Your chosen held columns stay held between the spins, but the buttons get reset at the start of a new round.
-
-     - With the **HOLD** buttons, you increase your chance of winning, for example, if you get two identical fruits in a spin, you can hold them so only the third fruit needs to be correct, giving you a 20% chance of a winning middle row.
-  
-     __Winning row__
-
-     - When you have a winning middle row, the background for the row changes from red to green with a golden border, and a text appears above the columns with **WINNER!!**. Regardless of how many spins you have left, the round ends with a winning row. The round's final display of fruits displays for one second, and during this time, all **HOLD** buttons and the **GO** button become disabled, until the new round starts automatically with reset fruits.
-
-     __No winning row__
-
-     - When you have zero spins left and no winning combination, the round ends just like when you would have a winning combination; the final spin's fruits display for one second, during which **HOLD** and **GO** buttons are disabled, and a new round starts automatically after that.
-     
-  ![Game section before start](docs/screenshots/game-before-start.png)
-
-  ![Game section in play with one held column](docs/screenshots/game-in-play.png)
-
-  ![Game section with winning row](docs/screenshots/winning-game.png)
-
-- __Credit info section__
-
-  The credit info section holds the following information, so the user can keep track of how the game is going at all times:
-
-    __Spins left__
-    - The spin count counts down from 3 to 0 each round. A new round gives you 3 spins. At the start of a new round, new fruits are set and count right away if you win, without needing to spin. So effectively, you get four fruit spins, but you can not control the first one.
-
-    __Credit__
-    - You start the game with 10 credit. Apart from the first round, which is effectively free, at the start of each new round, credit decreases with 5. If you get a winning row, credit increases with 10 during the 1-second pause at the end of the round. This may look like credit only increases with 5, because a new round takes 5 credit at the start. When you have two winning combinations in a row, credit increases with 10 twice, but then takes 5 at the start of a new round. If this new round does not start with a winning combination, it looks like credit increases with 15.
-
-    - When credit is 0 after the last spin of a round, the **Game over** modal pops up. Credit can not go negative.
-  
-    __Rounds played__
-    - The number of rounds you played starts at 0 for your first round, and increases with 1 at the start of each new round. If you never get winning combinations, you can play 3 rounds. This is because the first round is effectively free, because you start with 10 credit in the first round, and it does not decrease until the start of the next round. 
-
-  The section holds the following buttons:
-
-   __Restart button__
-     - The **Restart** button starts a new game right away with reset fruits and the credit info default values. It works the same as the first time you click **GO**.
+  The **All movies** are paginated and display max 3 per page. Under the movies is the button **PREV** if there is a previous page, and **NEXT** if there is a next page.
    
-   __Quit button__
-     - The **Quit** button triggers the **Quit game** modal.
+ ![All movies and pagination](docs/screenshots/game-before-start.png)
 
-  ![Credit info section](docs/screenshots/credit-info-section.png)
+ ![Mobile lay-out movie lists](docs/screenshots/game-in-play.png)
 
-- __Game over modal__
+- __Footer__
 
-   - The **Game over** modal informs you that you have no credit left for a new round. It informs you how many rounds you have managed to play. The more rounds, the luckier you have been, since everyone starts with the same credit and you can only gain credit by winning rounds. 
+  The footer has the text *By famous movie critic Moby Viesca*, and links to Facebook, X and Instagram.
+
+ ![Footer](docs/screenshots/credit-info-section.png)
+
+- __Movie_detail__
+
+   - Each movie has its own page with more information. It has the movie poster, title, rating and review count, release date, country, genres, cast and director(s).
+   - Under it there is a movie description. 
+   - If there is a motivation text in admin, there is a **Moby's review** section with this text.
+
+   ![Movie information](docs/screenshots/game-over-modal.png)
+   ![Movie information mobile lay-out](docs/screenshots/game-over-modal.png)
+
+    __Have your say!__
    
-   - When you click **Play again**, a new game starts. When you click **Quit** or the **X** in the top right corner, you go back to the start page, before a game starts.
+      - Starts with an icon with review count.
+      - For logged out users there is only a text urging the user to register or log in to be able to add a review.
+      
+      ![Have your say logged out user](docs/screenshots/game-over-modal.png)
+
+      - For logged in users, there is a form where you can give the movie a rating from 0 to 5 and write a title and text review. Only the rating is mandatory to submit the form.
  
-   ![Game over modal](docs/screenshots/game-over-modal.png)
+      ![Have your say logged in user](docs/screenshots/game-over-modal.png)
+    
+    __Reviews__
 
-- __Quit game modal__
+      - Lists all approved reviews with username, creation date and time of the review, title and text (if applicable) and the rating. 
+      - If a logged in user has left a review, there are the buttons **Delete** and **Edit**.
+      - If a logged in user has left a review that is not approved, the whole review is in italic style and there is a yellow text *This review is awaiting approval* above the buttons.
+
+      ![Reviews](docs/screenshots/game-over-modal.png)
+
+      - After clicking **Edit**, you move to the review form where the fields are populated with your review, the **Submit** button changes to **Update**.
+
+      ![Update review form](docs/screenshots/game-over-modal.png)
+
+      - After clicking **Delete**, the **Delete review?** modal pops up where you can confirm deleting the review or close the modal and not delete the review.
+
+      ![Delete review modal](docs/screenshots/game-over-modal.png)
+
+
+- __Search results__
+
+   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   
+   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+
+- __My reviews__
+
+   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   
+   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+
+- __Register__
+
+   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   
+   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+
+- __Log in__
+
+   - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
+   
+   ![Quit game modal](docs/screenshots/quit-game-modal.png)
+
+- __Log out__
 
    - The **Quit game** modal opens when you click the **Quit** button, and asks you to confirm if you want to quit the game. You can click **Stay** or the **X** in the top right corner, to stay on the current game. You can click **Quit** to go back to the start page, to before a game starts.
    
