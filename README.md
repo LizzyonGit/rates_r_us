@@ -389,10 +389,11 @@ See [TESTING.md](TESTING.md).
 ### Frameworks - libraries - programs used
 
 - [Bootstrap](https://getbootstrap.com/) version 5.3
-- [Django](https://www.djangoproject.com/) version
+- [Django](https://www.djangoproject.com/) version 4.2.20
+- [Cloudinary](https://cloudinary.com/)
 - [Lucidchart](https://lucid.app/lucidchart/) for database
 - [Figma](https://www.figma.com/) for wireframes
-- Chrome DevTools for verifying responsibility and troubleshooting code
+- DevTools for verifying responsibility and troubleshooting code
 - [VS Code](https://code.visualstudio.com/) as IDE
 - [GitHub](https://github.com/) for version control and hosting
 - [Google Fonts](https://fonts.google.com/) for my font pair
@@ -432,11 +433,11 @@ To clone the repository:
 
 ### Content 
 
-- All content is written by me.
+- Movie descriptions from https://aifreebox.com/list/ai-movie-description-generator. Other movie facts from Wikipedia or IMDB.
 
 ### Media
 
-- The original background image is on Canva, by 'hielmannuraddin's Team', called [Black and Gold Classic Background A4 Document](https://www.canva.com/sv_se/mallar/EAGICesfS6E-black-and-gold-classic-background-a4-document/). I edited this image in Canva.
+- Movie posters from https://www.themoviedb.org/.
 
 ### Resources
 
