@@ -184,7 +184,7 @@ Below are my initial wireframes for mobile and laptop screen sizes. I used [Figm
 
 </details>
 <details>
-    <summary>Home page and movie_detail/summary>I only saw the home page and movie_detail page with all the movie poster to be different on larger screen sizes, so I only created wireframes for these pages for tablet/desktop sizes. I chenged from rows with two movies to rows with three movies, as movie posters are not wide so this fits better. Then I just moved the poster to the right in the movie_detail page and the description takes a wider space under the image and short movie facts.
+    <summary>Home page and movie_detail</summary>I only saw the home page and movie_detail page with all the movie poster to be different on larger screen sizes, so I only created wireframes for these pages for tablet/desktop sizes. I chenged from rows with two movies to rows with three movies, as movie posters are not wide so this fits better. Then I just moved the poster to the right in the movie_detail page and the description takes a wider space under the image and short movie facts.
 
   ![Home page and movie_detail for desktop](docs/wireframes/desktop-wireframes.png)
 
@@ -233,7 +233,7 @@ Moby's reviews and user reviews by myself.
 
   Project file: templates/base.html
 
--__Home page__
+- __Home page__
 
    - __My top pics__
 
@@ -251,8 +251,8 @@ Moby's reviews and user reviews by myself.
 
      ![Mobile lay-out movie lists](docs/features/all-movies-mobile.png)
 
-    Project file: movie/templates/movie/index.html
-    Project file movie list: movie/templates/movie/my_list.html
+     Project file: movie/templates/movie/index.html
+     Project file movie list: movie/templates/movie/my_list.html
 
 - __Footer__
 
@@ -271,7 +271,7 @@ Moby's reviews and user reviews by myself.
    ![Movie information](docs/features/movie-detail.png)
    ![Movie information mobile lay-out](docs/features/movie-detail-mobile.png)
 
-    __Have your say!__
+    - __Have your say!__
    
       - Starts with an icon with review count.
       - For logged out users there is only a text urging the user to register or log in to be able to add a review.
@@ -282,7 +282,7 @@ Moby's reviews and user reviews by myself.
  
       ![Have your say logged in user](docs/features/review-form-loggedin.png)
     
-    __Reviews__
+    - __Reviews__
 
       - Lists all approved reviews with newest first, with username, creation date and time of the review, title and text (if applicable) and the rating. 
       - If a logged in user has left a review, there are the buttons **Delete** and **Edit**.
@@ -347,7 +347,7 @@ Moby's reviews and user reviews by myself.
 
    Project file: templates/accounts/logout.html
 
--__Feedback messages__
+- __Feedback messages__
 
    - Messages appear after you register or log in, log out and when you delete, edit and add a rating or review, or when you try to submit a second review. You can close them by clicking the cross.
    
