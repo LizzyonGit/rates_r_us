@@ -252,6 +252,8 @@ Moby's reviews and user reviews by myself.
      ![Mobile lay-out movie lists](docs/screenshots/game-in-play.png)
 
     Project file: movie/templates/movie/index.html
+    Project file movie list: movie/templates/movie/my_list.html
+
 
 - __Footer__
 
@@ -309,6 +311,7 @@ Moby's reviews and user reviews by myself.
    ![Search results no result](docs/screenshots/quit-game-modal.png)
 
    Project file: movie/templates/movie/search_results.html
+   Project file movie list: movie/templates/movie/my_list.html
 
 - __My reviews__
 
@@ -363,6 +366,12 @@ Moby's reviews and user reviews by myself.
 
 - Change the **Rating** field in the review form to five empty stars where you can select a number of stars, and convert it to a rating from 0 to 5.
 - For the **My reviews** page, add the edit/delete functionality and distinguish between approved/not-approved reviews, add pagination.
+- Add filter in **All movies** to select on genre etc.
+- The possibility for users to like a review.
+- **About** page about Moby Viesca.
+- The possibility for users to suggest movies to Mobie Viesca.
+- Add instructions in admin.
+
 
 ## Testing 
 
@@ -374,6 +383,7 @@ See [TESTING.md](TESTING.md).
 
 - HTML
 - CSS
+- Python
 - JavaScript
 
 ### Frameworks - libraries - programs used
