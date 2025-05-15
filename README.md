@@ -226,10 +226,10 @@ Moby's reviews and user reviews by myself.
 
   - The navbar holds the logo, menu links depending on login state of the user, search field and button. 
 
-  ![Navbar logged in user](docs/screenshots/header.png)
-  ![Navbar logged out user](docs/screenshots/header.png)
+  ![Navbar logged in user](docs/features/navbar-loggedin.png)
+  ![Navbar logged out user](docs/features/navbar-loggedout.png)
 
-  ![Navbar compressed](docs/screenshots/header.png)
+  ![Navbar compressed](docs/features/navbar-mobile.png)
 
   Project file: templates/base.html
 
@@ -239,7 +239,7 @@ Moby's reviews and user reviews by myself.
 
      - Max 3 top picks from admin, with poster, movie title and motivation text by Moby Viesca. The whole card serves as a link to the movie_detail page.
 
-     ![Top pics](docs/screenshots/how-to-play-modal.png)
+     ![Top pics](docs/features/top-pics.png)
 
    - __All movies__
 
@@ -247,19 +247,18 @@ Moby's reviews and user reviews by myself.
   
      - The **All movies** are paginated and display max 3 per page. Under the movies is the button **PREV** if there is a previous page, and **NEXT** if there is a next page.
    
-     ![All movies and pagination](docs/screenshots/game-before-start.png)
+     ![All movies and pagination](docs/features/all-movies.png)
 
-     ![Mobile lay-out movie lists](docs/screenshots/game-in-play.png)
+     ![Mobile lay-out movie lists](docs/features/all-movies-mobile.png)
 
     Project file: movie/templates/movie/index.html
     Project file movie list: movie/templates/movie/my_list.html
-
 
 - __Footer__
 
   - The footer has the text *By famous movie critic Moby Viesca*, and links to Facebook, X and Instagram.
 
-  ![Footer](docs/screenshots/credit-info-section.png)
+  ![Footer](docs/features/footer.png)
  
   Project file: templates/base.html
 
@@ -269,19 +268,19 @@ Moby's reviews and user reviews by myself.
    - Under it there is a movie description. 
    - If there is a motivation text in admin, there is a **Moby's review** section with this text.
 
-   ![Movie information](docs/screenshots/game-over-modal.png)
-   ![Movie information mobile lay-out](docs/screenshots/game-over-modal.png)
+   ![Movie information](docs/features/movie-detail.png)
+   ![Movie information mobile lay-out](docs/features/movie-detail-mobile.png)
 
     __Have your say!__
    
       - Starts with an icon with review count.
       - For logged out users there is only a text urging the user to register or log in to be able to add a review.
       
-      ![Have your say logged out user](docs/screenshots/game-over-modal.png)
+      ![Have your say logged out user](docs/features/review-form-loggedout.png)
 
       - For logged in users, there is a form where you can give the movie a rating from 0 to 5 and write a title and text review. Only the rating is mandatory to submit the form.
  
-      ![Have your say logged in user](docs/screenshots/game-over-modal.png)
+      ![Have your say logged in user](docs/features/review-form-loggedin.png)
     
     __Reviews__
 
@@ -289,15 +288,15 @@ Moby's reviews and user reviews by myself.
       - If a logged in user has left a review, there are the buttons **Delete** and **Edit**.
       - If a logged in user has left a review that is not approved, the whole review is in italic style and there is a yellow text *This review is awaiting approval* above the buttons.
 
-      ![Reviews](docs/screenshots/game-over-modal.png)
+      ![Reviews](docs/features/reviews.png)
 
       - After clicking **Edit**, you move to the review form where the fields are populated with your review, the **Submit** button changes to **Update**.
 
-      ![Update review form](docs/screenshots/game-over-modal.png)
+      ![Update review form](docs/features/review-update.png)
 
       - After clicking **Delete**, the Bootstrap **Delete review?** modal pops up where you can confirm deleting the review or close the modal and not delete the review.
 
-      ![Delete review modal](docs/screenshots/game-over-modal.png)
+      ![Delete review modal](docs/features/delete-modal.png)
     
     Project file: movie/templates/movie/movie_detail.html
 
@@ -307,8 +306,8 @@ Moby's reviews and user reviews by myself.
    
    - When there are no results, there is a text. I added this to urge the user to only search for one word or on one actor or director, because of the known bug that word sequences should be written exactly as how they appear to find a movie title, and that two actor or director names do not result in any found movies.
    
-   ![Search results with result](docs/screenshots/quit-game-modal.png)
-   ![Search results no result](docs/screenshots/quit-game-modal.png)
+   ![Search results with result](docs/features/search-result.png)
+   ![Search results no result](docs/features/search-noresult.png)
 
    Project file: movie/templates/movie/search_results.html
    Project file movie list: movie/templates/movie/my_list.html
@@ -319,8 +318,8 @@ Moby's reviews and user reviews by myself.
    
    - If the user has not left any reviews yet, there is just a text. 
    
-   ![My reviews with reviews](docs/screenshots/quit-game-modal.png)
-   ![My reviews with no reviews](docs/screenshots/quit-game-modal.png)
+   ![My reviews with reviews](docs/features/my-reviews.png)
+   ![My reviews with no reviews](docs/features/my-reviews-empty.png)
 
     Project file: movie/templates/movie/my_reviews.html
 
@@ -328,7 +327,7 @@ Moby's reviews and user reviews by myself.
 
    - The **Register** page is available when a user is not logged in. There is a form and button to register and you log in right away after doing so.
    
-   ![Register](docs/screenshots/quit-game-modal.png)¨
+   ![Register](docs/features/register.png)
 
     Project file: templates/accounts/signup.html
 
@@ -336,7 +335,7 @@ Moby's reviews and user reviews by myself.
 
    - The **Log in** page is available when a user is not logged in. There is a form and button to log in.
    
-   ![Log in](docs/screenshots/quit-game-modal.png)
+   ![Log in](docs/features/login.png)
 
     Project file: templates/accounts/login.html
 
@@ -344,21 +343,23 @@ Moby's reviews and user reviews by myself.
 
    - The **Log out** page is available when a user is logged in. There is a text and button to log out.
    
-   ![Log out](docs/screenshots/quit-game-modal.png)
+   ![Log out](docs/features/logout.png)
 
    Project file: templates/accounts/logout.html
 
 -__Feedback messages__
 
-   - Messages appear after you register or log in, log out and when you delete,edit and add a rating or review. You can close them by clicking the cross.
+   - Messages appear after you register or log in, log out and when you delete, edit and add a rating or review, or when you try to submit a second review. You can close them by clicking the cross.
    
-   ![Message example](docs/screenshots/quit-game-modal.png)
+   ![Message example](docs/features/message.png)
+   ![Message example small screen](docs/features/message-mobile.png)
+
 
 - __The 404 page__
 
   - The 404.html page consists of a text and button to link to the (first) home page.
   
-  ![404 not found](docs/screenshots/404.png)
+  ![404 not found](docs/features/404.png)
 
   Project file: movie/templates/404.html
 
@@ -371,7 +372,6 @@ Moby's reviews and user reviews by myself.
 - **About** page about Moby Viesca.
 - The possibility for users to suggest movies to Mobie Viesca.
 - Add instructions in admin.
-
 
 ## Testing 
 
