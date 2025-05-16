@@ -69,8 +69,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Cloudinary fix for https (https://code-institute-room.slack.com/archives/C026PTF46F5/p1706623233793149?thread_ts=1706622757.171679&cid=C026PTF46F5)
-cloudinary.config (
-    secure = True,
+cloudinary.config(
+    secure=True,
 )
 
 #  Bootstrap5 as allowed and default template pack
