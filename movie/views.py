@@ -5,55 +5,57 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from .models import Movie, Review
 from .forms import ReviewForm
-# from django.conf import settings  # So I can access API key in settings
-# import requests  # Handles API request
-
-# # Following tutorial Piko Can Fly https://www.youtube.com/watch?v=uWfIoc-d0H4
-
-# def all_movies_page(request):
-#     category = request.GET.get("category", "popular")
-
-#     API_KEY = settings.TMDB_API_KEY
-#     base_url='https://api.themoviedb.org/3/movie/'
-#     url = f"{base_url}{category}?api_key={API_KEY}"
-#     response = requests.get(url)
-#     data = response.json().get('results', [])
-#     print(data)
-
-#     return render(
-#         request,
-#         'movie/index.html',
-#         {
-#             'data': data,
-#             'category': category
-#         },
-#         )
 
 
 class MovieList(generic.ListView):
     """
-    Filters on published movie posts
+    Returns all published movies and
+    displayes them in a page of 3.
+    **Context**
+
+    ``queryset``
+        All published instances of :model:`movie.Movie`.
+    ``paginate_by``
+        Number of movies per page.
+
+    **Template**
+
+    :template:`movie/index.html`
     """
     model = Movie
     template_name = "movie/index.html"
     queryset = Movie.objects.all().filter(status=1)
     paginate_by = 3
 
-    # According to https://stackoverflow.com/questions/60560493/django-listview-pagination-when-passing-multiple-objects-in-queryset
+    # Below method needed to get pagination on first page for all movies,
+    # because of Top pic section on first page. Sources:
+    # https://stackoverflow.com/questions/60560493/django-listview-pagination-when-passing-multiple-objects-in-queryset
     # (post by Esmail Shabayek) and django docs
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Picks 3 top picks (From https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view (post by Pran Kumar Sarkar))
+        # Picks 3 top picks (https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view (Pran Kumar Sarkar))
         context['top_picks'] = Movie.objects.all().filter(top_pick=True)[:3]
         return context
 
 
-# Followed tutorial https://learndjango.com/tutorials/django-search-tutorial and django doc for search functionality
-# Help from https://forum.djangoproject.com/t/find-objects-with-mix-distinct-and-order-by/13010,
-# https://stackoverflow.com/questions/73164250/find-unique-values-in-django/73164902, django doc
+# Search functionality below from sources:
+# Tutorial https://learndjango.com/tutorials/django-search-tutorial and django doc,
+# https://forum.djangoproject.com/t/find-objects-with-mix-distinct-and-order-by/13010,
+# https://stackoverflow.com/questions/73164250/find-unique-values-in-django/73164902
 class SearchResultsView(generic.ListView):
     """
-    Seach page
+    Display movie result from user query in search field.
+
+    **Context**
+
+    ``object_list``
+        All published movies for which the user query is included in
+        the title, cast, and/or directors.
+        (.distinct prevents duplicate results)
+
+    **Template**
+    :template:`movie/search_results.html`
+
     """
     model = Movie
     template_name = 'movie/search_results.html'
@@ -75,6 +77,10 @@ def movie_detail(request, slug):
 
     ``movie``
         An instance of :model:`movie.Movie`.
+    ``reviews``
+        All reviews related to the movie.
+    ``review_form``
+        An instance of :form:`movie.ReviewForm`
 
     **Template:**
 
@@ -88,9 +94,8 @@ def movie_detail(request, slug):
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
 
-        # Check if there are any reviews posted by the user and raise error
-        # According to https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
-        # Get the reviews posted by the user for this movie
+        # Check if there are any reviews posted by the user to raise error
+        # https://stackoverflow.com/questions/46082573/django-forms-allow-logged-in-user-to-submit-only-one-comment-per-individual-pos
         user_reviews = movie.reviews.filter(author=request.user)
 
         if user_reviews:
@@ -135,7 +140,16 @@ def movie_detail(request, slug):
 
 def review_edit(request, slug, review_id):
     """
-    view to edit reviews
+    Display an individual review for edit.
+
+    **Context**
+
+    ``movie``
+        An instance of :model:`movie.Movie`.
+    ``review``
+        A single review related to the movie.
+    ``review_form``
+        An instance of :form:`movie.ReviewForm`
     """
     if request.method == "POST":
 
@@ -168,7 +182,14 @@ def review_edit(request, slug, review_id):
 
 def review_delete(request, slug, review_id):
     """
-    view to delete review
+    Delete an individual review.
+
+    **Context**
+
+    ``movie``
+        An instance of :model:`movie.Movie`.
+    ``review``
+        A single review related to the movie.
     """
     queryset = Movie.objects.filter(status=1)
     movie = get_object_or_404(queryset, slug=slug)
@@ -186,7 +207,19 @@ def review_delete(request, slug, review_id):
 
 def my_reviews(request):
     """
-    Filters reviews per user for my reviews page
+    Display all reviews by one user
+
+    **Context**
+
+    ``my_reviews``
+        All reviews by one user
+    ``movies``
+        All published movies
+
+    **Template**
+
+    :template:`movie/my_reviews.html`
+
     """
     queryset = Review.objects.all()
     my_reviews = queryset.filter(author=request.user).order_by("-created_on")

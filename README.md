@@ -454,6 +454,7 @@ __During development and testing__
   - [MDN Web Docs](https://developer.mozilla.org/en-US/).
 - [Piko Can Fly](https://www.youtube.com/@PikoCanFly) tutorials for using the TMDB API.
 - *Requests* library for collecting images via API.
+- [Search functionality tutorial](https://learndjango.com/tutorials/django-search-tutorial).
 
 __Project finalisation__ 
 - [Grammarly](https://www.grammarly.com/grammar-check) spellchecker.
