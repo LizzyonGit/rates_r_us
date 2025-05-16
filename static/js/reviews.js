@@ -1,3 +1,6 @@
+/** This edit and delete javascript code is mostly copied from CI's walkthrough project I think therefore I blog, 
+* with additions for the fields and functionality that differ*/
+
 const editButtons = document.getElementsByClassName("btn-edit");
 const reviewRating = document.getElementById("id_rating");
 const reviewTitle = document.getElementById("id_title");
@@ -17,7 +20,7 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 * - Fetches the content of the corresponding review.
 * - Populates the form fields with the review's content for editing.
 * - Updates the submit button's text to "Update".
-* - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
+* - Sets the form's action attribute to the `edit_review/{reviewId}` endpoint.
 */
 
 for (let button of editButtons) {
@@ -28,7 +31,7 @@ for (let button of editButtons) {
     let reviewScoreText = document.getElementById(`review_rating${reviewId}`).innerText;
     // Last character of string which is always the rating number
     let reviewScore = reviewScoreText.charAt(reviewScoreText.length - 1);
-    // Sets the selected option at the index of rating number +1, so the value is correct, bacuse index[0] = ----
+    // Sets the selected option at the index of rating number +1, so the value is correct, because index[0] = ----
     reviewRating.selectedIndex = (parseInt(reviewScore) + 1);
 
     // The following code collects and prepopulates title and text if they are not empty.
@@ -52,7 +55,7 @@ for (let button of editButtons) {
 }
 
 /**
-* Initializes deletion functionality for the provided delete buttons.
+* Initialises deletion functionality for the provided delete buttons.
 * 
 * For each button in the `deleteButtons` collection:
 * - Retrieves the associated review's ID upon click.
