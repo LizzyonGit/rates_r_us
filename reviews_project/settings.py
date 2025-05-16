@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+# Load environment variables if env.py file exists
 if os.path.isfile('env.py'):
     import env
 import cloudinary
@@ -28,7 +29,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# API key
+# API key, used for collecting movie posters prior to upload to Cloudinary
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -108,16 +109,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reviews_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
