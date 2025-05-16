@@ -15,7 +15,9 @@ RATING = [(i, i) for i in range(6)]
 
 class Movie(models.Model):
     """
-    Description needed
+    Stores a single movie post related to :model:`auth.User`.
+    Many-to-many relation to :model:movie.Genre, :model:movie.Actor,
+    :model:movie.Director.
     """
     movie_title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
@@ -46,9 +48,10 @@ class Movie(models.Model):
     def __str__(self):
         return self.movie_title
 
-    # Two methods for displaying average rating when there are approved reviews
-    # Calculate average rating of approved reviews.
-    # Inspired by https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
+    # Two methods below for:
+    # displaying average rating when there are approved reviews,
+    # calculating average rating of approved reviews. Resource:
+    # https://stackoverflow.com/questions/55325723/generate-average-for-ratings-in-django-models-and-return-with-other-model
 
     def approved_reviews(self):
         return self.reviews.filter(approved=True)
@@ -61,7 +64,8 @@ class Movie(models.Model):
 
 class Review(models.Model):
     """
-    Description
+    Stores a single review entry related to :model:`auth.User`
+    and :model:`movie.Movie`.
     """
 
     title = models.CharField(max_length=200, blank=True, null=True)
@@ -85,7 +89,7 @@ class Review(models.Model):
 
 class Actor(models.Model):
     """
-    Descr
+    Stores an actor's name.
     """
     name = models.CharField()
 
@@ -98,7 +102,7 @@ class Actor(models.Model):
 
 class Director(models.Model):
     """
-    Descr
+    Stores a director's name.
     """
     name = models.CharField()
 
@@ -111,7 +115,7 @@ class Director(models.Model):
 
 class Genre(models.Model):
     """
-    Descr
+    Stores a genre.
     """
     type = models.CharField()
 
