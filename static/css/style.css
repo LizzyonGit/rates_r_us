@@ -33,7 +33,7 @@ body {
     background-color: var(--primary-color);
 }
 
-/*Logo name*/
+/*Logo name size and weight from CI's walkthrough blog*/
 .logo {
     font-family: var(--secondary-font);
     font-size: 1.4rem;
@@ -133,6 +133,7 @@ body {
     border-top: 1px solid #000000;
     
 }
+
 /*Texts after review*/
 .italic {
     font-style: italic;
