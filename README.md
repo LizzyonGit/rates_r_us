@@ -1,24 +1,5 @@
-Deploy
-
-Go to your Heroku dashboard and create a new app.
-In the Deploy tab of your new app, under Deployment method, click GitHub. 
-Under Connect to GitHub, in the field next to your username on Guthub, type the repository name of the project and click Search. 
-The corresponding repository name appears below, click the Connect button.
 
 
-In settings, under Config Vars, add secret key and database url???
-
-
-Scroll down to Manual deploy, select the main branch to deploy and click Deploy Branch.
-
-In the top of the page, click Open app to open the app.
-
-Fonts
-I looked for a cinema feelng in my fonts and after some googleing I decided on Limelight for my larger font sizes and Merriweather for the smaller ones. Limelight is connected to theatre and filmmaking as per its description, and Merriweather was suggested in this blog post: https://wpmudev.com/blog/more-google-font-combinations-for-you-to-use/.
-
-Colours
-For my colour scheme, I want to convey a home theater feeling so I took my inspiration from articles about which colours would be good when you build a theater room. Red chairs came to mind, and otherwise dark colours for walls. And some yellow details to mimic the small spotlights on the wall. I read this article https://www.happypaintingcompany.com/blog/the-top-5-best-home-theater-paint-colors/ and https://www.peliplat.com/en/article/10002576/why-are-movie-theater-seats-mostly-red and landed on the following palette:
-black, navy, red, yellow.
 
 
 
@@ -388,36 +369,39 @@ See [TESTING.md](TESTING.md).
 
 ### Frameworks - libraries - programs used
 
-- [Bootstrap](https://getbootstrap.com/) version 5.3
 - [Django](https://www.djangoproject.com/) version 4.2.20
-- [Cloudinary](https://cloudinary.com/)
-- [Lucidchart](https://lucid.app/lucidchart/) for database
+  - Including *django-allauth*, *django-countries*, *django-crispy-forms*, and *django-summernote*.
+  - With installed withenoise and gunicorn.
+- [Bootstrap](https://getbootstrap.com/) version 5.3
+- [Lucidchart](https://lucid.app/lucidchart/) for database planning
 - [Figma](https://www.figma.com/) for wireframes
-- DevTools for verifying responsibility and troubleshooting code
 - [VS Code](https://code.visualstudio.com/) as IDE
-- [GitHub](https://github.com/) for version control and hosting
+- [GitHub](https://github.com/) for version control
+- [Heroku](https://www.heroku.com/) for hosting
+- [Cloudinary](https://cloudinary.com/) for image hosting
 - [Google Fonts](https://fonts.google.com/) for my font pair
 - Windows Paint for creating placeholder movie poster and favicon
 - Windows Photos for adjusting images
-- [TinyPNG](https://tinypng.com/) for compressing image size and converting to .webp
 - Windows snipping tool for the favicon
+- [TinyPNG](https://tinypng.com/) for compressing image size and converting to .webp
 - [RealFaviconGenerator](https://realfavicongenerator.net/) for creating favicon icons and the HTML code, and checking the favicon
+- DevTools for verifying responsibility and troubleshooting code
 - [Responsinator](http://www.responsinator.com/) for checking responsiveness
-- [Autoprefixer](https://autoprefixer.github.io/) for adding the necessary prefixes to my CSS stylesheet
 - [Am I Responsive](https://ui.dev/amiresponsive) for an image displaying the website on different screens
+- [Autoprefixer](https://autoprefixer.github.io/) for adding the necessary prefixes to my CSS stylesheet
 
 ## Deployment and development
 
 ### Deployment
-The site was deployed to GitHub pages. The steps to deploy are: 
-  1. In the GitHub repository, navigate to the **Settings** tab,
-  2. In the left menu, select **Pages**,
-  3. Under **Source**, select **Deploy from a branch**,
-  4. Under **Branch**, select **main**,
-  5. Click **Save**, 
-  6. In the GitHub repository, in the right menu, click **Deployments** to view the link to the deployed website.
+The site was deployed to Heroku. The steps to deploy are:
 
-The live link can be found here - https://lizzyongit.github.io/fruits-hold-em/index.html.
+1. Go to your Heroku dashboard and create a new app.
+2. In the **Deploy** tab of your new app, under **Deployment method**, click **GitHub**. 
+3. Under **Connect to GitHub**, in the field next to your username on Github, type the repository name (*LizzyonGit/rates_r_us*) of the project and click **Search**. 
+4. The corresponding repository name appears below, click the **Connect** button.
+5. In **Settings**, under **Config Vars**, add a value for keys *SECRET_KEY*, *DATABASE_URL* and *CLOUDINARY_URL*.
+6. Scroll down to **Manual deploy**, select the main branch to deploy and click **Deploy Branch**.
+7. In the top of the page, click **Open app** to open the site.
 
 ### Local development
 To fork the repository:
@@ -428,6 +412,14 @@ To clone the repository:
   2. In the **Local** tab, select if you want to clone with HTTPS, SSH, or GitHub CLI, and copy the link below it.
   3. Open the terminal in your code editor and change the current working directory to the location you want to clone this repository to.
   4. Type *git clone* and paste the link from step 2, and press Enter.
+
+Set up your IDE
+  1. Set up a virtual environment.
+  2. Install the packages from the requirements.txt file.
+  3. Create variables for *SECRET_KEY*, *DATABASE_URL* and *CLOUDINARY_URL*.
+  4. Apply migrations.
+  5. Collect static files.
+  6. Run the development server.
 
 ## Credits 
 
@@ -442,42 +434,30 @@ To clone the repository:
 ### Resources
 
 __Planning__
-- For a font pairing idea, [this article](https://www.creatopy.com/blog/google-font-pairings/#21).
+- For a font pairing idea, [this article](https://wpmudev.com/blog/more-google-font-combinations-for-you-to-use/).
 - To decide on which colours to use, I have researched several websites:
-  - https://www.newwavemagazine.com/single-post/the-psychology-of-color-in-casinos-how-design-choices-influence-the-player-s-mood
-  - https://colorfulconsole.com/the-art-of-slot-machine-design-using-colors-to-enhance-gameplay/ 
-  - https://www.globalbrandsmagazine.com/color-schemes-popular-among-online-gambling-brands/ 
-  - https://fashionisers.com/2020/06/22/color-psychology-in-online-casino-games-design/ 
-  - https://hickmandesign.co.uk/blog/other/psychology-of-casino-game-design/?srsltid=AfmBOoqN_NQjVzYCdMEXdxkKP7hirVuOcc1yR1pRNuj2DlTwndNwtmi- 
-  - https://www.globalbrandsmagazine.com/casino-colors-psychology-lucky-gambling-colors/
-  - https://www.myperfectcolor.com/paint/101581-true-value-3496-casino-green#:~:text=The%20RGB%20values%20for%20True,light%20that%20a%20color%20reflects
-- For getting a colour scheme and checking the color contrast, [Coolors.co](https://coolors.co).
+  - https://www.happypaintingcompany.com/blog/the-top-5-best-home-theater-paint-colors/
+  - https://www.peliplat.com/en/article/10002576/why-are-movie-theater-seats-mostly-red
+- For getting a colour scheme, [Coolors.co](https://coolors.co).
 
 __During development and testing__
 - Inspiration and code bits from CI walkthrough project *I think therefore I blog*.
-- Bootstrap documentation [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
-- [Django documentation]
-- [djangoforum]
-- [W3schools](https://www.w3schools.com/) to read up on concepts.
-- [MDN Web Docs](https://developer.mozilla.org/en-US/) to read up on concepts.
-- [Stackoverflow](https://stackoverflow.com/) for code questions.
-
-- How to redirect to another page with JavaScript: [tutorialspoint](https://www.tutorialspoint.com/how-to-redirect-to-another-webpage-using-javascript).
-- How to open a Bootstrap modal with JavaScript: [Stackoverflow](https://stackoverflow.com/questions/62101647/.javascript-bootstrap-open-bootstrap-modal-with-javascript-and-not-with-button).
-- To set focus on an element: [Laracasts](https://laracasts.com/index.php/discuss/channels/vue/how-to-focus-on-an-input-after-disabling).
-- Troubleshoot *aria-hidden* error: 
- - https://github.com/WordPress/gutenberg/issues/56547, 
- - https://github.com/twbs/bootstrap/issues/41005, 
- - https://stackoverflow.com/questions/62677291/aria-hidden-elements-do-not-contain-focusable-elements-issue-when-modal-is-sho.
-- Troubleshoot missing *focus-outline* on buttons: https://github.com/twbs/bootstrap/issues/38903.
-- To understand background-size setting: [Cloudinary](https://cloudinary.com/guides/front-end-development/6-ways-to-stretch-a-background-image-with-css).
-- Slack post on a console error I got as well: https://code-institute-room.slack.com/archives/D07L9QW7YS3/p1738070720220649.
-- How to target Safari with CSS: [Wojtek Witkowski](https://wojtek.im/journal/targeting-safari-with-css-media-query). 
+- [Bootstrap documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
+- [Django documentation](https://docs.djangoproject.com/)
+- Forums for specific questions:
+  - [Django forum](https://forum.djangoproject.com/)
+  - [Stackoverflow](https://stackoverflow.com/)
+  - [Reddit](https://www.reddit.com/).
+- Informative sources for reading up on concepts:
+  - [W3schools](https://www.w3schools.com/)
+  - [MDN Web Docs](https://developer.mozilla.org/en-US/).
+- [Piko Can Fly](https://www.youtube.com/@PikoCanFly) tutorials for using the TMDB API.
+- *Requests* library for collecting images via API.
 
 __Project finalisation__ 
 - [Grammarly](https://www.grammarly.com/grammar-check) spellchecker.
 - [Diffchecker](https://www.diffchecker.com/text-compare/) for checking Autoprefixer changes.
-- Other students' readme files for learning about local development processes.
+- Other students' readme files for how they report deployment processes.
 
 ### Acknowledgments
 - My mentor Jubril for the feedback.
