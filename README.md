@@ -121,7 +121,7 @@ The website aims to offer users:
 
 ### User stories
 
-See [project board](https://github.com/users/LizzyonGit/projects/5/views/1) for the agile methodology followed during this project and end result.
+See [project board](https://github.com/users/LizzyonGit/projects/5/views/1) for the agile methodology followed during this project and end result. Implemented features in the **Done** column, future features and unfixed bugs in the **Won't do** column.
 
 #### As a site admin, I can:
 
@@ -352,7 +352,7 @@ Moby's reviews and user reviews by myself.
 - The possibility for users to like a review.
 - **About** page about Moby Viesca.
 - The possibility for users to suggest movies to Mobie Viesca.
-- Add instructions in admin.
+- Add instructions in admin to the superuser. For example, the character limit on some fields, and which properties an uploaded movie poster image should have to display well on the website.
 
 ## Testing 
 
@@ -447,7 +447,8 @@ __During development and testing__
 - Forums for specific questions:
   - [Django forum](https://forum.djangoproject.com/)
   - [Stackoverflow](https://stackoverflow.com/)
-  - [Reddit](https://www.reddit.com/).
+  - [Reddit](https://www.reddit.com/)
+  - CI Slack community.
 - Informative sources for reading up on concepts:
   - [W3schools](https://www.w3schools.com/)
   - [MDN Web Docs](https://developer.mozilla.org/en-US/).
