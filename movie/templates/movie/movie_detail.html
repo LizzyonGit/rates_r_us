@@ -20,7 +20,7 @@
                
                 <h2>{{ movie.movie_title }}</h2>
                 <!--Displays rating if there are approved reviews, rounds it to two decimals-->
-                <!--Same code as in index.html and search_results.html-->
+                <!--Same code as in movie_list.html-->
                 {% if movie.approved_reviews %}
                 <p>Rating: {{ movie.get_average_rating|floatformat:2}} ({{ movie.approved_reviews.count }})</p>
                 {% else %}
@@ -52,7 +52,7 @@
                 {{ movie.plot | safe }}
             </div>
         </div>
-        
+        <!--Displays Moby's review section if there is text in that field in admin-->
         {% if movie.pick_motivation %}
         <div class="col-10 mb-3 mt-3">
           <div>
@@ -106,7 +106,7 @@
         <h2>Reviews</h2>
         <!-- Iterate through each review in reviews -->
         {% for review in reviews %}
-        <!--review.id makes it possible to link to the specific review form my reviews page-->
+        <!--review.id makes it possible to link to the specific review from my reviews page-->
         <div id= "{{ review.id }}" class="p-2 reviews
           {% if not review.approved and review.author == user %}
           italic{% elif not review.approved %} d-none{% endif %}">
@@ -143,7 +143,7 @@
   </section>
   
 </div>
-<!-- Delete confirmation modal -->
+<!-- Delete confirmation modal, from CI's walkthrough project I think therefore I blog -->
 <div class="modal fade" id="deleteModal" tabindex="-1"
   aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">

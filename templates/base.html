@@ -10,6 +10,7 @@
 <html class="h-100" lang="en">
 
 <head>
+    <!--block title and description will be replaced with unique content for each page-->
     {% block title %}
         <title>Rates 'R Us</title>
     {% endblock title %}
@@ -103,33 +104,6 @@
 
             </div>
         </div>
-        
-    
-
-        <!--
-        <div class="flex-shrink-0 main-bg">
-            Personalised message to logged in or logged out user
-            {% if user.is_authenticated %}
-            <p class="m-3">Welcome {{ user }}!</p>
-            {% else %}
-            <p class="m-3">You have successfully logged out</p>
-            {% endif %}
-        </div>
-
-        {% if user.is_authenticated %}
-                <p class="alert alert-dismissible
-                fade show" role="alert">Welcome {{ user }}!
-                <button type="button" class="btn-close"
-                    data-bs-dismiss="alert" aria-label="Close"></button>
-                </p>
-                {% else %}
-                <p class="alert alert-dismissible
-                fade show" role="alert">You have successfully logged out
-                <button type="button" class="btn-close"
-                data-bs-dismiss="alert" aria-label="Close"></button>
-                </p>
-                {% endif %}
-    -->
     </div>   
 
         {% block content %}
