@@ -68,14 +68,19 @@ I have re-checked these results along the way in the testing fase, as I have cha
 
 Firstly, I need to shorten my lines and fix the incorrect white spaces, as I have ignored these problems completely. So before running my code through the [CI Python Linter](https://pep8ci.herokuapp.com/), I will fix this in VS code with help of the PROBLEMS tab. I leave only the url links in my comments too long, as I found this is ok. The Python linter only reports these long url links in views.py and settings.py. The reason I don't want to shorten them, is because the links are descriptive so it's more read-friendly in my opinion to keep the original urls (I checked [stackoverflow](https://stackoverflow.com/questions/10739843/how-should-i-format-a-long-url-in-a-python-comment-and-still-be-pep8-compliant) for this). Otherwise, there are no errors.
 
+admin.py
 ![admin.py](docs/screenshots/pep-admin.png)
 
+forms.py
 ![forms.py](docs/screenshots/pep-forms.png)
 
+models.py
 ![models.py](docs/screenshots/pep-models.png)
 
+views.py
 ![views.py](docs/screenshots/pep-views.png)
 
+settings.py
 ![settings.py](docs/screenshots/pep-settings.png)
 
 Other files checked are the urls.py files, they have no errors.
