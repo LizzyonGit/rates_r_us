@@ -49,7 +49,7 @@ See [project board](https://github.com/users/LizzyonGit/projects/5/views/1) for 
 ### Design
 #### Database
 
-Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/) to create it.
+Below is my initial database schema. I used [Lucidchart](https://lucid.app/lucidchart/2079b9e7-4f65-4200-8337-c7328cfd5e1e/edit?invitationId=inv_4a4f8b69-07b0-4019-82a4-0720dfb4bfd0) to create it.
 
 <details>
     <summary>Database schema</summary>This schema includes some features I did not implement, and it misses some features that I did implement. I did not implement the **Likes** model and related field in the **Review** model. The **Top pick** functionality called for a check box and field in the **Movie** model. The *average rating* is not in the database, but implemented as a model method.
@@ -137,6 +137,7 @@ Moby's reviews and user reviews are my own.
      ![Mobile lay-out movie lists](docs/features/all-movies-mobile.png)
 
      Project file: movie/templates/movie/index.html
+
      Project file movie list: movie/templates/movie/my_list.html
 
 - __Footer__
@@ -195,6 +196,7 @@ Moby's reviews and user reviews are my own.
    ![Search results no result](docs/features/search-noresult.png)
 
    Project file: movie/templates/movie/search_results.html
+
    Project file movie list: movie/templates/movie/my_list.html
 
 - __My reviews__
@@ -277,7 +279,7 @@ See [TESTING.md](TESTING.md).
   - Including *django-allauth*, *django-countries*, *django-crispy-forms*, and *django-summernote*.
   - With installed whitenoise and gunicorn.
 - [Bootstrap](https://getbootstrap.com/) version 5.3
-- [Lucidchart](https://lucid.app/lucidchart/) for database planning
+- [Lucidchart](https://lucid.co/) for database planning
 - [Figma](https://www.figma.com/) for wireframes
 - [VS Code](https://code.visualstudio.com/) as IDE
 - [GitHub](https://github.com/) for version control
