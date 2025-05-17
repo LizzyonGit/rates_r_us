@@ -354,11 +354,16 @@ __During development and testing__
   - [Django forum](https://forum.djangoproject.com/)
   - [Stackoverflow](https://stackoverflow.com/)
   - [Reddit](https://www.reddit.com/)
+  - [GitHub issue](https://github.com/GoogleChrome/lighthouse/issues/16404)
+  - [GitHub django-summernote](https://github.com/lqez/django-summernote/blob/main/README.md)
   - CI Slack community.
 - Informative sources for reading up on concepts:
   - [W3schools](https://www.w3schools.com/)
-  - [MDN Web Docs](https://developer.mozilla.org/en-US/).
+  - [MDN Web Docs](https://developer.mozilla.org/en-US/)
+  - [JavaScript in Plain English](https://javascript.plainenglish.io/)
+  - [Medium.com](https://medium.com/).
 - [Piko Can Fly](https://www.youtube.com/@PikoCanFly) tutorials for using the TMDB API.
+- [Data extraction using python and TMDB API](https://www.kaggle.com/code/mrinalkalitapy20/data-extraction-using-python-and-tmdb-api)
 - *Requests* library for collecting images via API.
 - [Search functionality tutorial](https://learndjango.com/tutorials/django-search-tutorial).
 
