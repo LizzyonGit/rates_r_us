@@ -44,7 +44,7 @@
 
 When I ran this [HTML validator](https://validator.w3.org/), I needed to add some hidden heading and I had some empty p tags because in the displayed reviews in move_detail.html, because users can chose to not write a text, but this was still displayed. So I added a condition in the template to not display anything if there is no review text. 
 
-For the my_reviews html, it did not work to check the URL in the validator, but the source code gave no errors.
+For the my_reviews html and 404.html, it did not work to check the URL in the validator, but the source code gave no errors.
 
 The signup page does give errors in the validator, but they are of the actual form that is used there "form.as_p". I cannot access the form to fix the code. 
 
