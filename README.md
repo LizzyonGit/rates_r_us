@@ -122,7 +122,7 @@ Moby's reviews and user reviews are my own.
 
    - __My top pics__
 
-     - Max 3 top picks from admin, with poster, movie title and motivation text by Moby Viesca. The whole card serves as a link to the movie_detail page.
+     - Max 3 top picks from admin, with poster, movie title and motivation text by Moby Viesca. The whole card serves as a link to the movie_detail page. The spelling *pics* is intentionial and a word play on *pictures* as well as *picks*.
 
      ![Top pics](docs/features/top-pics.png)
 
