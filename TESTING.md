@@ -303,13 +303,15 @@ I have also used Bootstrap classes for different col, margin and padding values 
 
 #### Browser testing
 
-I tested on Chrome, Edge and FireFox. The layout and functionality were tested in Safari as well.
+I tested on Chrome, Edge, FireFox and Safari.
 
-In FireFox and Edge devtools, everything looks good and there are no errors in the console. I noticed that with the splitting of the messages that was needed for python, I needed to add a space between two sentences.
+In Chrome, FireFox and Edge devtools, everything looks good and there are no errors in the console. I noticed that with the splitting of the messages that was needed for python, I needed to add a space between two sentences.
+
+In Safari, there is an issue when editing your review, the rating field is not pre-populated. The user will need to select a rating before updating the review. It is less user-friendly, but does not break the functionality, as you still need to choose a rating to be able to update the review. There is no error in the console when editing the review, so I have not found the issue yet. This will be a bug to fix later. 
 
 #### Device testing
 
-Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone.
+Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone. All works well.
 
 #### Feature testing
 
@@ -358,6 +360,8 @@ Tested extensively on a Dell laptop, and on a Lenovo laptop, and Huawei phone.
 - *Remember Me* on **Log in** page. I do not like the capital M in *Me*, and would fix it if it was easy. But I have to override the whole form if I do this, and feel that is not a priority. So I decided to leave it.
 
 - The search functionality does not work perfectly. It only works to search on one actor, if you search two actors, you do not get the movie in which both of these actors play, even if it is precisely written like it is registred. 
-The order in which you search a first and last name of the same actor should be exactly the same as how it is registred. For example, if I look for a movie with Tommy Lee Jones, and I write *Tommy Jones*, the movie does not come up. But when I search on *Lee Jones* or *Tommy Lee Jones* or *Tommy Lee*, the movie does come up. The same goes for when you search on a movie title, *Once upon a time in the west* does not come up when you search on *once west*, but it does come up when you search on *west* or *once upon*, for example. So the search engine is limited and should be improved, but the besic functionality works for the MVP.
+The order in which you search a first and last name of the same actor should be exactly the same as how it is registred. For example, if I look for a movie with Tommy Lee Jones, and I write *Tommy Jones*, the movie does not come up. But when I search on *Lee Jones* or *Tommy Lee Jones* or *Tommy Lee*, the movie does come up. The same goes for when you search on a movie title, *Once upon a time in the west* does not come up when you search on *once west*, but it does come up when you search on *west* or *once upon*, for example. So the search engine is limited and should be improved, but the basic functionality works for the MVP.
 
 - A few days before my deadline, I got another Dependabot alert on GitHub, with *Moderate* severity. It alerted me to upgrade to a newer Django version. I decided not to do this, because the issue was related to the django.utils.html.strip_tags() function, which I do not use in my project. This late in the process, I did not want to risk any new issues from a new upgrade.
+
+- On Safari, when you click **Edit** on your review, the rating field is not pre-populated. You have to choose a rating again to be able to update your review. I did not manage to find out the problem for the MVP.
